@@ -1,0 +1,21 @@
+input {
+  border-top-left-radius: 5rem;
+  border-bottom-left-radius: 5rem;
+}
+.btn {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  border-top-right-radius: 5rem;
+  border-bottom-right-radius: 5rem;
+  background-color: #ddd;
+}
+.fa-search {
+  color: #22b687;
+}
+
+input:focus,
+.fa-search:focus,
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}

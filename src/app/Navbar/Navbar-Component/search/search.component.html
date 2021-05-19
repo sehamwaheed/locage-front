@@ -1,1 +1,16 @@
 
+
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search Locage..." aria-label="" aria-describedby="basic-addon1"
+    ngModel name="searchbox" #searchbox="ngModel"
+    [class.is-valid]="! searchbox.invalid && searchbox.touched "
+    [class.is-invalid]=" searchbox.invalid && searchbox.touched  " required
+  >
+  <div class="input-group-append">
+    <button class="btn " type="button" (click)="search(searchbox)">
+       <i class="fa fa-search" aria-hidden="true"  ></i>
+    </button>
+
+  </div>
+</div>
+

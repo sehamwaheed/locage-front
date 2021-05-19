@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -12,4 +13,9 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  search(data:NgModel){
+    if(data.value.trim() === '' || data.invalid){
+       return;
+    }
+  }
 }
