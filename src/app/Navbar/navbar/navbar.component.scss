@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
+#topNav {
+  background-color: #184052;
+  padding: 0 4em;
+}
+.navbar-brand {
+  font-family: "Segoe UI", Roboto, sans-serif;
+
+  color: #22b687;
+  font-size: 2rem;
+}
+
+.navbar-brand:hover {
+  color: #30ca99;
+  text-shadow: 4px 3px 1px #184052;
+}
+app-search {
+  margin: 1rem 1rem;
+}
+.btn-circle.btn {
+  width: 40px;
+  height: 40px;
+  padding: 5px 5px;
+  border-radius: 20px;
+  background-color: #22b687;
+}
+.fas {
+  font-size: large;
+  color: #fff;
+}
+label {
+  color: #fff;
+  font-size: 1.5rem;
+}
+label:hover {
+  color: #30ca99;
+}
+.btn:hover {
+  background-color: #30ca99;
+}
+
+#login {
+  margin: 0.9rem;
+}
+
+app-sideCart {
+  margin: 0.5rem 1rem;
+}
+@media (min-width: 768px) and (max-width: 1000px) {
+  .navbar-toggler {
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 989px) {
+  .navbar-toggler {
+    display: block !important;
+    float: right !important;
+  }
+}

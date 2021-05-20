@@ -1,1 +1,62 @@
-<p>navbar works!</p>
+<section id="topNav">
+  <nav class="navbar navbar-expand-sm navbar-light ">
+   <div class="navbar-brand">
+
+      <h2>Locage</h2>
+   </div>
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse mt-lg-0 " id="collapsibleNavId">
+      <div class="d-block d-sm-none">
+        <ul class="navbar-nav mr-auto mt-2">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="#">Action 1</a>
+              <a class="dropdown-item" href="#">Action 2</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  <!-- <div class="d-none d-md-flex justify-content-between w-100" >
+    <app-search class="flex-shrink-0" ></app-search>
+
+    <div class="d-flex justify-content-center " >
+     <button type="button " class="btn  btn-circle  "><i class="fas fa-user-alt"></i></button>
+      <label class="ml-2  ">Login </label>
+
+    </div>
+
+    <app-sideCart ></app-sideCart>
+  </div> -->
+  <!-- <div class="d-flex text-white w-100 align-content-center flex-wrap">
+    <app-search class=" flex-shrink-1 "></app-search>
+    <div class="d-flex justify-content-center " >
+      <button type="button " class="btn  btn-circle  "><i class="fas fa-user-alt"></i></button>
+       <label class="ml-2  ">Login </label>
+  </div>
+
+  <app-sideCart ></app-sideCart>
+  </div> -->
+  <div class="w-100 d-none d-lg-flex">
+    <app-search class="flex-grow-1"></app-search>
+    <div class="d-flex justify-content-center" id="login">
+      <button type="button " class="btn  btn-circle  "><i class="fas fa-user-alt"></i></button>
+       <label class="ml-2  ">Login </label>
+   </div>
+   <app-sideCart></app-sideCart>
+  </div>
+</nav>
+</section>
+<app-sub-navbar></app-sub-navbar>
+

@@ -6,67 +6,97 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sub-navbar.component.scss']
 })
 export class SubNavbarComponent implements OnInit {
-
-  catgories=[
+  Categories = [
     {
-      main:'Supermarket',
-      sub:['food cupboard','beverages',`canned,jarred&packaged foods`,`laundry`,`beverages`,`breakfast foods`,` household cleaning` ]
+      main: 'Supermarket',
+      sub: [
+        'food cupboard',
+        'beverages',
+        'canned,jarred&packaged foods',
+        'laundry',
+        'beverages',
+        'breakfast foods',
+        'household cleaning',
+      ],
+      icon: 'fas fa-store',
     },
-    {main:'Fashion',
-      sub:[`women's fashion`,`men's fashion`,`kid's fashion`]
-     },
-  {
-     main:`Health&beauty`,
-     sub:[`beauty&personal care`,`makeup`,`hair care`,`fragrance`,`health care`]
-  },
-  {
-    main:`Home&office`,
-    sub:[`home&kitchen`,`office products`,` heating,cooling&air quality`,`tools&home improvement`,`small appliances`,`appliances`,`cooking appliances`]
-  },
-  {
-    main: 'Electronics',
-    sub: [
-      `TV/Video`,
-      `Home audio`,
-      `Cameras`,
-      `Headphones`,
-      `Phones & Tablets`,
-    ],
-  },
-  {
-    main: 'Computing',
-    sub: [
-      'Laptops',
-      'Computer components',
-      'Networking products',
-      'Data storage',
-      'Computer accessories',
-    ],
-  },
-  {
-    main: 'Sporting Goods',
-    sub: [
-      'Sports wear',
-      'Sports equipment',
-      'Outdoor & Adventure',
-      'Accessories',
-    ],
-  },
-  {
-    main: 'Gaming',
-    sub: ['Video gaming', 'Arts/Crafts', 'Puppets', 'Scooters & Wagons'],
-  },
-  {
-    main: 'Automobile',
-    sub: [
-      'Car care',
-      'Oils/Fluids',
-      'Interior accessories',
-      'Exterior accessories',
-    ],
-  },
-
-  ]
+    {
+      main: 'Fashion',
+      sub: [`women's fashion`, `men's fashion`, `kid's fashion`],
+      icon: 'fas fa-tshirt',
+    },
+    {
+      main: 'Health & Beauty',
+      sub: [
+        'Beauty & Personal care',
+        `Makeup`,
+        `Hair care`,
+        `Fragrance`,
+        `Health care`,
+      ],
+      icon: 'fas fa-heart',
+    },
+    {
+      main: 'Home & office',
+      sub: [
+        `Home & kitchen`,
+        `Office products`,
+        ` Heating,Cooling & Air quality`,
+        `Tools & Home improvement`,
+        `Small appliances`,
+        `Appliances`,
+        `Cooking appliances`,
+      ],
+      icon: 'fas fa-couch',
+    },
+    {
+      main: 'Electronics',
+      sub: [
+        `TV/Video`,
+        `Home audio`,
+        `Cameras`,
+        `Headphones`,
+        `Phones & Tablets`,
+      ],
+      icon: 'fas fa-lightbulb',
+    },
+    {
+      main: 'Computing',
+      sub: [
+        'Laptops',
+        'Computer components',
+        'Networking products',
+        'Data storage',
+        'Computer accessories',
+      ],
+      icon: 'fas fa-desktop',
+    },
+    {
+      main: 'Sporting Goods',
+      sub: [
+        'Sports wear',
+        'Sports equipment',
+        'Outdoor & Adventure',
+        'Accessories',
+      ],
+      icon: 'fas fa-football-ball',
+    },
+    {
+      main: 'Gaming',
+      sub: ['Video gaming', 'Arts/Crafts', 'Puppets', 'Scooters & Wagons'],
+      icon: 'fas fa-gamepad',
+    },
+    {
+      main: 'Automobile',
+      sub: [
+        'Car care',
+        'Oils/Fluids',
+        'Interior accessories',
+        'Exterior accessories',
+      ],
+      icon: 'fas fa-car',
+    },
+  ];
   constructor() { }
 
   ngOnInit(): void {

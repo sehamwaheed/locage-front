@@ -1,7 +1,37 @@
 .subnave {
-  background-color: #184052;
+  background-color: #ddd;
 }
 .nav-link {
-  color: #f2f3ed;
-  font-size: large;
+  color: #184052;
+}
+.nav-link:hover {
+  color: #22b687;
+}
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+.dropdown-menu {
+  width: 16rem;
+}
+.dropdown > .dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+.dropdown-item {
+  padding: 1ex 1.5ex;
+  text-transform: capitalize;
+  font-size: medium;
+}
+
+.dropdown-item:hover {
+  background-color: #30ca99;
+  color: #fff;
+}
+
+.fas {
+  padding-right: 5px;
+  font-size: medium;
 }
