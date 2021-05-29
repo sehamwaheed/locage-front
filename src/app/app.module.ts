@@ -13,6 +13,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdvComponent } from './HomePage/Adv/Adv.component';
 import { ProductCardComponent } from './SharedComponent/Proudactcard/product-card/product-card.component';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { ProductContainerComponent } from './HomePage/ProudactContainer/productContainer/productContainer.component';
+import { CategoryComponent } from './HomePage/Categories/category/category.component';
+import { TopCategoriesComponent } from './HomePage/Categories/top-categories/top-categories.component';
+import { FooterComponent } from './SharedComponent/Footer/footer/footer.component';
+import { ProudactCardVerticalComponent } from './SharedComponent/Proudactcard/proudact-card-vertical/proudact-card-vertical.component';
+import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertical/layout-product/layout-product.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 @NgModule({
@@ -25,6 +36,13 @@ import { BarRatingModule } from 'ngx-bar-rating';
     AdvComponent,
     HomeComponent,
     ProductCardComponent,
+    ProductContainerComponent,
+    CategoryComponent,
+    TopCategoriesComponent,
+    FooterComponent,
+    ProudactCardVerticalComponent,
+    LayoutProductComponent
+
 
   ],
   imports: [
@@ -33,7 +51,11 @@ import { BarRatingModule } from 'ngx-bar-rating';
     AppRoutingModule,
     FormsModule,
     CarouselModule,
-    BarRatingModule
+    BarRatingModule,
+    MatTabsModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

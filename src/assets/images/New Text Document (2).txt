@@ -1,0 +1,52 @@
+.wrapper{
+  padding: 2ex;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.322);
+  max-height: 30vh;
+}
+
+.product-img{
+  padding: 0.5ex 0ex;
+  height: 25vh;
+}
+
+.product-name{
+  margin-top: 1ex;
+  font-size: x-large;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.product-detailes{
+  color: rgba(0, 0, 0, 0.664);
+  font-weight: 500;
+  margin-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.rating{
+  margin: -0.8em 0ex -1em -0.5ex;
+}
+
+.rating p{
+  margin: 1.35em 1ex;
+  color: #195196;
+  font-weight: 500;
+}
+
+.price p{
+  margin: 0;
+  font-size: x-large;
+  text-align: start;
+}

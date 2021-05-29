@@ -1,14 +1,22 @@
-<!-- <div class="card border-primary">
-    <img class="card-img-top" src="holder.js/100px180/" alt="">
-    <div class="card-body">
-        <h4 class="card-title">Title</h4>
-        <p class="card-text">Text</p>
+<div class="card ">
+    <div class="card-header" [ngClass]="{'Nosale': discount==null || discount==0 }">
+        <p class="discount" *ngIf="discount!==null || discount!==0 ">{{discount}}</p>
     </div>
-</div>
- -->
-<div class="col-md-4">
-    <section>
-        <b>CSS Stars</b>
-        <bar-rating [(rate)]="rat" [max]="5"></bar-rating>
-    </section>
-</div>
+    <div class="card-body">
+
+        <div class="p-2 img-contain">
+            <img src={{img}} class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+        </div>
+        <div class="proudact-name mt-3">
+            <p id="proudact-name-text">{{titel}}</p>
+        </div>
+        <div class="product-description">
+            <p class="mb-0">{{info}}</p>
+        </div>
+        <div class="product-rating ">
+            <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>
+        </div>
+        <div class="price ">
+            <span>${{price}} </span>
+        </div>
+    </div>

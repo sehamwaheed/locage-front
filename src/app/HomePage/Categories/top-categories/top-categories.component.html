@@ -1,0 +1,10 @@
+<div class="card ">
+
+    <div class="card-body">
+        <h4 class="card-title">Top Category</h4>
+        <div class="d-flex flex-wrap justify-content-center">
+            <app-category *ngFor="let item of categories" class="m-3" [img]='item.img' [title]='item.title'></app-category>
+
+        </div>
+    </div>
+</div>

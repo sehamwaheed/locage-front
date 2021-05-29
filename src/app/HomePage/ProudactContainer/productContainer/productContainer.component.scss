@@ -1,0 +1,27 @@
+.card-title {
+    color: #38BD92;
+    font-weight: 500;
+}
+
+.seemore {
+    width: 8em;
+    height: 2.5em;
+    border-radius: 3rem;
+    background-color: #38BD92;
+    color: #fff;
+    font-size: medium;
+    border: none;
+    margin-top: -2ex;
+}
+
+.seemore:hover {
+    background-color: #39e2ac;
+}
+
+.seemore:focus {
+    outline: none;
+}
+
+.card {
+    margin: 2ex 4ex;
+}

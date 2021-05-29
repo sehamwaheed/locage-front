@@ -1,0 +1,123 @@
+.card {
+    background-color: #ffff;
+    width: 15em;
+    margin: 10px auto;
+    position: relative;
+    border: none;
+}
+
+.card-body {
+    padding: 1.5ex;
+}
+
+img {
+    height: 10em;
+}
+
+#proudact-name-text {
+    color: #000;
+    font-size: large;
+    font-weight: 600;
+    line-height: 25px;
+}
+
+// .product-name {
+//     margin-top: 15px !important;
+//     padding-bottom: 0;
+// }
+p {
+    line-height: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    max-lines: 2;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+}
+
+h5 {
+    color: #38BD92;
+}
+
+.product-rating {
+    margin-top: -1ex;
+}
+
+.product-description {
+    margin: -1ex 0.2ex;
+}
+
+.product-description>:first-child {
+    color: #2b292996;
+    font-size: small;
+}
+
+.price {
+    width: fit-content;
+    height: 45px;
+    font-size: x-large;
+    color: #38BD92;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    margin: 0 1.6ex;
+    font-weight: 500;
+}
+
+.price:hover {
+    color: #ffff;
+    font-weight: 500;
+}
+
+.price::before {
+    margin: 0 1.4ex;
+    position: relative;
+    content: '';
+    width: 0;
+    height: 40px;
+    transform-origin: left;
+    top: 0;
+    left: 0;
+    background-color: #38BD92;
+    transition: 0.5s;
+    border-radius: 5rem;
+    color: #fff;
+}
+
+.price:hover:before {
+    width: 100px;
+}
+
+.price span {
+    position: absolute;
+    z-index: 1;
+}
+
+.card-header {
+    background-color: #39e2ac;
+    width: 50px;
+    height: 25px;
+    padding: 2px;
+    display: flex;
+    align-self: flex-end;
+    //box-shadow: 1px 4px 5px #888888;
+    border-radius: 3px;
+    border: none;
+    margin: 1ex;
+    font-size: small;
+    color: white;
+}
+
+.discount,
+.sale {
+    line-height: 9px;
+    color: #fff;
+    font-size: 13px;
+    margin: 1ex 1.5ex 1px 1.5ex;
+}
+
+.Nosale {
+    background-color: transparent;
+    box-shadow: none;
+}

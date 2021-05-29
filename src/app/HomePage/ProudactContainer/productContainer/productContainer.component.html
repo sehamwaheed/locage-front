@@ -1,0 +1,19 @@
+<div class="card">
+
+    <div class="card-body">
+        <h1 class="card-title">Top Deals</h1>
+        <owl-carousel-o class="m-0" [options]="customOptions">
+
+            <ng-container *ngFor="let item of products">
+                <ng-template carouselSlide [id]="item">
+                    <app-product-card class="m-1" [discount]='item.discount' [img]='item.imgName' [proudct-name]='item. proudactName' [proudct-details]='item.productDetails' [rate]='item. productRating' [price]='item.prouductPrice'> </app-product-card>
+                </ng-template>
+            </ng-container>
+
+        </owl-carousel-o>
+        <div class="d-flex justify-content-center ">
+            <button type="button" class="seemore"> View More </button>
+
+        </div>
+    </div>
+</div>

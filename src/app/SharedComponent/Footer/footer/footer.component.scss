@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
+.footer-48201 {
+    background-color: #133a4d;
+}
+
+p {
+    color: #EEEEEE;
+}
+
+a {
+    color: #EEEEEE;
+    list-style: none;
+    text-decoration: none;
+}
+
+#contact {
+    color: #fff;
+    width: 8rem;
+    height: 2.5em;
+    border-radius: 3rem;
+    background-color: #38BD92;
+}
+
+#contact:hover {
+    background-color: #39e2ac;
+}
+
+.footer-site-logo {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    color: #22b687;
+    font-size: 2rem;
+}
+
+.footer-site-text {
+    color: #EEEEEE;
+}
+
+span {
+    padding: .5rem;
+    color: #eeeeeeb6;
+}
+
+span:hover {
+    color: #39e2ac;
+}
+
+#copy {
+    padding: 2em;
+    margin-top: 3em;
+    border-top: 1px solid #22b687;
+}
+
+img {
+    padding: 1ex;
+}
+
+h6 {
+    font-size: large;
+    font-weight: 700;
+    color: #22b687;
+}
+
+ul>li>a:hover {
+    color: rgba(221, 221, 221, 0.74);
+}
