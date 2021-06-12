@@ -32,6 +32,9 @@ import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { jwtOptionsFactory } from './helpers/intercerptor/JwtOptions';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { UserService } from './Services/user.service';
+import { LoginButtonComponent } from './SharedComponent/Navbar/Navbar-Component/login-button/login-button.component';
+import { ProfileButtonComponent } from './SharedComponent/Navbar/Navbar-Component/profile-button/profile-button.component';
+import { TopNavbarComponent } from './SharedComponent/Navbar/Navbar-Component/top-navbar/top-navbar.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,10 @@ import { UserService } from './Services/user.service';
     FooterComponent,
     ProudactCardVerticalComponent,
     LayoutProductComponent,
+    TopNavbarComponent,
+    LoginButtonComponent,
+    ProfileButtonComponent
+
   ],
   imports: [
     BrowserModule,

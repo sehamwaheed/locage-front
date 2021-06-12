@@ -1,0 +1,41 @@
+<section id="topNav">
+  <nav class="navbar navbar-expand-sm navbar-light d-flex ">
+    <div class="navbar-brand flex-sm-shrink-1">
+
+      <span id="navHomeBtn" routerLink="/home">Locage</span>
+    </div>
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+    <app-search class="d-block d-sm-none w-100"></app-search>
+    <div class="collapse navbar-collapse mt-lg-0 " id="collapsibleNavId">
+      <div class="d-block d-sm-none">
+        <ul class="navbar-nav mr-auto mt-2 ">
+          <li class="nav-item ">
+
+            <a class="nav-link " routerLink="/login"> <i class="fa fa-user" aria-hidden="true"></i> Login </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"> <i class="fa fa-shopping-cart" aria-hidden="true"></i> Cart</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+    <app-search class="d-none d-sm-block w-100"></app-search>
+
+    <div *ngIf="isLogin;then profileComponent else loginComponent"></div>
+
+    <ng-template #loginComponent>
+      <app-login-button class="d-none d-sm-none d-md-block"></app-login-button>
+    </ng-template>
+
+    <ng-template #profileComponent>
+      <app-profile-button class="d-none d-sm-none d-md-block"></app-profile-button>
+    </ng-template>
+
+    <app-sideCart class="d-none d-sm-none d-md-block"></app-sideCart>
+  </nav>
+</section>
