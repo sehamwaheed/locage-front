@@ -30,6 +30,7 @@ import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertic
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { jwtOptionsFactory } from './helpers/intercerptor/JwtOptions';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,11 @@ import { jwtOptionsFactory } from './helpers/intercerptor/JwtOptions';
         provide: JWT_OPTIONS,
         useFactory: jwtOptionsFactory,
       },
+    }),
+    NgxWebstorageModule.forRoot({
+      prefix: '',
+      separator: '',
+      caseSensitive: true,
     }),
     FormsModule,
     CarouselModule,
