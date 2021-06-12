@@ -46,6 +46,7 @@ small {
 @media (min-width: 992px) {
   #registerPage {
     padding-top: 100px;
+    padding-bottom: 50px;
     grid-template-columns: auto;
     grid-template-rows: 1fr 500px;
   }
@@ -71,6 +72,7 @@ small {
 @media (max-width:992px) {
   #registerPage {
     padding-top: 50px;
+    padding-bottom: 50px;
     grid-template-columns: auto;
     grid-template-rows: 1fr 500px;
   }

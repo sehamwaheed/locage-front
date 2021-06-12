@@ -49,7 +49,8 @@
   
   @media (min-width: 992px) {
     #resetPage {
-      padding-top: 150px;
+      padding-top: 100px;
+      padding-bottom: 50px;
       grid-template-columns: auto;
       grid-template-rows: 75px 400px;
     }
@@ -75,6 +76,7 @@
   @media (max-width:992px) {
     #resetPage {
       padding-top: 120px;
+      padding-bottom: 50px;
       grid-template-columns: auto;
       grid-template-rows: 20px 200px;
     }
