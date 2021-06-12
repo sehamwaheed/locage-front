@@ -6,7 +6,7 @@
 
             <ng-container *ngFor="let item of products">
                 <ng-template carouselSlide [id]="item">
-                    <app-product-card class="m-1" [discount]='item.discount' [img]='item.imgName' [proudct-name]='item. proudactName' [proudct-details]='item.productDetails' [rate]='item. productRating' [price]='item.prouductPrice'> </app-product-card>
+                    <app-product-card class="m-1"  [discount]='item.discount' [img]='item.photos' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
                 </ng-template>
             </ng-container>
 

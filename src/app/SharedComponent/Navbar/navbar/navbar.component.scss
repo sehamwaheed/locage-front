@@ -7,9 +7,13 @@
 .navbar-brand {
     font-family: "Segoe UI", Roboto, sans-serif;
     color: #22b687;
-    font-size: 2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-top: -1ex;
 }
-
+span{
+  padding: 1ex;
+}
 .navbar-brand:hover {
     color: #30ca99;
     text-shadow: 4px 3px 1px #184052;
@@ -44,6 +48,8 @@ app-search {
 label {
     color: #fff;
     font-size: 1.5rem;
+    padding-top: .6ex;
+
 }
 
 label:hover {

@@ -1,8 +1,18 @@
+import { ProductService } from './Services/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+
+
+/*================================ My Components ==============================*/
+
+
 import { SideCartComponent } from './SharedComponent/Navbar/Navbar-Component/sideCart/sideCart.component';
 import { SubNavbarComponent } from './SharedComponent/Navbar/Navbar-Component/sub-navbar/sub-navbar.component';
 import { SearchComponent } from './SharedComponent/Navbar/Navbar-Component/search/search.component';
@@ -19,10 +29,7 @@ import { TopCategoriesComponent } from './HomePage/Categories/top-categories/top
 import { FooterComponent } from './SharedComponent/Footer/footer/footer.component';
 import { ProudactCardVerticalComponent } from './SharedComponent/Proudactcard/proudact-card-vertical/proudact-card-vertical.component';
 import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertical/layout-product/layout-product.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+
 
 
 
@@ -55,9 +62,10 @@ import {MatButtonModule} from '@angular/material/button';
     MatTabsModule,
     MatIconModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

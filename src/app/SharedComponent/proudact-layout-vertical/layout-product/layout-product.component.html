@@ -12,19 +12,19 @@
             <div class="d-flex">
                 <button mat-button [matMenuTriggerFor]="menu">Sort</button>
                 <mat-menu #menu="matMenu">
-                    <button mat-menu-item>Item 1</button>
-                    <button mat-menu-item>Item 2</button>
+                    <button mat-menu-item (click)="sortPriceLowest()">lowest price</button>
+                    <button mat-menu-item (click)="sortPricebigest()"> hight price</button>
                 </mat-menu>
             </div>
         </div>
     </div>
     <div class="card-body">
         <div class=" d-flex flex-wrap" *ngIf="!islist">
-            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.imgName' [proudct-name]='item. proudactName' [proudct-details]='item.productDetails' [rate]='item. productRating' [price]='item.prouductPrice'> </app-product-card>
+            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.photos' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
         </div>
 
         <div class="view-list d-flex flex-column" *ngIf="islist">
-            <app-proudact-card-vertical *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.imgName' [proudct-name]='item. proudactName' [proudct-details]='item.productDetails' [price]='item.prouductPrice'></app-proudact-card-vertical>
+            <app-proudact-card-vertical *ngFor="let item of products" class="m-1" [rate]='item. rating' [img]='item.photos' [proudct-name]='item. title' [proudct-details]='item.description' [price]='item.price'></app-proudact-card-vertical>
         </div>
     </div>
 </div>
@@ -44,7 +44,7 @@
     </div>
     <div class="card-body">
         <div class=" d-flex flex-wrap">
-            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.imgName' [proudct-name]='item. proudactName' [proudct-details]='item.productDetails' [rate]='item. productRating' [price]='item.prouductPrice'> </app-product-card>
+            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.photos' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
         </div>
 
     </div>
