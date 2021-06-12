@@ -4,20 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatIconModule} from '@angular/material/icon';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 
 /*================================ My Components ==============================*/
-
 
 import { SideCartComponent } from './SharedComponent/Navbar/Navbar-Component/sideCart/sideCart.component';
 import { SubNavbarComponent } from './SharedComponent/Navbar/Navbar-Component/sub-navbar/sub-navbar.component';
 import { SearchComponent } from './SharedComponent/Navbar/Navbar-Component/search/search.component';
 import { NavbarComponent } from './SharedComponent/Navbar/navbar/navbar.component';
- import { HomeComponent } from './HomePage/Home/Home.component';
+import { HomeComponent } from './HomePage/Home/Home.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdvComponent } from './HomePage/Adv/Adv.component';
@@ -29,9 +27,9 @@ import { TopCategoriesComponent } from './HomePage/Categories/top-categories/top
 import { FooterComponent } from './SharedComponent/Footer/footer/footer.component';
 import { ProudactCardVerticalComponent } from './SharedComponent/Proudactcard/proudact-card-vertical/proudact-card-vertical.component';
 import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertical/layout-product/layout-product.component';
-
-
-
+import { HttpClientModule } from '@angular/common/http';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { jwtOptionsFactory } from './helpers/intercerptor/JwtOptions';
 
 @NgModule({
   declarations: [
@@ -48,14 +46,19 @@ import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertic
     TopCategoriesComponent,
     FooterComponent,
     ProudactCardVerticalComponent,
-    LayoutProductComponent
-
-
+    LayoutProductComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+      },
+    }),
     FormsModule,
     CarouselModule,
     BarRatingModule,
@@ -63,9 +66,8 @@ import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertic
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-
   ],
   providers: [ProductService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
