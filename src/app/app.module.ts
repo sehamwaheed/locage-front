@@ -31,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { jwtOptionsFactory } from './helpers/intercerptor/JwtOptions';
 import { NgxWebstorageModule } from 'ngx-webstorage';
+import { UserService } from './Services/user.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     MatMenuModule,
     MatButtonModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService,UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
