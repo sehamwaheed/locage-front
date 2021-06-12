@@ -1,7 +1,7 @@
 import { ProductService } from './Services/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -35,6 +35,10 @@ import { UserService } from './Services/user.service';
 import { LoginButtonComponent } from './SharedComponent/Navbar/Navbar-Component/login-button/login-button.component';
 import { ProfileButtonComponent } from './SharedComponent/Navbar/Navbar-Component/profile-button/profile-button.component';
 import { TopNavbarComponent } from './SharedComponent/Navbar/Navbar-Component/top-navbar/top-navbar.component';
+import { LoginComponent } from './AuthPages/login/login.component';
+import { RecoverComponent } from './AuthPages/recover/recover.component';
+import { RegisterComponent } from './AuthPages/register/register.component';
+import { ResetPasswordComponent } from './AuthPages/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -54,8 +58,11 @@ import { TopNavbarComponent } from './SharedComponent/Navbar/Navbar-Component/to
     LayoutProductComponent,
     TopNavbarComponent,
     LoginButtonComponent,
-    ProfileButtonComponent
-
+    ProfileButtonComponent,
+    RegisterComponent,
+    LoginComponent,
+    ResetPasswordComponent,
+    RecoverComponent,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +81,7 @@ import { TopNavbarComponent } from './SharedComponent/Navbar/Navbar-Component/to
       caseSensitive: true,
     }),
     FormsModule,
+    ReactiveFormsModule,
     CarouselModule,
     BarRatingModule,
     MatTabsModule,
