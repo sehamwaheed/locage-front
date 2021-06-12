@@ -1,0 +1,100 @@
+<div id="registerPage">
+  <div>
+    <h2 style="color: #184052">Create Your Account</h2>
+  </div>
+  <div id="formImg">
+    <div class="d-none d-md-none d-lg-block">
+      <img id="image" src="../../../assets/images/login/undraw_Login_re_4vu2.svg" />
+    </div>
+    <div>
+      <form [formGroup]="registerForm">
+        <div class="form-group">
+          <label for="FirstName" style="color: #184052"> First Name</label>
+          <input id="FirstName" formControlName="firstName" type="text" class="form-control" [class.is-invalid]="
+              firstName?.invalid && (firstName?.dirty || firstName?.touched)
+            " [class.is-valid]="firstName?.touched && !firstName?.invalid" />
+
+          <small *ngIf="firstName?.errors?.required && firstName?.touched" class="text-danger">
+            "first name is required"
+          </small>
+          <small *ngIf="firstName?.errors?.minlength && firstName?.touched" class="text-danger">
+            "first name must be 3 characters minimum"
+          </small>
+          <small *ngIf="firstName?.errors?.maxlength && firstName?.touched" class="text-danger">
+            "first name must be 30 characters maximum"
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="LastName" style="color: #184052"> LastName</label>
+          <input id="LastName" formControlName="lastName" [class.is-invalid]="
+              lastName?.invalid && (lastName?.dirty || lastName?.touched)
+            " [class.is-valid]="lastName?.touched && !lastName?.invalid" type="text" class="form-control" />
+          <small *ngIf="lastName?.errors?.required && lastName?.touched" class="text-danger">
+            "last name is required"
+          </small>
+          <small *ngIf="lastName?.errors?.minlength && lastName?.touched" class="text-danger">
+            "last name must be 3 characters minimum"
+          </small>
+          <small *ngIf="lastName?.errors?.maxlength && lastName?.touched" class="text-danger">
+            "last name must be 30 characters maximum"
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="email" style="color: #184052">Email</label>
+          <input id="email" formControlName="email" [class.is-invalid]="
+              email?.invalid && (email?.dirty || email?.touched)
+            " [class.is-valid]="email?.touched && !email?.invalid" type="email" class="form-control"
+            (keyup)="checkEmail(registerForm.value)" />
+          <small *ngIf="email?.errors?.required && email?.touched" class="text-danger">
+            "email is required"
+          </small>
+          <small *ngIf="email?.errors?.email && email?.touched" class="text-danger">
+            "wrong email format"
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="password" style="color: #184052">Password</label>
+          <input id="password" formControlName="password" [class.is-invalid]="
+              password?.invalid && (password?.dirty || password?.touched)
+            " [class.is-valid]="password?.touched && !password?.invalid" type="password" class="form-control" />
+          <small *ngIf="password?.errors?.required && password?.touched" class="text-danger">
+            "password is required"
+          </small>
+
+          <small *ngIf="password?.errors?.minlength && password?.touched" class="text-danger">
+            "password must be 8 characters long"
+          </small>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword" style="color: #184052">Confirm Password</label>
+          <input id="confirmPassword" formControlName="confirmPassword" [class.is-invalid]="
+              confirmPassword?.invalid && (password?.dirty || password?.touched)
+            " [class.is-valid]="
+              confirmPassword?.touched &&
+              confirmPassword?.value == password?.value
+            " type="password" class="form-control" />
+          <small *ngIf="confirmPassword?.errors?.required && confirmPassword?.touched" class="text-danger">
+            "Confirm Password is required"
+          </small>
+          <small *ngIf="
+              confirmPassword?.value != password?.value &&
+              confirmPassword?.touched
+            " class="text-danger">
+            "passwords are not matched"
+          </small>
+        </div>
+   
+        <div class="form-group" id="btnDiv">
+          <button [disabled]="
+              registerForm.invalid || confirmPassword?.value != password?.value || buttonSubmit
+            " class="btn btn-success" type="submit" (click)="onSubmit(registerForm.value)">
+            Create Account
+          </button>
+        </div>
+        <div>
+          <small *ngIf="invalidRegister" class="text-danger">{{errorMsg}}</small>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

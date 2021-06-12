@@ -1,0 +1,50 @@
+<div id="resetPage">
+  <div>
+    <h2 style="color: #184052">Change Your Account Password</h2>
+  </div>
+
+  <div *ngIf="successReset;then passwordUpdatedComponent else resetComponent"></div>
+
+  <ng-template #resetComponent>
+    <div id="formImg">
+      <div class="d-none d-md-none d-lg-block">
+        <img id="image" src="../../../assets/images/login/undraw_authentication_fsn5.svg" />
+      </div>
+      <div>
+        <form [formGroup]="recoverForm">
+          <div class="form-group">
+            <label for="password" style="color: #184052">Password</label>
+            <input id="password" formControlName="password" [class.is-invalid]="
+                           password?.invalid && (password?.dirty || password?.touched) "
+              [class.is-valid]="password?.touched && !password?.invalid" type="password" class="form-control" />
+            <small *ngIf="password?.errors?.required && password?.touched" class="text-danger">
+              "password is required"
+            </small>
+
+            <small *ngIf="password?.errors?.minlength && password?.touched" class="text-danger">
+              "password must be at least 8 characters"
+            </small>
+          </div>
+
+          <div class="form-group" id="btnDiv">
+            <button [disabled]="
+                  recoverForm.invalid || buttonSubmit
+                " class="btn btn-success" type="submit" (click)="onSubmit(recoverForm.value)">
+              Change Password
+            </button>
+          </div>
+          <div>
+            <small *ngIf="invalidReset" class="text-danger">{{errorMsg}} <a [routerLink]="['/reset-password']">Reset
+                Password</a></small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #passwordUpdatedComponent>
+    <h4 class="text-success">
+      Password reset successfully, click here to <a [routerLink]="['/login']">login</a> now with new password
+    </h4>
+  </ng-template>
+</div>
