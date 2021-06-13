@@ -1,0 +1,64 @@
+<div class="card border-success">
+  <div class="card-body">
+    <!--=============================== category =============================-->
+
+
+    <h4 class="card-title">Category</h4>
+    <ul class="list-group border-0">
+      <li class="list-group-item border-0 p-1">Active item</li>
+      <li class="list-group-item border-0 p-1">Item</li>
+      <li class="list-group-item border-0 p-1">Disabled item</li>
+    </ul>
+    <!--=============================== rating =============================-->
+
+    <hr />
+    <div class="rating">
+      <label id="example-radio-group-label">Product Rating</label>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        color="primary"
+        [(ngModel)]="rating"
+      >
+        <mat-radio-button
+          class="example-radio-button"
+          *ngFor="let item of ratings"
+          value="{{ item }}"
+        >
+          <bar-rating [rate]="item" [max]="5" [readOnly]="true"></bar-rating>
+        </mat-radio-button>
+      </mat-radio-group>
+      <div>Your favorite season is: {{ rating }}</div>
+    </div>
+
+    <hr>
+    <!--=============================== brand =============================-->
+      <div class="brand">
+        <div> <span>Brand </span></div>
+        <form>
+          <section class="example-section" [formGroup]="toppings">
+
+            <p><mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox></p>
+            <p><mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox></p>
+            <p><mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox></p>
+          </section>
+        </form>
+
+
+        <form class="example-section" [formGroup]="toppings">
+          <h4>You chose:</h4>
+          {{toppings.value | json}}
+        </form>
+     <hr>
+
+     <div > Price</div>
+
+      <mat-slider class="w-100" step="step"  tickInterval="interval"></mat-slider>
+
+  <hr>
+
+
+      </div>
+
+  </div>
+</div>

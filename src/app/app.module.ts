@@ -1,15 +1,16 @@
 import { ProductService } from './Services/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-
-
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSliderModule} from '@angular/material/slider';
 /*================================ My Components ==============================*/
 
 
@@ -29,6 +30,8 @@ import { TopCategoriesComponent } from './HomePage/Categories/top-categories/top
 import { FooterComponent } from './SharedComponent/Footer/footer/footer.component';
 import { ProudactCardVerticalComponent } from './SharedComponent/Proudactcard/proudact-card-vertical/proudact-card-vertical.component';
 import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertical/layout-product/layout-product.component';
+import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
+import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
 
 
 
@@ -48,7 +51,9 @@ import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertic
     TopCategoriesComponent,
     FooterComponent,
     ProudactCardVerticalComponent,
-    LayoutProductComponent
+    LayoutProductComponent,
+    FilterationSidebarComponent,
+    SubcategoryPageComponent
 
 
   ],
@@ -63,9 +68,12 @@ import { LayoutProductComponent } from './SharedComponent/proudact-layout-vertic
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-
+    MatRadioModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatSliderModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
