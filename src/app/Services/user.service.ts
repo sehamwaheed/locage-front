@@ -3,13 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { UserModel } from '../Models/userModel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private uri: String = 'https://locage.herokuapp.com/api/v1/';
-  currentUser!: any;
+  tokenUser!: any;
+  currentUser!: UserModel;
   private isLogin: BehaviorSubject<boolean>;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -18,13 +20,13 @@ export class UserService {
   }
 
   public loggedIn(): Observable<boolean> {
-    this.getToken();
     return this.isLogin.asObservable();
   }
 
   logout() {
     localStorage.removeItem('access_token');
     this.currentUser = null;
+    this.tokenUser = null;
     this.isLogin.next(false);
     this.router.navigate(['/home']);
   }
@@ -33,19 +35,34 @@ export class UserService {
     let token = localStorage.getItem('access_token');
     if (!token) {
       this.currentUser = null;
+      this.tokenUser = null;
       this.isLogin.next(false);
     } else {
       let jwt = new JwtHelperService();
       const isExpired = jwt.isTokenExpired(token);
       if (isExpired) this.logout();
       else {
-        this.currentUser = jwt.decodeToken(token);
+        this.tokenUser = jwt.decodeToken(token);
+        this.currentUserDetails(this.tokenUser.id);
         this.isLogin.next(true);
       }
     }
+
     return token;
   }
-
+  currentUserDetails(id: any) {
+    this.getUser(id).subscribe(
+      (result: any) => {
+        this.currentUser = result.user;
+      },
+      () => {
+        this.logout();
+      }
+    );
+  }
+  getUser(id: any) {
+    return this.http.get(`${this.uri}users/${id}`);
+  }
   login(user: any) {
     return this.http.post(`${this.uri}users/login`, user);
   }

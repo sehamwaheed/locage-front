@@ -4,7 +4,7 @@
   </div>
   <div id="formImg">
     <div class="d-none d-md-none d-lg-block">
-      <img id="image" src="../../../assets/images/login/undraw_secure_login_pdn4.svg"/>
+      <img id="image" src="../../../assets/images/login/undraw_secure_login_pdn4.svg" />
     </div>
     <div>
       <form [formGroup]="loginForm">
@@ -34,10 +34,11 @@
             "password must be at least 8 characters"
           </small>
         </div>
-       
+
         <div class="form-group" id="resetDiv">
           <a id="resetPassword" [routerLink]="['/reset-password']">Forget Your Password?</a>
         </div>
+
         <div class="form-group" id="btnDiv">
           <button [disabled]="
           loginForm.invalid || buttonSubmit
@@ -49,6 +50,15 @@
           <small *ngIf="invalidLogin" class="text-danger">{{errorMsg}}</small>
         </div>
       </form>
+      <hr>
+      <div class="creatAccountDiv">
+        <span  style="color: #184052">
+          New Customer?
+        </span>
+        <div>
+          <button class="btn btn-success" [routerLink]="['/register']">Create new Account</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

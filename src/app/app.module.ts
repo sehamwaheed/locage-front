@@ -39,6 +39,9 @@ import { LoginComponent } from './AuthPages/login/login.component';
 import { RecoverComponent } from './AuthPages/recover/recover.component';
 import { RegisterComponent } from './AuthPages/register/register.component';
 import { ResetPasswordComponent } from './AuthPages/reset-password/reset-password.component';
+import { CreateStoreComponent } from './Vendor/create-store/create-store.component';
+import { StartSellingComponent } from './Vendor/start-selling/start-selling.component';
+import { VendorService } from './Services/vendor.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +66,8 @@ import { ResetPasswordComponent } from './AuthPages/reset-password/reset-passwor
     LoginComponent,
     ResetPasswordComponent,
     RecoverComponent,
+    CreateStoreComponent,
+    StartSellingComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,7 +94,7 @@ import { ResetPasswordComponent } from './AuthPages/reset-password/reset-passwor
     MatMenuModule,
     MatButtonModule,
   ],
-  providers: [ProductService,UserService],
+  providers: [UserService, VendorService, ProductService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
