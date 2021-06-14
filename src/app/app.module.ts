@@ -42,6 +42,7 @@ import { ResetPasswordComponent } from './AuthPages/reset-password/reset-passwor
 import { CreateStoreComponent } from './Vendor/create-store/create-store.component';
 import { StartSellingComponent } from './Vendor/start-selling/start-selling.component';
 import { VendorService } from './Services/vendor.service';
+import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { VendorService } from './Services/vendor.service';
     RecoverComponent,
     CreateStoreComponent,
     StartSellingComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

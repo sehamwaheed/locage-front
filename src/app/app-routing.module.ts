@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
 import { HomeComponent } from './HomePage/Home/Home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -17,10 +18,12 @@ const routes: Routes = [
   { path: 'start-selling', component: StartSellingComponent },
   { path: 'create-store', component: CreateStoreComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: HomeComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{scrollPositionRestoration: 'enabled'})],
+  imports: [
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
