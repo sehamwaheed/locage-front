@@ -1,0 +1,59 @@
+#formImg {
+  display: grid;
+  place-items: center;
+  grid-auto-columns: auto;
+  grid-template-rows: 1fr 50px;
+  padding-bottom: 50px;
+}
+
+span {
+  color: #184052;
+  font-weight: bold
+}
+
+@media (min-width: 1024px) {
+  #image {
+    width: 800px;
+    height: 800px;
+  }
+}
+
+@media (min-width: 990px) {
+  #image {
+    width: 700px;
+    height: 700px;
+  }
+  span{
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 800px) {
+  #image {
+    width: 600px;
+    height: 600px;
+  }
+  span{
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 728px) {
+  #image {
+    width: 500px;
+    height: 500px;
+  }
+  span{
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 728px) {
+  #image {
+    width: 350px;
+    height: 350px;
+  }
+  span{
+    font-size: 18px;
+  }
+}
