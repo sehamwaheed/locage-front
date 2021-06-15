@@ -54,8 +54,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { ImagePreviewComponent } from './product-view/image-preview/image-preview.component';
 import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
 import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
-
-
+import { AuthGuardService } from './Services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -90,7 +89,6 @@ import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/sub
     ImagePreviewComponent,
   ],
   imports: [
-
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -120,13 +118,16 @@ import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/sub
     MatCheckboxModule,
     ReactiveFormsModule,
     MatSliderModule,
-
-
   ],
-  providers: [FormBuilder,UserService, VendorService, ProductService,CategoryService],
+  providers: [
+    FormBuilder,
+    UserService,
+    AuthGuardService,
+    VendorService,
+    ProductService,
+    CategoryService,
+  ],
   bootstrap: [AppComponent],
-  exports: [
-    TruncatePipe
-  ],
+  exports: [TruncatePipe],
 })
 export class AppModule {}
