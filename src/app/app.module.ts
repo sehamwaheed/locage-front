@@ -1,13 +1,18 @@
 import { ProductService } from './Services/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatInputModule } from '@angular/material/input';
 
 /*================================ My Components ==============================*/
 
@@ -44,6 +49,11 @@ import { StartSellingComponent } from './Vendor/start-selling/start-selling.comp
 import { VendorService } from './Services/vendor.service';
 import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
 import { CategoryService } from './Services/category.service';
+import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
+import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { ImagePreviewComponent } from './product-view/image-preview/image-preview.component';
+
 
 @NgModule({
   declarations: [
@@ -61,16 +71,20 @@ import { CategoryService } from './Services/category.service';
     FooterComponent,
     ProudactCardVerticalComponent,
     LayoutProductComponent,
-    TopNavbarComponent,
     LoginButtonComponent,
     ProfileButtonComponent,
-    RegisterComponent,
+    TopNavbarComponent,
     LoginComponent,
-    ResetPasswordComponent,
     RecoverComponent,
     CreateStoreComponent,
     StartSellingComponent,
     NotFoundComponent,
+    ResetPasswordComponent,
+    RegisterComponent,
+    FilterationSidebarComponent,
+    SubcategoryPageComponent,
+    ProductViewComponent,
+    ImagePreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -96,8 +110,13 @@ import { CategoryService } from './Services/category.service';
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
+
+    MatRadioModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatSliderModule
   ],
-  providers: [UserService, VendorService, ProductService,CategoryService],
+  providers: [FormBuilder,UserService, VendorService, ProductService,CategoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
