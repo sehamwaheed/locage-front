@@ -1,3 +1,9 @@
 img {
-    height: 419px;
+    height: 420px;
+  }
+
+@media screen and (max-width:992px) {
+  img {
+    height: 150px;
+  }
 }

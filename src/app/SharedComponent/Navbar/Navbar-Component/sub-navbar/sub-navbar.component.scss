@@ -1,64 +1,76 @@
 .subnave {
-    background-color: #ddd;
+  background-color: #ddd;
 }
 
 .nav-link {
-    color: #184052;
+  color: #184052;
 }
 
 .nav-link:hover {
-    color: #22b687;
+  color: #22b687;
 }
 
 .dropdown:hover>.dropdown-menu {
-    display: block;
+  display: block;
 }
 
 .dropdown-menu {
-    width: 16rem;
+  width: 16rem;
 }
 
 .dropdown>.dropdown-toggle:active {
-    /*Without this, clicking will make it sticky*/
+  /*Without this, clicking will make it sticky*/
 }
 
 .dropdown-toggle::after {
-    display: none;
+  display: none;
 }
 
 .dropdown-item {
-    padding: 1ex 1.5ex;
-    text-transform: capitalize;
-    font-size: medium;
+  padding: 1ex 1.5ex;
+  text-transform: capitalize;
+  font-size: medium;
 }
 
 .dropdown-item:hover {
-    background-color: #30ca99;
-    color: #fff;
+  background-color: #30ca99;
+  color: #fff;
 }
 
 .fas {
-    padding-right: 5px;
-    font-size: medium;
+  padding-right: 5px;
+  font-size: medium;
 }
 
 .scrollSubNave {
-    background-color: #ddd;
-    padding: 1ex 2ex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    max-height: 45px;
+  background-color: #ddd;
+  padding: 1ex 2ex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 45px;
 }
 
 .items {
-    cursor: pointer;
-    margin-right: 4ex;
+  cursor: pointer;
+  margin-right: 4ex;
+  display: flex;
+  align-items: center;
+  flex-direction: column
 }
 
 .items:hover {
-    color: #22b687;
+  color: #22b687;
 }
 
 .scrollSubNave::-webkit-scrollbar {
-    width: 0;
+  width: 0;
+}
+
+#mobileSubnav {
+  padding: 15px 0;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: x-small;
+  background-color: #F8F9FA;
 }

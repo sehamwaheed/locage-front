@@ -43,6 +43,7 @@ import { CreateStoreComponent } from './Vendor/create-store/create-store.compone
 import { StartSellingComponent } from './Vendor/start-selling/start-selling.component';
 import { VendorService } from './Services/vendor.service';
 import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
+import { CategoryService } from './Services/category.service';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,7 @@ import { NotFoundComponent } from './SharedComponent/not-found/not-found.compone
     MatMenuModule,
     MatButtonModule,
   ],
-  providers: [UserService, VendorService, ProductService],
+  providers: [UserService, VendorService, ProductService,CategoryService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

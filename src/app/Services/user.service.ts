@@ -9,7 +9,7 @@ import { UserModel } from '../Models/userModel';
   providedIn: 'root',
 })
 export class UserService {
-  private uri: String = 'https://locage.herokuapp.com/api/v1/';
+  private uri: String = 'https://locage.herokuapp.com/api/v1/users/';
   tokenUser!: any;
   currentUser!: UserModel;
   private isLogin: BehaviorSubject<boolean>;
@@ -61,21 +61,21 @@ export class UserService {
     );
   }
   getUser(id: any) {
-    return this.http.get(`${this.uri}users/${id}`);
+    return this.http.get(`${this.uri}${id}`);
   }
   login(user: any) {
-    return this.http.post(`${this.uri}users/login`, user);
+    return this.http.post(`${this.uri}login`, user);
   }
   register(user: any) {
-    return this.http.post(`${this.uri}users/register`, user);
+    return this.http.post(`${this.uri}register`, user);
   }
   resetPassword(user: any) {
-    return this.http.post(`${this.uri}users/reset-password`, user);
+    return this.http.post(`${this.uri}reset-password`, user);
   }
   recoverPassword(user: any, resetToken: string) {
-    return this.http.patch(`${this.uri}users/recover/${resetToken}`, user);
+    return this.http.patch(`${this.uri}recover/${resetToken}`, user);
   }
   checkEmail(email: any) {
-    return this.http.post(`${this.uri}users/isEmailRegister`, email);
+    return this.http.post(`${this.uri}isEmailRegister`, email);
   }
 }
