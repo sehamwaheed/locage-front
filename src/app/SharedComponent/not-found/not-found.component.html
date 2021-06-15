@@ -1,0 +1,17 @@
+<div id="formImg">
+  <div *ngIf="item; else firstImage; then secondImage"></div>
+  <ng-template #firstImage>
+    <div>
+      <img id="image" src="../../../assets/images/svg/undraw_not_found_60pq.svg" />
+    </div>
+  </ng-template>
+
+  <ng-template #secondImage>
+    <div>
+      <img id="image" src="../../../assets/images/svg/undraw_page_not_found_su7k.svg" />
+    </div>
+  </ng-template>
+  <div>
+    <span>PAGE NOT FOUND, BACK TO <a [routerLink]="['/home']" >HOME</a> PAGE</span>
+  </div>
+</div>

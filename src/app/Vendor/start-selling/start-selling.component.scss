@@ -1,0 +1,91 @@
+#startSellingPage {
+  display: grid;
+  place-items: center;
+  grid-gap: 1rem;
+}
+
+
+#formImg {
+  display: grid;
+  place-items: center;
+}
+
+#image {
+  width: 400px;
+  height: 300px;
+}
+
+h2 {
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+
+button {
+  border-radius: 10px;
+  inline-size: 400px;
+}
+
+#btnDiv {
+  display: flex;
+  margin-top: 20px;
+}
+
+small {
+  font-size: revert;
+}
+
+.startDiv {
+  padding: 20px;
+}
+
+span {
+  font-family: Roboto;
+  font-size: 20px;
+  color: #184052;
+}
+
+@media (min-width: 992px) {
+  #startSellingPage {
+    padding-top: 100px;
+    padding-bottom: 50px;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 400px 50px;
+  }
+
+  #formImg {
+    grid-template-columns: repeat(2, 500px);
+  }
+
+}
+
+@media (max-width:1024px) {
+
+
+  button {
+    inline-size: 350px;
+  }
+
+}
+
+@media (max-width:992px) {
+  #startSellingPage {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr;
+  }
+
+  #formImg {
+    grid-template-columns: auto;
+  }
+
+
+  button {
+    inline-size: 350px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}

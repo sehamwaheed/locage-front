@@ -1,20 +1,31 @@
 <div class="subnave d-none d-sm-block">
-    <ul class="nav  ">
-        <li class="nav-item dropdown d-flex" *ngFor="let item of Categories">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <i class="{{item.icon}}"></i> {{item.main}}
-            </a>
-            <div class="dropdown-menu pt-0 pb-0 shadow border-0">
-                <a class="dropdown-item" href="#!" *ngFor="let sub of item.sub">{{sub}}</a>
+  <ul class="nav  ">
+    <li class="nav-item dropdown d-flex" *ngFor="let item of categories">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+        aria-expanded="false">
+        <!-- <i class="{{item.icon}}"></i> -->
+         {{item.name}}
+      </a>
+      <div class="dropdown-menu shadow border-0">
+        <a class="dropdown-item" href="#!" *ngFor="let sub of item.subcategories">{{sub.name}}</a>
+      </div>
+    </li>
 
-            </div>
-        </li>
-
-    </ul>
+  </ul>
 </div>
 
 <div class="scrollSubNave d-flex  d-sm-none ">
-    <div class="items" *ngFor="let item of Categories">
-        {{item.main}}
-    </div>
+  <div class="items" *ngFor="let item of categories">
+    {{item.name}}
+  </div>
 </div>
+<!-- <div id="mobileSubnav" class="d-sm-none">
+  <div class="items" *ngFor="let item of Categories">
+    <div>
+      <i class="{{item.icon}}"></i>
+    </div>
+    <div>
+      {{item.main}}
+    </div>
+  </div>
+</div> -->

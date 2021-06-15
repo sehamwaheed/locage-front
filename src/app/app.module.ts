@@ -44,12 +44,15 @@ import { LoginComponent } from './AuthPages/login/login.component';
 import { RecoverComponent } from './AuthPages/recover/recover.component';
 import { RegisterComponent } from './AuthPages/register/register.component';
 import { ResetPasswordComponent } from './AuthPages/reset-password/reset-password.component';
+import { CreateStoreComponent } from './Vendor/create-store/create-store.component';
+import { StartSellingComponent } from './Vendor/start-selling/start-selling.component';
+import { VendorService } from './Services/vendor.service';
+import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
+import { CategoryService } from './Services/category.service';
 import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
 import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ImagePreviewComponent } from './product-view/image-preview/image-preview.component';
-
-
 
 
 @NgModule({
@@ -73,6 +76,9 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     TopNavbarComponent,
     LoginComponent,
     RecoverComponent,
+    CreateStoreComponent,
+    StartSellingComponent,
+    NotFoundComponent,
     ResetPasswordComponent,
     RegisterComponent,
     FilterationSidebarComponent,
@@ -110,7 +116,7 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     ReactiveFormsModule,
     MatSliderModule
   ],
-  providers: [ProductService, FormBuilder, UserService],
-  bootstrap: [AppComponent]
+  providers: [FormBuilder,UserService, VendorService, ProductService,CategoryService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

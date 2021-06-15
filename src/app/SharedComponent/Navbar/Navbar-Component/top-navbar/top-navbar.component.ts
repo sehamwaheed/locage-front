@@ -21,11 +21,13 @@ export class TopNavbarComponent implements OnInit {
       this.isLogin = result;
     });
     this.localSt.observe('access_token').subscribe((value) => {
-      console.log(value);
       if (!value) {
         this.userService.getToken();
         this.router.navigate(['/login']);
       }
     });
+  }
+  logout() {
+    this.userService.logout();
   }
 }
