@@ -87,13 +87,15 @@ import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/sub
     FilterationSidebarComponent,
     SubcategoryPageComponent,
     ProductViewComponent,
-    ImagePreviewComponent
+    ImagePreviewComponent,
   ],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
@@ -113,11 +115,13 @@ import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/sub
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-
+    MatInputModule,
     MatRadioModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatSliderModule
+    MatSliderModule,
+
+
   ],
   providers: [FormBuilder,UserService, VendorService, ProductService,CategoryService],
   bootstrap: [AppComponent],
