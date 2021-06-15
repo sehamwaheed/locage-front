@@ -52,6 +52,7 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,13 +79,15 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     FilterationSidebarComponent,
     SubcategoryPageComponent,
     ProductViewComponent,
-    ImagePreviewComponent
+    ImagePreviewComponent,
   ],
   imports: [
+
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
@@ -104,11 +107,13 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
-
+    MatInputModule,
     MatRadioModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatSliderModule
+    MatSliderModule,
+
+
   ],
   providers: [ProductService, FormBuilder, UserService],
   bootstrap: [AppComponent]

@@ -1,18 +1,27 @@
-<div  style="width: 60vw; border: 1px solid red;margin: 10px auto; " class="d-flex flex-column justify-content-between">
-  <div class=" d-flex align-items-center justify-content-center mb-3">
-     <img [src]="scrImg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-  </div>
 
+<div class="img-gallery d-flex flex-column justify-content-between" height="100vh">
+<div class="img-view mb-3 align-items-center justify-content-center" >
+  <img [src]="scrImg"  class="imgProduct  ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+  <!-- <ng-magnizoom
+    zoomMode="LENS"
+    imageSrc="{{scrImg}}"
+    imageClass=" imgProduct img-fluid ">
+  </ng-magnizoom> -->
+</div>
+<div class="img-bar ">
   <owl-carousel-o [options]="customOptions"  >
 
     <ng-container *ngFor="let slide of imgProduct">
         <ng-template carouselSlide [id]="slide">
-            <!-- <img [src]="slide"> -->
-            <div [style.backgroundImage]="'url('+slide+')'" class="image" (click)="showImg(slide)"></div>
+
+            <div  class="image d-flex  " (click)="showImg(slide)">
+              <img [src]="slide" class="img-fluid " >
+            </div>
         </ng-template>
     </ng-container>
 
   </owl-carousel-o>
 
-</div>
 
+</div>
+</div>

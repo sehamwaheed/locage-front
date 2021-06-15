@@ -1,0 +1,126 @@
+.mywrapper{
+  margin: 5em auto !important;
+
+}
+
+.product-name {
+  margin-top: 1ex;
+  font-size: x-large;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.product-detailes {
+  color: rgba(0, 0, 0, 0.664);
+  font-weight: 500;
+  margin-top: 2ex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  -webkit-box-orient: vertical;
+  text-transform: capitalize;
+  text-align: start;
+}
+
+.rating {
+  text-align: start;
+  margin: .1em 0ex -1em -0.4ex;
+}
+
+.price p {
+  margin: 1ex 0px;
+  font-size: 2.2rem;
+  text-align: start;
+  color: #38BD92;
+  font-weight: 500;
+}
+.color{
+  width: 3em;
+  height: 3em;
+  background-color: #38BD92;
+  margin: 1ex;
+
+}
+.colortitel{
+  text-align: start;
+   font-weight: 500;
+}
+
+.btn{
+
+  margin-top: 2ex;
+  border-radius: 32px;
+  width: 18rem;
+  background-color: #38BD92;
+  height: 3.5em;
+  color: white;
+  font-size: 1em;
+}
+
+.btn:hover{
+  background-color:#30ca99;
+}
+
+
+//////////////////////////! WARNING
+
+nav > .nav.nav-tabs{
+
+  border: none;
+    color:#184052;
+    background:#f7f7f7;
+    border-radius:0;
+    font-size: large;
+
+}
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active
+{
+  border: none;
+    padding:21px;
+    color: #184052;;
+    background:#f7f7f7;
+    border-radius:0;
+}
+
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -5%;
+  border: 15px solid transparent;
+  border-top-color: #38BD92 ;
+}
+.tab-content{
+  background: #fdfdfd;
+    // line-height: 50px;
+    border: 1px solid #ddd;
+    border-top:5px solid #38BD92;
+    border-bottom:5px solid #38BD92;
+    padding:30px 25px;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+    background: #38BD92;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
+}
+
+
+#barprogress{
+  background-color: #30ca99;
+}

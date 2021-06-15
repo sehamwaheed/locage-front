@@ -1,8 +1,48 @@
 .image{
   width: 6em;
   height: 6em;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-   margin: 0 !important;
+  border: 1px solid rgba(129, 129, 129, 0.5);
+  background-color: #f7f7f7;
+   padding: 1em;
+   border-radius: 10px;
+
+}
+
+.img-gallery{
+ height: 600px;
+}
+
+.img-view{
+  height: 500px;
+  align-self: center;
+  max-width: 100%;
+  padding: 5rem 1rem;
+  // background-color: lime;
+}
+
+.img-bar{
+  // height: 100px;
+  max-height: 120px;
+  border: 1px solid rgba(83, 83, 83, 0.418);
+  border-radius: 20px;
+  padding: 10px 15px;
+  background-color: #E1E5EA;
+
+}
+.img-bar::-webkit-scrollbar{
+  width: 0;
+}
+.img-item{
+  height: 90px;
+  width: 90px;
+  margin-right: 1ex;
+  line-height: 110px;
+  background-color: black;
+}
+.imgProduct{
+height: 80%;
+
 }
