@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserModel } from 'src/app/Models/userModel';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -8,22 +9,28 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class StartSellingComponent implements OnInit {
   isLogin: boolean = false;
-  constructor(private userService: UserService, private router: Router) {}
+  currentUser?: UserModel;
+  constructor(private userService: UserService, private router: Router) {
+    this.userService.returnUserDetails().subscribe((user) => {
+      this.currentUser = user;
+    });
+  }
 
   ngOnInit(): void {
     this.userService.loggedIn().subscribe((result: boolean) => {
       this.isLogin = result;
     });
   }
+
   onSubmit() {
-    if (this.isLogin) {
-      if (this.userService.currentUser.role == 'vendor') {
-        this.router.navigate(['/']);
+      if (this.isLogin) {
+        if (this.currentUser.role == 'vendor') {
+          this.router.navigate(['/']);
+        } else {
+          this.router.navigate(['/create-store']);
+        }
       } else {
-        this.router.navigate(['/create-store']);
+        this.router.navigate(['/login']);
       }
-    } else {
-      this.router.navigate(['/login']);
-    }
   }
 }

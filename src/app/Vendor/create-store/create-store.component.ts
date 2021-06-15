@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { UserModel } from 'src/app/Models/userModel';
 import { UserService } from 'src/app/Services/user.service';
 import { VendorService } from 'src/app/Services/vendor.service';
 
@@ -10,6 +10,7 @@ import { VendorService } from 'src/app/Services/vendor.service';
   styleUrls: ['./create-store.component.scss'],
 })
 export class CreateStoreComponent implements OnInit {
+  currentUser?: UserModel;
   imagePreview: string;
   buttonSubmit: boolean = false;
   invalidSubmit: boolean = false;
@@ -33,16 +34,19 @@ export class CreateStoreComponent implements OnInit {
 
   constructor(
     private vendorService: VendorService,
-    private userService: UserService,
-    private router: Router
-  ) {}
+    private userService: UserService
+  ) {
+    this.userService.returnUserDetails().subscribe((user) => {
+      this.currentUser = user;
+    });
+  }
 
   ngOnInit(): void {
     this.vendorService.getStoreByUserId().subscribe(
       (result) => {
         if (result) {
           this.userCreatedApplication = true;
-          if (this.userService.currentUser.role == 'vendor') {
+          if (this.currentUser.role == 'vendor') {
             this.isVendor = true;
           } else {
             this.isVendor = false;

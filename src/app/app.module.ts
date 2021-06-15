@@ -44,6 +44,7 @@ import { StartSellingComponent } from './Vendor/start-selling/start-selling.comp
 import { VendorService } from './Services/vendor.service';
 import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
 import { CategoryService } from './Services/category.service';
+import { TruncatePipe } from './helpers/pipe/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { CategoryService } from './Services/category.service';
     CreateStoreComponent,
     StartSellingComponent,
     NotFoundComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
@@ -99,5 +101,8 @@ import { CategoryService } from './Services/category.service';
   ],
   providers: [UserService, VendorService, ProductService,CategoryService],
   bootstrap: [AppComponent],
+  exports: [
+    TruncatePipe
+  ],
 })
 export class AppModule {}
