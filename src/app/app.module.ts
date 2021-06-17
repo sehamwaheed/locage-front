@@ -53,6 +53,7 @@ import { FilterationSidebarComponent } from './SharedComponent/filteration-sideb
 import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ImagePreviewComponent } from './product-view/image-preview/image-preview.component';
+import { LocageComponent } from './locage/locage.component';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     SubcategoryPageComponent,
     ProductViewComponent,
     ImagePreviewComponent,
+    LocageComponent,
   ],
   imports: [
 

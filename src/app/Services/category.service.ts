@@ -20,5 +20,6 @@ export class CategoryService {
   }
   getSubCategoriesByCategoryId(categoryId: string) {
     return this.http.get(`${this.uri}${categoryId}/subcategory`);
+
   }
 }

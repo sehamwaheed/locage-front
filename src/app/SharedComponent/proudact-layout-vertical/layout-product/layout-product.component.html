@@ -1,4 +1,4 @@
-<div class="card shadow d-none d-lg-block">
+<div class="card container-fluid shadow d-none d-lg-block">
     <div class="card-header">
         <div class="flex-row d-flex justify-content-between">
             <div class="d-flex">
@@ -20,11 +20,11 @@
     </div>
     <div class="card-body">
         <div class=" d-flex flex-wrap" *ngIf="!islist">
-            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.photos' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
+            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.photos[0]' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
         </div>
 
         <div class="view-list d-flex flex-column" *ngIf="islist">
-            <app-proudact-card-vertical *ngFor="let item of products" class="m-1" [rate]='item. rating' [img]='item.photos' [proudct-name]='item. title' [proudct-details]='item.description' [price]='item.price'></app-proudact-card-vertical>
+            <app-proudact-card-vertical *ngFor="let item of products" class="m-1" [rate]='item. rating' [img]='item.photos[0]' [proudct-name]='item. title' [proudct-details]='item.description' [price]='item.price'></app-proudact-card-vertical>
         </div>
     </div>
 </div>
@@ -44,7 +44,7 @@
     </div>
     <div class="card-body">
         <div class=" d-flex flex-wrap">
-            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.photos' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
+            <app-product-card *ngFor="let item of products" class="m-1" [discount]='item.discount' [img]='item.photos[0]' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
         </div>
 
     </div>

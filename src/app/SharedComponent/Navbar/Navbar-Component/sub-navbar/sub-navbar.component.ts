@@ -13,12 +13,14 @@ export class SubNavbarComponent implements OnInit {
        this.categoryService.getAll().subscribe(
       (result: any) => {
         this.categories = result.result;
+        console.log("sub",result.result);
+
       },
       (err) => {}
     );
   }
 
   ngOnInit(): void {
- 
+
   }
 }

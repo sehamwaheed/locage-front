@@ -1,5 +1,5 @@
 import { ProductService } from './../../../Services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/Models/ProductModel';
 
 @Component({
@@ -9,12 +9,14 @@ import { ProductModel } from 'src/app/Models/ProductModel';
 })
 export class LayoutProductComponent implements OnInit {
 
-  constructor( private product:ProductService) {
+  @Input('products') products:ProductModel []=[] ;
+  constructor( ) {
 
    }
 
   ngOnInit(): void {
-      this.products=this.product.getProducts();
+    console.log(this.products);
+
   }
   islist:boolean=false;
 
@@ -25,7 +27,7 @@ export class LayoutProductComponent implements OnInit {
      this.islist=false;
   }
 
-  products : ProductModel[] ;
+
 
 
     sortPriceLowest(){

@@ -7,16 +7,16 @@
 }
 
 .card-body {
-    padding: 1.5ex;
+    padding: 1.6ex;
 }
 
 img {
-    height: 10em;
+    height: 12em;
 }
 
 #proudact-name-text {
     color: #000;
-    font-size: large;
+    font-size: 1.4em;
     font-weight: 600;
     line-height: 25px;
 }
@@ -51,7 +51,9 @@ h5 {
     color: #2b292996;
     font-size: small;
 }
-
+#dicrip{
+  font-size: 1.1em;
+}
 .price {
     width: fit-content;
     height: 45px;
@@ -96,25 +98,26 @@ h5 {
 
 .card-header {
     background-color: #39e2ac;
-    width: 50px;
-    height: 25px;
-    padding: 2px;
+    width: auto;
+    height: auto;
+    padding: 0px;
     display: flex;
     align-self: flex-end;
     //box-shadow: 1px 4px 5px #888888;
     border-radius: 3px;
     border: none;
     margin: 1ex;
-    font-size: small;
-    color: white;
+    font-size: 2ex;
+    color: #fff;
+
 }
 
-.discount,
-.sale {
-    line-height: 9px;
+.discount {
+    // line-height: 10px;
     color: #fff;
-    font-size: 13px;
-    margin: 1ex 1.5ex 1px 1.5ex;
+    font-size: 15px;
+    margin: .8ex 1.5ex;
+
 }
 
 .Nosale {

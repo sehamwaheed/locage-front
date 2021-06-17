@@ -1,16 +1,22 @@
 #loginDiv {
   display: grid;
-  grid-template-columns: 35px 42px 7px 58px;
+  grid-template-columns: 62px 47px 11px 63px;
   align-items: center;
 }
 
 #loginIcon {
   color: white;
+
+}
+.fas{
+  font-size: 3.4em;
+  background-color: #38BD92;
+  border-radius: 1ex;
 }
 
 #loginButton {
   color: white;
-  font-size: medium;
+
 }
 
 #slash {
@@ -20,10 +26,14 @@
 
 #registerButton {
   color: white;
-  font-size: medium;
+
+}
+.btnHover {
+  font-size: 2.5ex;
 }
 
 .btnHover:hover {
   cursor: pointer;
   color: #30ca99;
 }
+

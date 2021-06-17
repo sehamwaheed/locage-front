@@ -1,17 +1,19 @@
 <div class="card ">
     <div class="card-header" [ngClass]="{'Nosale': discount==null || discount==0 }">
-        <p class="discount" *ngIf="discount!==null || discount!==0 ">{{discount}}</p>
+        <p class="discount"  *ngIf="discount!==null || discount!==0 "> {{discount}} % </p>
     </div>
     <div class="card-body">
 
-        <div class="p-2 img-contain">
-            <img src={{img}} class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+        <div class="p-2 img-contain d-flex align-items-center justify-content-center">
+            <img src={{img}} class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt=""
+            onerror="this.src='../../../../assets/images/images.png'"
+            >
         </div>
         <div class="proudact-name mt-3">
             <p id="proudact-name-text">{{titel}}</p>
         </div>
         <div class="product-description">
-            <p class="mb-0">{{info}}</p>
+            <p class="mb-0" id="dicrip">{{info}}</p>
         </div>
         <div class="product-rating ">
             <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>

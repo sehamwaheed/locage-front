@@ -3,27 +3,42 @@
   flex-direction: column;
   margin: 15px 0;
 }
+.card{
+  width: 248px;
+}
 
 .example-radio-button {
   margin: -8px 13px;
 }
 
 
-//  .mat-radio-outer-circle {
-//   .mat-radio-checked & {
-//         border-color: #3fb559 !important;
-//       }
-//   }
-
-//    .mat-radio-inner-circle {
-//       background-color: #53b53f !important;
-//   }
-
-//    .mat-radio-ripple .mat-ripple-element {
-//       background-color: rgba(#3fb562, 0.26) !important;
-//   }
-
-//style checkboxes brands
 .example-section {
   margin: 12px 0;
+}
+
+mat-form-field{
+  width: 40%;
+}
+
+.mycolor{
+  width: 30px;
+  height: 30px;
+   margin: .7ex;
+   border: 0;
+  box-shadow: 0  1px 3.5px rgba(0, 0, 0, 0.459);
+  border-radius: 5px;
+}
+
+.mycolor:focus{
+  outline: none;
+
+  box-shadow:  0 0 0 5px #1bdb9b85;
+
+}
+
+label{
+  font-weight: 500;
+  font-size: large;
+  margin-bottom: 2ex;
+  color:#184052 ;
 }

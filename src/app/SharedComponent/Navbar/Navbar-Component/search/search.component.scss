@@ -1,6 +1,7 @@
 input {
   border-top-left-radius: 5rem;
   border-bottom-left-radius: 5rem;
+  border: 0;
 }
 .btn {
   padding-left: 1.5rem;
@@ -8,6 +9,7 @@ input {
   border-top-right-radius: 5rem;
   border-bottom-right-radius: 5rem;
   background-color: #ddd;
+  border: 0;
 }
 .fa-search {
   color: #22b687;

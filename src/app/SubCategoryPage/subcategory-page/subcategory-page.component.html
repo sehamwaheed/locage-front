@@ -1,14 +1,26 @@
-<app-navbar></app-navbar>
-<div class="container-fluid mt-4 mb-5 ">
-  <div class=" row no-gutters ">
-    <div class="col-6 col-md-4 p-2">
-      <app-filteration-sidebar></app-filteration-sidebar>
+<div class="wrapper h-100 w-100 " *ngIf="isLoding" >
+  <div class="d-flex justify-content-center align-items-center"  >
+    <div class="spinner-border" role="status" >
+      <span class="sr-only">Loading...</span>
     </div>
-    <div class="col-12 col-sm-6 col-md-8 p-2">
-      <app-layout-product></app-layout-product>
-    </div>
-
-    </div>
-
+  </div>
 </div>
-<app-footer></app-footer>
+
+<div class="d-flex justify-content-center align-items-center m-5 p-3" *ngIf="!isLoding && isempty" >
+  <p style="font-size: 3rem; margin-top: -23rem;color: #22b687;"> No Product in There Category</p>
+     <img src="../../../assets/images/emptyt_co35.svg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+</div>
+
+<div class="wrapper m-4"*ngIf="!isLoding && !isempty" >
+
+  <div class="d-flex   no-gutters">
+    <div class="p-2">
+      <app-filteration-sidebar (myfilteration)=listenFilterColor($event) [subCategoryId]= 'subcategoryId'></app-filteration-sidebar>
+    </div>
+    <div class="p-2 container-fluid">
+      <app-layout-product [products]='products' ></app-layout-product>
+    </div>
+  </div>
+</div>
+
+

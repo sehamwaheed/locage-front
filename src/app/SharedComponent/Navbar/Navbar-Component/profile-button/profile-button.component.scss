@@ -1,17 +1,23 @@
 #profileDiv {
     display: grid;
-    grid-template-columns: 40px 85px;
+    grid-template-columns: 62px 47px 11px 63px;
     align-items: center;
+    margin-left: 2ex;
   }
   #loginIcon {
     color: white;
   }
-  
+  .fas{
+    font-size: 3.4em;
+    background-color: #38BD92;
+    border-radius: 1ex;
+  }
+
   #profileButton {
     color: white;
     font-size: medium;
   }
-  
+
   .btnHover:hover {
     cursor: pointer;
   }

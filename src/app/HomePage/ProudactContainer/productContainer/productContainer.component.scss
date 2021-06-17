@@ -1,25 +1,31 @@
 .card-title {
-    color: #38BD92;
-    font-weight: 500;
+  color: #38BD92;
+  font-weight: 600;
+  font-size: 4ex;
+  padding: 1ex;
 }
 
 .seemore {
-    width: 8em;
-    height: 2.5em;
-    border-radius: 3rem;
-    background-color: #38BD92;
-    color: #fff;
-    font-size: medium;
-    border: none;
-    margin-top: -2ex;
+    color: #38BD92;
+    // border: 2px solid #38BD92;
+    background-color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+
 }
 
 .seemore:hover {
-    background-color: #39e2ac;
+    // background-color: #39e2ac;
+    // color: white;
+    background-color:#eaecf5b2 ;
+    color: #22b687;
 }
 
 .seemore:focus {
     outline: none;
+
 }
 
 .card {

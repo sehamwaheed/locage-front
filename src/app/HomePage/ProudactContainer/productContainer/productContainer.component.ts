@@ -8,14 +8,20 @@ import { ProductModel } from 'src/app/Models/ProductModel';
   styleUrls: ['./productContainer.component.scss']
 })
 export class ProductContainerComponent implements OnInit {
+  products : ProductModel[] ;
 
   constructor(private product:ProductService) { }
 
   ngOnInit() {
 
-    this.products = this.product.getProducts();
+ this.product.getTopDeals();
+   this.product.getProductsWithoutLoad().subscribe((p)=>{
+     console.log(p);
+     this.products=p;
+     console.log(this.products);
+
+   })
   }
-  products : ProductModel[] ;
 
 
   customOptions: OwlOptions = {

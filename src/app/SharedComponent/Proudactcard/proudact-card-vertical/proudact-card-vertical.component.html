@@ -1,28 +1,14 @@
-<!-- <div class="d-flex wrapper">
-    <div class="row p-3">
-        <div class="col-3">
-            <div class="d-flex justify-content-center align-content-center">
-                <img src={{img}} class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
-            </div>
-        </div>
-        <div class="col-9 p-3">
-            <h5 class="align-self-start font-weight-semibold"> <a href="#" data-abc="true">{{titel}}</a> </h5>
-            <p class="proudact describtion">{{info}}</p>
-            <div class="product-rating ">
-                <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>
-            </div>
-            <div class="price d-flex justify-content-start">
-                <h5>$ {{price}} </h5>
-            </div>
-        </div>
-    </div>
+
+<!-- <div class="wrapper" *ngIf="empty">
+  <img src="../../../../assets/images/emptyt_co35.svg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
 </div> -->
 
 
 <div class="wrapper">
     <div class="row no-gutters">
         <div class="img-container d-flex justify-content-center align-content-center col-5 col-md-3">
-            <img src="{{img}}" alt="product-img" class="product-img">
+            <img src="{{img}}" alt="product-img" class="product-img"
+            onerror="this.src='../../../../assets/images/images.png'">
         </div>
         <div class="p-1 pl-4 col-7 col-md-9">
             <div class="details">
