@@ -6,7 +6,9 @@
 
   <div id="profileButton">
     <div class="dropdown open">
-      <span class="btnHover dropdown-toggle" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">mahmoud</span>
+      <span *ngIf="currentUser != null" class="btnHover dropdown-toggle" id="triggerId" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">{{currentUser?.firstName | truncate:[7,"..."]}}</span>
+
       <div class="dropdown-menu dropdown-menu-center" aria-labelledby="triggerId">
         <button class="dropdown-btns dropdown-item" href="#">Action</button>
         <button class="dropdown-btns dropdown-item" href="#">Action</button>

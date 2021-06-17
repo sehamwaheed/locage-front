@@ -8,6 +8,7 @@ import { RegisterComponent } from './AuthPages/register/register.component';
 import { ResetPasswordComponent } from './AuthPages/reset-password/reset-password.component';
 import { CreateStoreComponent } from './Vendor/create-store/create-store.component';
 import { StartSellingComponent } from './Vendor/start-selling/start-selling.component';
+import { AuthGuardService } from './Services/auth-guard.service';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -16,7 +17,11 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'recover/:token', component: RecoverComponent },
   { path: 'start-selling', component: StartSellingComponent },
-  { path: 'create-store', component: CreateStoreComponent },
+  {
+    path: 'create-store',
+    component: CreateStoreComponent,
+    canActivate: [AuthGuardService],
+  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

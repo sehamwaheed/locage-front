@@ -49,11 +49,12 @@ import { StartSellingComponent } from './Vendor/start-selling/start-selling.comp
 import { VendorService } from './Services/vendor.service';
 import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
 import { CategoryService } from './Services/category.service';
-import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
-import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
+import { TruncatePipe } from './helpers/pipe/truncate.pipe';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ImagePreviewComponent } from './product-view/image-preview/image-preview.component';
-
+import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
+import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
+import { AuthGuardService } from './Services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     CreateStoreComponent,
     StartSellingComponent,
     NotFoundComponent,
+    TruncatePipe,
     ResetPasswordComponent,
     RegisterComponent,
     FilterationSidebarComponent,
@@ -87,7 +89,6 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     ImagePreviewComponent,
   ],
   imports: [
-
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -117,10 +118,16 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
     MatCheckboxModule,
     ReactiveFormsModule,
     MatSliderModule,
-
-
   ],
-  providers: [FormBuilder,UserService, VendorService, ProductService,CategoryService],
+  providers: [
+    FormBuilder,
+    UserService,
+    AuthGuardService,
+    VendorService,
+    ProductService,
+    CategoryService,
+  ],
   bootstrap: [AppComponent],
+  exports: [TruncatePipe],
 })
 export class AppModule {}
