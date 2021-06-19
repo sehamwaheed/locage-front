@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubCategoryModel } from '../Models/subCategoryModel';
 import { CategoryService } from '../Services/category.service';
 
@@ -11,18 +11,28 @@ import { CategoryService } from '../Services/category.service';
 export class SubCategoryInCtegoryComponent implements OnInit {
   id: any;
    sub: SubCategoryModel[]=[];
-  constructor(private categoryServices:CategoryService,private activatedRoute: ActivatedRoute) { }
+  constructor(private categoryServices:CategoryService,private activatedRoute: ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
 
-    this.id= this.activatedRoute.snapshot.params.id;
+    this.id= this.activatedRoute.params
+    .subscribe((url)=>{
+      this.categoryServices.getSubCategoriesByCategoryId(url.id);
+      this.categoryServices.getSubcategorywithoutLoad().subscribe((c:any)=>{
+          this.sub=c;
+          console.log("ssssssssss",c);
+
+      })
+
+    });
     console.log(this.id);
 
-    this.categoryServices.getSubCategoriesByCategoryId(this.id).subscribe((c:any)=>{
-        console.log("subCtegory",c);
 
-    })
+  }
+  navigatToSubcategory(subId){
+    console.log(subId);
 
+    this.router.navigate(['/home/subcategory',subId])
   }
 
 

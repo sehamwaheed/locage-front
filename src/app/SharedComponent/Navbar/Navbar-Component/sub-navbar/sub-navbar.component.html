@@ -3,7 +3,7 @@
     <li class="nav-item dropdown d-flex" *ngFor="let item of categories">
       <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
         aria-expanded="false" [routerLink]="['sub', item._id]"
-        >
+        (click)="navigatToSub(item._id)"   >
         <!-- <i class="{{item.icon}}"></i> -->
          {{item.name}}
       </a>

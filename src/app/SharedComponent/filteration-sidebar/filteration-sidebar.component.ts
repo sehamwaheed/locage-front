@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductModel } from 'src/app/Models/ProductModel';
 import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
@@ -14,12 +14,19 @@ export class FilterationSidebarComponent implements OnInit {
   colors: string[] = [];
   sizes: string[] = [];
   rating:number=0;
+  minprice:number=0;
+  maxpricr:number=0;
   initAllProducts:ProductModel[]=[]
   @Output('myfilteration') filter = new EventEmitter<ProductModel[]>();
   @Input('products') products : ProductModel[] = [];
   brands: string[] = [];
   formbrand: FormGroup;
   formSize: FormGroup;
+  minPriceControl=new FormControl('',[Validators.required,Validators.min(1)]);
+  maxPriceControl=new FormControl('',[Validators.required,Validators.min(1)]);
+
+
+  flag:boolean = false;
 
   constructor(
     fb: FormBuilder,
@@ -38,16 +45,19 @@ export class FilterationSidebarComponent implements OnInit {
 
   ngOnInit(): void {
       this.initAllProducts=[...this.products]
+      console.log("ylaa",this.initAllProducts);
+      if (typeof this.products[0].subcategoryId == "object") {
+        this.flag = true;
+      }
+
     this.collectAllBrands();
     this.creatCheckBoxsHandrlar(this.brandsArray, this.brands);
 
     this.collectAllSizes();
     this.creatCheckBoxsHandrlar(this.sizesArray, this.sizes);
-       console.log("brands",this.brandsArray);
-       console.log("sizes",this.sizesArray);
-
-
     this.CollectAllCollors();
+    this.getMinPrice();
+    this.getMaxPrice();
     console.log('from Filter');
 
     this.productServices.getProductsWithoutLoad().subscribe((p)=>{
@@ -62,11 +72,15 @@ export class FilterationSidebarComponent implements OnInit {
 
       this.collectAllSizes();
       this.creatCheckBoxsHandrlar(this.sizesArray, this.sizes);
-         console.log("brands",this.brandsArray);
-         console.log("sizes",this.sizesArray);
-
-
       this.CollectAllCollors();
+      this.getMinPrice();
+      this.getMaxPrice();
+      if (typeof this.products[0].subcategoryId == "object") {
+        this.flag = true;
+      }else{
+        this.flag = false
+      }
+
 
     });
 
@@ -261,6 +275,48 @@ export class FilterationSidebarComponent implements OnInit {
       console.log("faild",[...this.initAllProducts]);
     }
 
+  }
+
+  getMinPrice(){
+
+    this.minprice=this.products[0].price;
+    this.products.forEach((p)=>{
+      if(this.minprice > p.price){
+        this.minprice=p.price;
+      }
+    })
+    this.minPriceControl.setValue(this.minprice);
+  }
+
+
+  getMaxPrice(){
+
+    this.products.forEach((p)=>{
+      if(this.maxpricr < p.price){
+        this.maxpricr=p.price;
+      }
+    })
+    this.maxPriceControl.setValue(this.maxpricr);
+  }
+
+  filterByPrice(){
+    if(this.maxPriceControl.invalid && this.minPriceControl.invalid)
+    {
+      return;
+    }
+    if(this.maxPriceControl.value < this.minPriceControl.value){
+      this.maxPriceControl.setErrors({incorrect:true});
+      this.minPriceControl.setErrors({incorrect:true});
+    }
+    let filterResult= this.initAllProducts.filter((pro)=>{
+      return  pro.price >=  this.minPriceControl.value&& pro.price <= this.maxPriceControl.value ;
+
+    })
+    if(filterResult.length != 0){
+      this.filter.emit([...filterResult])
+    }else{
+      this.filter.emit([...this.initAllProducts])
+    }
 
   }
 }
