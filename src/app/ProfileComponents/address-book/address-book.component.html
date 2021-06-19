@@ -1,0 +1,17 @@
+<div *ngIf="defaultShipment" class="card">
+  <div class="card-header card-header-account">
+    ADDRESS BOOK
+    <!-- <button
+      class="btn btn-changePass btn-edit"
+      (click)="onChangeAddressClick()"
+    >
+      <i class="fas fa-pencil-alt"></i>
+    </button> -->
+  </div>
+  <div class="card-body">
+    <p class="user-Name">Your default shipping address:</p>
+    <p>{{ defaultShipment.fullName }}</p>
+    <p>{{ defaultShipment.address }}</p>
+    <p>{{ defaultShipment.phoneNumber }}</p>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div *ngIf="shipment" class="card card-not-default">
+  <div class="card-body">
+    <p class="userName">{{ shipment.fullName }}</p>
+    <p>{{ shipment.address }}</p>
+    <p>{{ shipment.phoneNumber }}</p>
+  </div>
+  <div class="card-footer">
+    <button
+      [disabled]="shipment.primary"
+      class="btn btn-set-Default"
+      (click)="setAsPrimary()"
+    >
+      SET AS DEFAULT
+    </button>
+    <button
+      class="btn btn-set-Default btn-edit"
+      data-toggle="modal"
+      data-target="#modelId"
+    >
+      <i class="fas fa-trash-alt"></i>
+    </button>
+    <button *ngIf="!shipment.primary" class="btn btn-set-Default btn-edit">
+      <i class="fas fa-pencil-alt"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modelId"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modelTitleId"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Are you sure?</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="deleteShipment()"
+          data-dismiss="modal"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

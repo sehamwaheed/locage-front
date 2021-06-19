@@ -1,0 +1,42 @@
+.card-header-account {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  color: #184052;
+}
+
+.btn-edit {
+  margin-left: 123px;
+  border-radius: 50%;
+}
+
+p {
+  margin-bottom: 0.4rem;
+  font-family: Roboto;
+  font-size: 15px;
+  color: #184052;
+}
+
+.user-Name {
+  font-style: normal;
+  font-weight: bold;
+
+}
+
+.btn-changePass {
+  color: #22b687;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-pass {
+  margin-left: -11px;
+  margin-top: 2rem;
+}
+
+.btn-changePass:hover {
+  cursor: pointer;
+  background: #dfeeea;
+}
