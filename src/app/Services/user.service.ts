@@ -1,4 +1,3 @@
-import { async } from '@angular/core/testing';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -17,7 +16,7 @@ export class UserService {
 
   init() {
     let token = this.getToken();
-    if (token) this.currentUserDetails(this.tokenUser.id);
+    if (token) this.currentUserDetails();
   }
   constructor(private http: HttpClient, private router: Router) {
     this.isLogin = new BehaviorSubject<boolean>(false);
@@ -51,15 +50,15 @@ export class UserService {
       if (isExpired) this.logout();
       else {
         this.tokenUser = jwt.decodeToken(token);
-        this.currentUserDetails(this.tokenUser.id);
+        this.currentUserDetails();
         this.isLogin.next(true);
       }
     }
 
     return token;
   }
-  currentUserDetails(id: any) {
-    this.getUser(id).subscribe(
+  currentUserDetails() {
+    this.getUser(this.tokenUser.id).subscribe(
       (result: any) => {
         this.currentUser.next(result.user);
       },
@@ -84,6 +83,12 @@ export class UserService {
   }
   recoverPassword(user: any, resetToken: string) {
     return this.http.patch(`${this.uri}recover/${resetToken}`, user);
+  }
+  updatePassword(user: any) {
+    return this.http.patch(`${this.uri}update-password/${this.tokenUser.id}`, user);
+  }
+  updateAccount(user: any) {
+    return this.http.patch(`${this.uri}${this.tokenUser.id}`, user);
   }
   checkEmail(email: any) {
     return this.http.post(`${this.uri}isEmailRegister`, email);

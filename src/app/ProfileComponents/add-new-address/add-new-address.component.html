@@ -1,0 +1,153 @@
+<div class="card">
+  <div class="card-header card-header-text">Add a New Address</div>
+  <div class="card-body">
+    <form [formGroup]="addAddressForm">
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="First name"
+              aria-label="First name"
+              formControlName="firstName"
+            />
+            <span
+              *ngIf="
+                !addAddressForm.get('firstName').valid &&
+                addAddressForm.get('firstName').touched
+              "
+              class="help-block"
+            >
+              required field
+            </span>
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Last name"
+              aria-label="Last name"
+              formControlName="lastName"
+            />
+            <span
+              *ngIf="
+                !addAddressForm.get('lastName').valid &&
+                addAddressForm.get('lastName').touched
+              "
+              class="help-block"
+            >
+              required field
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Phone Number"
+              aria-label="Phone Number"
+              formControlName="phoneNumber"
+            />
+            <span
+              *ngIf="
+                !addAddressForm.get('phoneNumber').valid &&
+                addAddressForm.get('phoneNumber').touched
+              "
+              class="help-block"
+            >
+              required field
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Address"
+          aria-label="Address"
+          formControlName="address"
+        />
+        <span
+          *ngIf="
+            !addAddressForm.get('address').valid &&
+            addAddressForm.get('address').touched
+          "
+          class="help-block"
+        >
+          required field
+        </span>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="City"
+              aria-label="City"
+              formControlName="city"
+            />
+            <span
+              *ngIf="
+                !addAddressForm.get('city').valid &&
+                addAddressForm.get('city').touched
+              "
+              class="help-block"
+            >
+              required field
+            </span>
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Country"
+              aria-label="Country"
+              formControlName="country"
+            />
+            <span
+              *ngIf="
+                !addAddressForm.get('country').valid &&
+                addAddressForm.get('country').touched
+              "
+              class="help-block"
+            >
+              required field
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="checkDefault"
+            formControlName="setDefault"
+          />
+          <label class="form-check-label" for="checkDefault">
+            Set As Default Address
+          </label>
+        </div>
+      </div>
+      <div>
+        <button
+          [disabled]="addAddressForm.invalid || buttonSubmit"
+          type="submit"
+          class="btn btn-submit"
+          (click)="onSubmit(addAddressForm.value)"
+        >
+          Save
+        </button>
+      </div>
+      <div>
+        <small *ngIf="invalidAddress" class="text-danger">{{ errorMsg }}</small>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+.card-not-default {
+  height: 200px;
+}
+
+.userName {
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 0.4rem;
+  font-family: Roboto;
+  font-size: 15px;
+  color: #184052;
+}
+
+.def-add {
+  margin: 1rem 0;
+  color: #22b687;
+}
+
+.card-footer-text {
+  color: #C7D2E4;
+}
+
+.btn-set {
+  margin-left: -11px;
+}
+
+.btn-edit {
+  float: right;
+  border-radius: 50%;
+
+}
+
+.btn-set-Default {
+  color: #22b687;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-set-Default:hover {
+  background: #dfeeea;
+}
+
+.card-footer {
+  padding: .25rem 1.25rem;
+  background-color: white;
+}

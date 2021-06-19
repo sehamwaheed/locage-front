@@ -55,6 +55,23 @@ import { ImagePreviewComponent } from './product-view/image-preview/image-previe
 import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
 import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
 import { AuthGuardService } from './Services/auth-guard.service';
+import { AboutUsComponent } from './AboutUsComponents/about-us/about-us.component';
+import { LocageTodayComponent } from './AboutUsComponents/locage-today/locage-today.component';
+import { OurVisionComponent } from './AboutUsComponents/our-vision/our-vision.component';
+import { ContactsFormComponent } from './contactUsComponants/contacts-form/contacts-form.component';
+import { ContactsComponent } from './contactUsComponants/contacts/contacts.component';
+import { AccountDetailsComponent } from './ProfileComponents/account-details/account-details.component';
+import { AccountOverviewComponent } from './ProfileComponents/account-overview/account-overview.component';
+import { AddNewAddressComponent } from './ProfileComponents/add-new-address/add-new-address.component';
+import { AddressBookDetailsComponent } from './ProfileComponents/address-book-details/address-book-details.component';
+import { AddressBookComponent } from './ProfileComponents/address-book/address-book.component';
+import { ChangePasswordComponent } from './ProfileComponents/change-password/change-password.component';
+import { DetailsComponent } from './ProfileComponents/details/details.component';
+import { NotDefaultAddressComponent } from './ProfileComponents/not-default-address/not-default-address.component';
+import { ProfileComponent } from './ProfileComponents/profile/profile.component';
+import { WishListComponent } from './ProfileComponents/wish-list/wish-list.component';
+import { UnderDevelopmentComponent } from './SharedComponent/under-development/under-development.component';
+import { ShipmentService } from './Services/shipment.service';
 
 @NgModule({
   declarations: [
@@ -87,6 +104,22 @@ import { AuthGuardService } from './Services/auth-guard.service';
     SubcategoryPageComponent,
     ProductViewComponent,
     ImagePreviewComponent,
+    AboutUsComponent,
+    LocageTodayComponent,
+    OurVisionComponent,
+    ContactsComponent,
+    ContactsFormComponent,
+    ProfileComponent,
+    AccountDetailsComponent,
+    AddressBookComponent,
+    AccountOverviewComponent,
+    ChangePasswordComponent,
+    AddressBookDetailsComponent,
+    DetailsComponent,
+    NotDefaultAddressComponent,
+    AddNewAddressComponent,
+    WishListComponent,
+    UnderDevelopmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -126,6 +159,7 @@ import { AuthGuardService } from './Services/auth-guard.service';
     VendorService,
     ProductService,
     CategoryService,
+    ShipmentService,
   ],
   bootstrap: [AppComponent],
   exports: [TruncatePipe],
