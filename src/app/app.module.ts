@@ -13,6 +13,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
+import { NgImageSliderModule } from 'ng-image-slider';
 
 /*================================ My Components ==============================*/
 
@@ -49,12 +50,16 @@ import { StartSellingComponent } from './Vendor/start-selling/start-selling.comp
 import { VendorService } from './Services/vendor.service';
 import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
 import { CategoryService } from './Services/category.service';
-import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
-import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
+import { TruncatePipe } from './helpers/pipe/truncate.pipe';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ImagePreviewComponent } from './product-view/image-preview/image-preview.component';
 import { LocageComponent } from './locage/locage.component';
 
+import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
+import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
+import { AuthGuardService } from './Services/auth-guard.service';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { SubCategoryInCtegoryComponent } from './sub-category-in-ctegory/sub-category-in-ctegory.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +85,7 @@ import { LocageComponent } from './locage/locage.component';
     CreateStoreComponent,
     StartSellingComponent,
     NotFoundComponent,
+    TruncatePipe,
     ResetPasswordComponent,
     RegisterComponent,
     FilterationSidebarComponent,
@@ -87,9 +93,9 @@ import { LocageComponent } from './locage/locage.component';
     ProductViewComponent,
     ImagePreviewComponent,
     LocageComponent,
+    SubCategoryInCtegoryComponent,
   ],
   imports: [
-
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -119,10 +125,20 @@ import { LocageComponent } from './locage/locage.component';
     MatCheckboxModule,
     ReactiveFormsModule,
     MatSliderModule,
-
+    NgImageSliderModule,
+    NgxImageZoomModule
 
   ],
-  providers: [FormBuilder,UserService, VendorService, ProductService,CategoryService],
+  providers: [
+    FormBuilder,
+    UserService,
+    AuthGuardService,
+    VendorService,
+    ProductService,
+    CategoryService,
+
+  ],
   bootstrap: [AppComponent],
+  exports: [TruncatePipe],
 })
 export class AppModule {}

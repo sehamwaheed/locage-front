@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proudact-card-vertical',
@@ -12,11 +13,15 @@ export class ProudactCardVerticalComponent implements OnInit {
   @Input ('proudct-details') info:string='details of proudct';
   @Input ('rate') rate:number=3;
   @Input('price') price:number=0;
-  constructor() { }
+  @Input('id') id:any=null;
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
+  navigatToProduct(){
+    this.router.navigate(['home/view',this.id]);
+  }
 
 
 }

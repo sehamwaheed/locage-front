@@ -1,6 +1,15 @@
-<div class="home">
+
+
+<div class="wrapper h-100 w-100 " *ngIf="isLoding" >
+  <div class="d-flex justify-content-center align-items-center"  >
+    <div class="spinner-border" role="status" >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
+<div class="home" *ngIf="!isLoding" >
     <app-Adv></app-Adv>
-    <app-productContainer></app-productContainer>
-    <app-productContainer></app-productContainer>
+    <app-productContainer [title]='"Top Deals"' [products]="topDeals"></app-productContainer>
+    <app-productContainer [title]="'Today Deals'" [products]="todayDeals"></app-productContainer>
     <app-top-categories></app-top-categories>
 </div>

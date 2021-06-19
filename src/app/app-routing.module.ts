@@ -10,6 +10,9 @@ import { CreateStoreComponent } from './Vendor/create-store/create-store.compone
 import { StartSellingComponent } from './Vendor/start-selling/start-selling.component';
 import { LocageComponent } from './locage/locage.component';
 import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
+import { AuthGuardService } from './Services/auth-guard.service';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { SubCategoryInCtegoryComponent } from './sub-category-in-ctegory/sub-category-in-ctegory.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
@@ -17,7 +20,11 @@ const routes: Routes = [
   {path:'home',component:LocageComponent ,children:[
     //nested router-outlet
     { path: '', component: HomeComponent },
-    {path:'subcategory/:id',component : SubcategoryPageComponent}
+    //search
+    {path:'subcategory',component : SubcategoryPageComponent},
+    {path:'subcategory/:id',component : SubcategoryPageComponent},
+    {path:'view/:id',component:ProductViewComponent},
+    {path:'sub/:id',component:SubCategoryInCtegoryComponent}
 
   ]},
 
@@ -27,6 +34,12 @@ const routes: Routes = [
   { path: 'recover/:token', component: RecoverComponent },
   { path: 'start-selling', component: StartSellingComponent },
   { path: 'create-store', component: CreateStoreComponent },
+
+  {
+    path: 'create-store',
+    component: CreateStoreComponent,
+    canActivate: [AuthGuardService],
+  },
 
   { path: '**', component: NotFoundComponent },
 ];

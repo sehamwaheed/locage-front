@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 
@@ -11,34 +11,37 @@ export class ImagePreviewComponent implements OnInit {
 
   scrImg:any;
 
-  constructor() {
+  constructor(
+    private cd:ChangeDetectorRef
+  ) {
 
 
    }
- imgProduct=[
-    'assets/images/xbox_PNG101377.png',
-    'assets/images/png-clipart-kross-sa-bicycle-shop-mountain-bike-kellys-bicycle-removebg-preview.png',
-   'assets/images/beauty.png',
-    'assets/images/12-122374_imac-pro-black-png-transparent-png-removebg-preview.png',
-   'assets/images/xbox_PNG101377.png',
-   'assets/images/png-clipart-kross-sa-bicycle-shop-mountain-bike-kellys-bicycle-removebg-preview.png',
-  'assets/images/beauty.png',
-   'assets/images/12-122374_imac-pro-black-png-transparent-png-removebg-preview.png',
-
-  ]
+ @Input('imgs') imgProduct:string[]=[];
+ formatedImages
 
 
 
 
   ngOnInit(): void {
     this.scrImg =this.imgProduct[0];
+    this.formatedImages = this.imgProduct.map((e)=>{
+      return {
 
+          image: e,
+          thumbImage:e,
+          alt: '-',
+
+      }
+
+    })
+    console.log(this.formatedImages);
   }
 
 
-  showImg(url){
-    this.scrImg=url;
- ;
+  showImg(index){
+    this.scrImg=this.formatedImages[index].image;
+    this.cd.detectChanges()
 
   }
 
@@ -57,7 +60,7 @@ export class ImagePreviewComponent implements OnInit {
     navText: ['', ''],
     responsive: {
       0: {
-        items: 4
+        items: 5
       },
       400: {
         items: 6

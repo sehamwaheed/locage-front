@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { CategoryModel } from 'src/app/Models/categoryModel';
 import { CategoryService } from 'src/app/Services/category.service';
 
@@ -9,6 +10,7 @@ import { CategoryService } from 'src/app/Services/category.service';
 })
 export class SubNavbarComponent implements OnInit {
   categories!: CategoryModel[];
+
   constructor(private categoryService: CategoryService) {
        this.categoryService.getAll().subscribe(
       (result: any) => {
@@ -22,5 +24,10 @@ export class SubNavbarComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  changeSub(sub){
+    console.log(sub);
+      this.categoryService.componentNameLoaded$.next(sub.name)
   }
 }

@@ -1,5 +1,5 @@
 import { ProductService } from './../../../Services/product.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ProductModel } from 'src/app/Models/ProductModel';
 @Component({
@@ -8,19 +8,20 @@ import { ProductModel } from 'src/app/Models/ProductModel';
   styleUrls: ['./productContainer.component.scss']
 })
 export class ProductContainerComponent implements OnInit {
-  products : ProductModel[] ;
+ @Input() products : ProductModel[] ;
+ @Input() title :string ;
 
   constructor(private product:ProductService) { }
 
   ngOnInit() {
 
- this.product.getTopDeals();
-   this.product.getProductsWithoutLoad().subscribe((p)=>{
-     console.log(p);
-     this.products=p;
-     console.log(this.products);
+//  this.product.getTopDeals();
+//    this.product.getProductsWithoutLoad().subscribe((p)=>{
+//      console.log(p);
+//      this.products=p;
+//      console.log(this.products);
 
-   })
+//    })
   }
 
 

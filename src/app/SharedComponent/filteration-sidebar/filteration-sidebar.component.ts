@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ProductModel } from 'src/app/Models/ProductModel';
+import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 import { SubCategoryService } from 'src/app/Services/sub-category.service';
 
@@ -12,14 +13,20 @@ import { SubCategoryService } from 'src/app/Services/sub-category.service';
 export class FilterationSidebarComponent implements OnInit {
   colors: string[] = [];
   sizes: string[] = [];
-  products: ProductModel[] = [];
+  rating:number=0;
+  initAllProducts:ProductModel[]=[]
   @Output('myfilteration') filter = new EventEmitter<ProductModel[]>();
-  @Input('subCategoryId') subCategoryId:any=null;
+  @Input('products') products : ProductModel[] = [];
   brands: string[] = [];
   formbrand: FormGroup;
   formSize: FormGroup;
 
-  constructor(fb: FormBuilder, private productServices: ProductService,private subcategory:SubCategoryService) {
+  constructor(
+    fb: FormBuilder,
+    private productServices: ProductService,
+    private subcategory:SubCategoryService,
+    private category:CategoryService
+    ) {
     this.formbrand = fb.group({
       brand: fb.array([]),
     });
@@ -30,34 +37,64 @@ export class FilterationSidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+      this.initAllProducts=[...this.products]
+    this.collectAllBrands();
+    this.creatCheckBoxsHandrlar(this.brandsArray, this.brands);
 
-   if(this.subCategoryId !== null){
-    this.subcategory.getProductByCategory(this.subCategoryId).subscribe((data:any)=>{
+    this.collectAllSizes();
+    this.creatCheckBoxsHandrlar(this.sizesArray, this.sizes);
+       console.log("brands",this.brandsArray);
+       console.log("sizes",this.sizesArray);
 
-      console.log("yarab",data);
 
-      this.products=data?.result?.docs;
+    this.CollectAllCollors();
+    console.log('from Filter');
+
+    this.productServices.getProductsWithoutLoad().subscribe((p)=>{
+
+
+      console.log("prodctar",p);
+
+      this.products=p;
+      this.restFilteration();
       this.collectAllBrands();
       this.creatCheckBoxsHandrlar(this.brandsArray, this.brands);
 
       this.collectAllSizes();
       this.creatCheckBoxsHandrlar(this.sizesArray, this.sizes);
+         console.log("brands",this.brandsArray);
+         console.log("sizes",this.sizesArray);
+
 
       this.CollectAllCollors();
 
-    })
+    });
 
-   }else{
+  //  if(this.subCategoryId !== null){
+  //   this.subcategory.getProductByCategory(this.subCategoryId).subscribe((data:any)=>{
 
-   }
+  //     console.log("yarab",data);
 
-  //  this.productServices.getProductsWithoutLoad().subscribe((p)=>{
-  //      this.products=p;
-  //  })
+  //     this.products=data?.result?.docs;
+  //     this.collectAllBrands();
+  //     this.creatCheckBoxsHandrlar(this.brandsArray, this.brands);
+
+  //     this.collectAllSizes();
+  //     this.creatCheckBoxsHandrlar(this.sizesArray, this.sizes);
+
+  //     this.CollectAllCollors();
+
+  //   })
+
+  //  }else{
+
+  //  }
+
+
 
   }
 
-  rating: number;
+
   ratings: number[] = [5, 4, 3, 2, 1];
 
   get brandsArray() {
@@ -78,14 +115,18 @@ export class FilterationSidebarComponent implements OnInit {
     console.log(this.brands);
   }
 
+
+
   private collectAllSizes() {
     this.products.forEach((s) => {
 
 
-      if (s.size !== null && s.size !== '' && s.size !== undefined) {
+      if (s.size !== null && s.size.trim() != '' && s.size !== undefined) {
         let sizeArr = s.size.split(',');
         sizeArr.forEach((siz) => {
-          this.sizes.push(siz.toLowerCase().trim());
+          if (siz.trim() != "") {
+            this.sizes.push(siz.toLowerCase().trim());
+          }
         });
       }
     });
@@ -118,21 +159,34 @@ export class FilterationSidebarComponent implements OnInit {
     });
   }
 
+  restFilteration(){
+    this.brandsArray.clear();
+    this.sizesArray.clear();
+    this.colors=[];
+    this.brands=[];
+    this.sizes=[];
+  }
+
   filterByColors(colorSelected) {
     let filterResult: ProductModel[] = [];
-    this.products.forEach((product) => {
+    this.initAllProducts.forEach((product) => {
       console.log(product);
 
       product.color.forEach((clor) => {
         if (this.toCaptial(clor.trim()) == colorSelected) {
-          console.log('if', clor == colorSelected);
-          console.log('color choose', colorSelected);
-          console.log('color', clor);
+          // console.log('if', clor == colorSelected);
+          // console.log('color choose', colorSelected);
+          // console.log('color', clor);
           filterResult.push(product);
         }
       });
     });
-    this.filter.emit([...filterResult]);
+    if(filterResult.length !== 0){
+      this.filter.emit([...filterResult]);
+    }else{
+      this.filter.emit([...this.initAllProducts])
+    }
+
   }
 
   filterByBrands() {
@@ -147,7 +201,7 @@ export class FilterationSidebarComponent implements OnInit {
     let filterResult: ProductModel[] = [];
     if (brandsChecked.length !== 0) {
       brandsChecked.forEach((brand) => {
-        let res = this.products.filter((prduct) => {
+        let res = this.initAllProducts.filter((prduct) => {
           return prduct.brand.toLowerCase().trim() == brand;
         });
 
@@ -156,9 +210,9 @@ export class FilterationSidebarComponent implements OnInit {
 
       filterResult = [...new Set(filterResult)];
 
-      this.filter.emit(filterResult);
+      this.filter.emit([...filterResult]);
     } else {
-      this.filter.emit(this.products);
+      this.filter.emit([...this.initAllProducts]);
     }
   }
 
@@ -175,7 +229,7 @@ export class FilterationSidebarComponent implements OnInit {
 
     if (sizesChecked.length !== 0) {
       sizesChecked.forEach((selectedSize) => {
-        this.products.forEach((product) => {
+        this.initAllProducts.forEach((product) => {
           let sizesOfProduct = product.size.split(',');
           sizesOfProduct.forEach((s) => {
             if (s.toLowerCase().trim() == selectedSize) {
@@ -186,9 +240,27 @@ export class FilterationSidebarComponent implements OnInit {
       });
 
         filterSize= [... new Set(filterSize)];
-      this.filter.emit(filterSize);
+      this.filter.emit([...filterSize]);
     } else {
-      this.filter.emit(this.products);
+      this.filter.emit([...this.initAllProducts]);
     }
+  }
+
+  filterByRating(rate:number){
+    console.log(rate);
+    let filterResult=this.initAllProducts.filter((r)=>{
+      return r.rating >= rate;
+
+    })
+    if(filterResult.length != 0){
+      this.filter.emit([...filterResult]);
+      console.log("sucess",[...filterResult]);
+
+    }else{
+      this.filter.emit([...this.initAllProducts])
+      console.log("faild",[...this.initAllProducts]);
+    }
+
+
   }
 }

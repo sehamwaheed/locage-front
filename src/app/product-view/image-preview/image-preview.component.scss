@@ -1,3 +1,5 @@
+
+/* -------------------------------------------------------------------------- */
 .image{
   width: 6em;
   height: 6em;
@@ -8,6 +10,11 @@
   background-color: #f7f7f7;
    padding: 1em;
    border-radius: 10px;
+   margin: 0 1ex;
+   cursor: pointer;
+  //  margin-right: 4ex;
+   display: flex;
+   align-items: center;
 
 }
 
@@ -16,10 +23,10 @@
 }
 
 .img-view{
-  height: 500px;
+  height: 400px;
   align-self: center;
   max-width: 100%;
-  padding: 5rem 1rem;
+  // padding: 4rem 1rem;
   // background-color: lime;
 }
 
@@ -32,9 +39,7 @@
   background-color: #E1E5EA;
 
 }
-.img-bar::-webkit-scrollbar{
-  width: 0;
-}
+
 .img-item{
   height: 90px;
   width: 90px;

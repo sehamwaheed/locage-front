@@ -1,4 +1,7 @@
-<div class="card ">
+
+
+
+<div class="card " (click)='navigatToProduct()'>
     <div class="card-header" [ngClass]="{'Nosale': discount==null || discount==0 }">
         <p class="discount"  *ngIf="discount!==null || discount!==0 "> {{discount}} % </p>
     </div>

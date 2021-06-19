@@ -15,7 +15,7 @@
 
   <div class="d-flex   no-gutters">
     <div class="p-2">
-      <app-filteration-sidebar (myfilteration)=listenFilterColor($event) [subCategoryId]= 'subcategoryId'></app-filteration-sidebar>
+      <app-filteration-sidebar (myfilteration)=listenFilterColor($event) [products]= 'products'></app-filteration-sidebar>
     </div>
     <div class="p-2 container-fluid">
       <app-layout-product [products]='products' ></app-layout-product>

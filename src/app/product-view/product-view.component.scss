@@ -47,6 +47,7 @@
   width: 3em;
   height: 3em;
   background-color: #38BD92;
+  border-radius: 1ex;
   margin: 1ex;
 
 }
@@ -90,6 +91,20 @@ nav > div a.nav-item.nav-link.active
     color: #184052;;
     background:#f7f7f7;
     border-radius:0;
+}
+
+
+.spinner-border{
+  display: inline-block;
+  width: 10rem;
+  height: 10rem;
+  vertical-align: text-bottom;
+  border: 1.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spinner-border .75s linear infinite;
+  margin: 88px auto;
+  color: #22b687;
 }
 
 nav > div a.nav-item.nav-link.active:after

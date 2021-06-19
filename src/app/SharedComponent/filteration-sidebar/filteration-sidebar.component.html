@@ -18,11 +18,13 @@
         class="example-radio-group"
         color="primary"
         [(ngModel)]="rating"
+        (change)='filterByRating(rating)'
       >
         <mat-radio-button
           class="example-radio-button"
           *ngFor="let item of ratings"
           value="{{ item }}"
+
         >
           <bar-rating [rate]="item" [max]="5" [readOnly]="true"></bar-rating>
         </mat-radio-button>

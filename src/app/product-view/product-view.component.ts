@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductModel } from '../Models/ProductModel';
+import { ProductService } from '../Services/product.service';
 
 @Component({
   selector: 'app-product-view',
@@ -10,10 +13,18 @@ export class ProductViewComponent implements OnInit {
  quantityOrder=20;
  @Input('count') count:number=1;
  colorText:string="red";
- back:string="#184052"
-  constructor() { }
+id:any;
+isLoding:boolean=true;
+ product:ProductModel=null;
+  constructor(private activatedRoute: ActivatedRoute, private productServices:ProductService) { }
 
   ngOnInit(): void {
+    this.id= this.activatedRoute.snapshot.params.id;
+    this.productServices.getProductById(this.id).subscribe((pro:any)=>{
+      console.log(pro);
+      this.product=pro;
+      this.isLoding=false;
+    })
   }
 
 

@@ -12,7 +12,7 @@ export class ProductService {
   constructor(private http:HttpClient) { }
 
   products:ProductModel[]=[ ]
-  private productsLoad= new Subject<ProductModel[]>();
+  productsLoad= new Subject<ProductModel[]>();
 
 private readonly api ="https://locage.herokuapp.com/api/v1/products";
 
@@ -29,20 +29,41 @@ private readonly api ="https://locage.herokuapp.com/api/v1/products";
   }
 
   getTopDeals(){
-    return this.http.get<{products:ProductModel[]}>(this.api+'/top-deals').subscribe((data:any)=>{
-      console.log("top-Deals",data);
-      this.products=data?.result?.docs;
-      this.productsLoad.next( [...this.products]);
-    })
+    return this.http.get<{products:ProductModel[]}>(this.api+'/top-deals')
+    // .subscribe((data:any)=>{
+    //   console.log("top-Deals serveces",data);
+    //   this.products=data?.result?.docs;
+    //   this.productsLoad.next( [...this.products]);
+    // })
+  }
+
+
+  updateProducts(data: ProductModel[]){
+    this.productsLoad.next([...data])
   }
 
   getTodayDeals(){
-    return this.http.get<{products:ProductModel[]}>(this.api+'/today-deals').subscribe((data:any)=>{
-      console.log("today deals",data);
-      this.products=data?.result?.docs;
-      this.productsLoad.next( [...this.products]);
-    })
+    return this.http.get<{products:ProductModel[]}>(this.api+'/today-deals')
+    // .subscribe((data:any)=>{
+    //   console.log("today deals servece",data);
+    //   this.products=data?.result?.docs;
+    //   this.productsLoad.next( [...this.products]);
+
+    // })
   }
+
+
+  getProductById(id){
+    return this.http.get<{product:ProductModel}>(this.api+'/'+id);
+
+  }
+
+
+  searchByKey(key:string){
+    return this.http.get<{products:ProductModel[]}>(this.api +'/search?key='+key)
+
+  }
+
 }
 
 

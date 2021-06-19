@@ -2,14 +2,14 @@
 
     <div class="card-body">
       <div class="d-flex justify-content-between">
-        <p class="card-title">Top Deals</p>
+        <p class="card-title">{{title}}</p>
         <button class="seemore btn .btn-ghost ">See More ... </button>
       </div>
         <owl-carousel-o class="m-0" [options]="customOptions">
 
             <ng-container *ngFor="let item of products">
                 <ng-template carouselSlide [id]="item">
-                    <app-product-card class="m-1"  [discount]='item.discount' [img]='item?.photos[0]' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
+                    <app-product-card class="m-1" [id]='item._id' [discount]='item.discount' [img]='item?.photos[0]' [proudct-name]='item. title' [proudct-details]='item.description' [rate]='item. rating' [price]='item.price'> </app-product-card>
                 </ng-template>
             </ng-container>
 

@@ -1,6 +1,7 @@
 import { ProductService } from './../../../Services/product.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { ProductModel } from 'src/app/Models/ProductModel';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout-product',
@@ -10,7 +11,7 @@ import { ProductModel } from 'src/app/Models/ProductModel';
 export class LayoutProductComponent implements OnInit {
 
   @Input('products') products:ProductModel []=[] ;
-  constructor( ) {
+  constructor(private router:Router ) {
 
    }
 

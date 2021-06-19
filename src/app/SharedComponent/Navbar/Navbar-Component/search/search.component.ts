@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -8,7 +9,7 @@ import { NgModel } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +18,8 @@ export class SearchComponent implements OnInit {
     if(data.value.trim() === '' || data.invalid){
        return;
     }
+
+    this.router.navigate(['/home/subcategory'], { queryParams: { key: data.value.trim() } });
+
   }
 }
