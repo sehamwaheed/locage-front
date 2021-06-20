@@ -1,6 +1,51 @@
+
+
+<div class="d-block  d-lg-none col-12 mt-4">
+  <div class="card-summary shadow">
+    <div class="card-body">
+      <div class="d-flex flex-column">
+        <div class="p-2 d-flex justify-content-center">
+          <p class="card-title">Summary</p>
+        </div>
+        <div class="p-2 d-flex flex-column mt-3">
+          <div class="p-2 d-flex justify-content-between">
+            <p class="txt"> Subtotal Price</p>
+            <p class="txt">20 <span>$</span></p>
+          </div>
+          <mat-divider>
+          </mat-divider>
+          <div class="p-2 d-flex justify-content-between">
+            <p class="txt">Shipping</p>
+            <p class="txt">20 <span>$</span></p>
+          </div>
+          <mat-divider>
+          </mat-divider>
+          <div class="p-2 d-flex justify-content-between">
+            <p class="txt">Total Price</p>
+            <p class="txt">20 <span>$</span></p>
+          </div>
+        </div>
+        <div class="p-2">
+          <button
+            type="button"
+            name=""
+            id=""
+            class="check-btn btn-lg btn-block"
+          >
+            Check Out
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--=============================== large screen =============================-->
+
+
+
 <div class="wrapper">
   <div class="d-flex flex-row">
-    <div class="col-12 col-md-9 mt-4">
+    <div class="col-12 col-lg-9 mt-4">
       <div class="card border-0 shadow">
         <div class="card-body">
           <app-cart></app-cart>
@@ -10,7 +55,7 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-3 mt-4">
+    <div class=" d-none  d-lg-block  col-lg-3 mt-4">
       <div class="card-summary shadow">
         <div class="card-body">
           <div class="d-flex flex-column">
@@ -51,3 +96,4 @@
     </div>
   </div>
 </div>
+
