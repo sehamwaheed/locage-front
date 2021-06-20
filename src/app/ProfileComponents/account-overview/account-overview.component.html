@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card-header card-header-text">Account Overview</div>
+  <div class="card-body">
+    <div class="div-details">
+      <app-account-details
+        [opened]="opened"
+        (notify)="getOpenedValue($event)"
+      ></app-account-details>
+      <app-address-book></app-address-book>
+    </div>
+  </div>
+</div>

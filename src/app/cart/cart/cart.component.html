@@ -1,0 +1,67 @@
+<div class="wrapper">
+  <div class="row no-gutters">
+    <div
+      class="
+        img-container
+        d-flex
+        justify-content-center
+        align-content-center
+        col-3
+      "
+    >
+      <img
+        src="{{img}}"
+        alt="product-img"
+        class="product-img"
+        onerror="this.src='../../../../assets/images/images.png'"
+      />
+    </div>
+    <div class="p-1 pl-4 col-3">
+      <div class="details">
+        <div class="product-name">{{titel}}</div>
+        <div class="product-detailes">
+           {{info}}
+        </div>
+        <div class="rating d-flex">
+          <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>
+        </div>
+        <div class="price">
+          <p>{{price}}<span>$</span></p>
+        </div>
+        <!--* icon --->
+        <div class="d-flex flex-row justify-content-start">
+          <button type="button" class="icon-btn btn">
+            <i class="fas fa-heart"></i>
+          </button>
+          <button type="button" class="icon-btn btn">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 d-flex flex-column align-items-center">
+      <div class="quantity">
+        <div class="d-flex flex-row">
+          <div>
+            <button type="button" class="quant-add btn" (click)="increase() ">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="quant d-flex justify-content-center align-items-center">
+            <p class="quant-num-txt">{{count}}</p>
+          </div>
+          <div>
+            <button type="button" class="quant-sub btn" (click)="decreac()">
+              <i class="fas fa-minus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-3 d-flex flex-column align-items-center">
+      <p class="total-price">Total Price</p>
+
+      <p class="price-num">{{total_price}}<span>$</span></p>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatDividerModule} from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -58,11 +58,31 @@ import { LocageComponent } from './locage/locage.component';
 import { FilterationSidebarComponent } from './SharedComponent/filteration-sidebar/filteration-sidebar.component';
 import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/subcategory-page.component';
 import { AuthGuardService } from './Services/auth-guard.service';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { SubCategoryInCtegoryComponent } from './sub-category-in-ctegory/sub-category-in-ctegory.component';
+import { AboutUsComponent } from './AboutUsComponents/about-us/about-us.component';
+import { OurVisionComponent } from './AboutUsComponents/our-vision/our-vision.component';
+import { ContactsFormComponent } from './contactUsComponants/contacts-form/contacts-form.component';
+import { ContactsComponent } from './contactUsComponants/contacts/contacts.component';
+import { AccountDetailsComponent } from './ProfileComponents/account-details/account-details.component';
+import { AccountOverviewComponent } from './ProfileComponents/account-overview/account-overview.component';
+import { AddNewAddressComponent } from './ProfileComponents/add-new-address/add-new-address.component';
+import { AddressBookDetailsComponent } from './ProfileComponents/address-book-details/address-book-details.component';
+import { AddressBookComponent } from './ProfileComponents/address-book/address-book.component';
+import { ChangePasswordComponent } from './ProfileComponents/change-password/change-password.component';
+import { DetailsComponent } from './ProfileComponents/details/details.component';
+import { NotDefaultAddressComponent } from './ProfileComponents/not-default-address/not-default-address.component';
+import { ProfileComponent } from './ProfileComponents/profile/profile.component';
+import { WishListComponent } from './ProfileComponents/wish-list/wish-list.component';
+import { UnderDevelopmentComponent } from './SharedComponent/under-development/under-development.component';
+import { ShipmentService } from './Services/shipment.service';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { LocageTodayComponent } from './AboutUsComponents/locage-today/locage-today.component';
+import { CartComponent } from './cart/cart/cart.component';
+import { CartPageComponent } from './cart/CartPage/CartPage.component';
 
 @NgModule({
-  declarations: [
+  declarations:[
+
     AppComponent,
     NavbarComponent,
     SearchComponent,
@@ -92,14 +112,34 @@ import { SubCategoryInCtegoryComponent } from './sub-category-in-ctegory/sub-cat
     SubcategoryPageComponent,
     ProductViewComponent,
     ImagePreviewComponent,
-    LocageComponent,
     SubCategoryInCtegoryComponent,
+    AboutUsComponent,
+    OurVisionComponent,
+    ContactsComponent,
+    ContactsFormComponent,
+    ProfileComponent,
+    AccountDetailsComponent,
+    AddressBookComponent,
+    AccountOverviewComponent,
+    ChangePasswordComponent,
+    AddressBookDetailsComponent,
+    DetailsComponent,
+    NotDefaultAddressComponent,
+    AddNewAddressComponent,
+    WishListComponent,
+    UnderDevelopmentComponent,
+    LocageComponent,
+    AboutUsComponent,
+    LocageTodayComponent,
+    CartComponent,
+    CartPageComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    MatDividerModule,
 
     JwtModule.forRoot({
       jwtOptionsProvider: {
@@ -126,7 +166,7 @@ import { SubCategoryInCtegoryComponent } from './sub-category-in-ctegory/sub-cat
     ReactiveFormsModule,
     MatSliderModule,
     NgImageSliderModule,
-    NgxImageZoomModule
+     NgxImageZoomModule
 
   ],
   providers: [
@@ -137,6 +177,7 @@ import { SubCategoryInCtegoryComponent } from './sub-category-in-ctegory/sub-cat
     ProductService,
     CategoryService,
 
+    ShipmentService,
   ],
   bootstrap: [AppComponent],
   exports: [TruncatePipe],

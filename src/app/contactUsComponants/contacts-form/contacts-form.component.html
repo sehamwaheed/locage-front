@@ -1,0 +1,27 @@
+<div class="write-us-form">
+  <p class="call">Write to us.</p>
+  <form [formGroup]="contactUsForm">
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Full name" formControlName="fullName">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Email address" formControlName="email">
+      <span *ngIf="!contactUsForm.get('email').valid && contactUsForm.get('email').touched" class="help-block">
+        Invalid email address!
+      </span>
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Subject" formControlName="subject">
+      <span *ngIf="!contactUsForm.get('subject').valid && contactUsForm.get('subject').touched" class="help-block">
+        Subject is required!
+      </span>
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" placeholder="Description" formControlName="description"></textarea>
+      <span *ngIf="!contactUsForm.get('description').valid && contactUsForm.get('description').touched" class="help-block">
+        Description is required!
+      </span>
+    </div>
+    <button type="submit" class="btn btn-submit">Submit</button>
+  </form>
+</div>

@@ -32,7 +32,7 @@ export class ProductContainerComponent implements OnInit {
     touchDrag: true,
     pullDrag: true,
     dots: false,
-    navSpeed: 700,
+    navSpeed: 800,
     navText: ['', ''],
     responsive: {
       0: {

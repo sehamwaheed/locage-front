@@ -13,6 +13,10 @@ import { SubcategoryPageComponent } from './SubCategoryPage/subcategory-page/sub
 import { AuthGuardService } from './Services/auth-guard.service';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { SubCategoryInCtegoryComponent } from './sub-category-in-ctegory/sub-category-in-ctegory.component';
+import { ChangePasswordComponent } from './ProfileComponents/change-password/change-password.component';
+import { ProfileComponent } from './ProfileComponents/profile/profile.component';
+import { DetailsComponent } from './ProfileComponents/details/details.component';
+import { CartPageComponent } from './cart/CartPage/CartPage.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
@@ -24,8 +28,8 @@ const routes: Routes = [
     {path:'subcategory',component : SubcategoryPageComponent},
     {path:'subcategory/:id',component : SubcategoryPageComponent},
     {path:'view/:id',component:ProductViewComponent},
-    {path:'sub/:id',component:SubCategoryInCtegoryComponent}
-
+    {path:'sub/:id',component:SubCategoryInCtegoryComponent},
+     {path:'cart',component:CartPageComponent}
   ]},
 
   { path: 'login', component: LoginComponent },
@@ -40,7 +44,23 @@ const routes: Routes = [
     component: CreateStoreComponent,
     canActivate: [AuthGuardService],
   },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'profile/update-account',
+    component: DetailsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'profile/update-password',
+    component: ChangePasswordComponent,
+    canActivate: [AuthGuardService],
+  },
 
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
 @NgModule({

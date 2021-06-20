@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="d-none d-sm-none d-md-block">
+    <div class="list-group">
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openAccountOverview()"
+        >My Account</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openUnderDevelopment()"
+        >Orders</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openUnderDevelopment()"
+        >Inbox</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openUnderDevelopment()"
+        >Pending Reviews</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openUnderDevelopment()"
+        >Locage Credit</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openUnderDevelopment()"
+        >Wish List</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openUnderDevelopment()"
+        >Recently Viewed</span
+      >
+    </div>
+
+    <div class="list-group">
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openAccountDetails()"
+        >Update Account</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openAddressDetails()"
+        >Address</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openChangePassword()"
+        >Change Password</span
+      >
+      <span
+        class="list-group-item list-group-item-action"
+        (click)="openUnderDevelopment()"
+        >Newsletter Preferences</span
+      >
+    </div>
+  </div>
+
+  <div class="d-block d-sm-block d-md-none">
+    <div class="list-group">
+      <span class="list-group-item list-group-item-action">Orders</span>
+      <span class="list-group-item list-group-item-action">Inbox</span>
+      <span class="list-group-item list-group-item-action"
+        >Pending Reviews</span
+      >
+      <span class="list-group-item list-group-item-action">Locage Credit</span>
+      <span class="list-group-item list-group-item-action">Wish List</span>
+      <span class="list-group-item list-group-item-action"
+        >Recently Viewed</span
+      >
+    </div>
+
+    <div class="list-group">
+      <span
+        class="list-group-item list-group-item-action"
+        [routerLink]="['./update-account']"
+        >Update Account</span
+      >
+      <span class="list-group-item list-group-item-action">Update Address</span>
+      <span
+        class="list-group-item list-group-item-action"
+        [routerLink]="['./update-password']"
+        >Change Password</span
+      >
+      <span class="list-group-item list-group-item-action"
+        >Newsletter Preferences</span
+      >
+    </div>
+  </div>
+
+  <div class="d-none d-sm-none d-md-block">
+    <app-under-development
+      *ngIf="opened == 'underDevelopment'"
+    ></app-under-development>
+
+    <app-account-overview
+      [opened]="opened"
+      (notify)="getOpenedValue($event)"
+      *ngIf="opened == 'accountOverview'"
+    >
+    </app-account-overview>
+
+    <app-details *ngIf="opened == 'accountDetails'"></app-details>
+
+    <app-change-password
+      *ngIf="opened == 'changePassword'"
+    ></app-change-password>
+
+    <app-address-book-details
+      *ngIf="opened == 'addressDetails'"
+      [opened]="opened"
+      (notify)="getOpenedValue($event)"
+    ></app-address-book-details>
+
+    <app-add-new-address
+      *ngIf="opened == 'addNewAddress'"
+      [opened]="opened"
+      (notify)="getOpenedValue($event)"
+    ></app-add-new-address>
+  </div>
+</div>

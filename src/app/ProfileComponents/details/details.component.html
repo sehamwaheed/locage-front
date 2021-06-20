@@ -1,0 +1,84 @@
+<div class="card">
+  <div class="card-header card-header-text">Details</div>
+  <div class="card-body">
+    <form *ngIf="currentUser" [formGroup]="detailsForm">
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name" aria-label="First name"
+              formControlName="firstName">
+            <small *ngIf="firstName?.errors?.required && firstName?.touched" class="text-danger">
+              first name is required
+            </small>
+            <small *ngIf="firstName?.errors?.minlength && firstName?.touched" class="text-danger">
+              first name must be 3 characters minimum
+            </small>
+            <small *ngIf="firstName?.errors?.maxlength && firstName?.touched" class="text-danger">
+              first name must be 30 characters maximum
+            </small>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name" aria-label="Last name"
+              formControlName="lastName">
+            <small *ngIf="lastName?.errors?.required && lastName?.touched" class="text-danger">
+              last name is required
+            </small>
+            <small *ngIf="lastName?.errors?.minlength && lastName?.touched" class="text-danger">
+              last name must be 3 characters minimum
+            </small>
+            <small *ngIf="lastName?.errors?.maxlength && lastName?.touched" class="text-danger">
+              last name must be 30 characters maximum
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="E-mail" aria-label="E-mail" formControlName="email">
+            <small *ngIf="email?.errors?.required && email?.touched" class="text-danger">
+              email is required
+            </small>
+            <small *ngIf="email?.errors?.email && email?.touched" class="text-danger">
+              wrong email format
+            </small>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Phone Number (optional)"
+              aria-label="Phone Number (optional)" formControlName="phoneNumber">
+            <small *ngIf="phoneNumber?.errors?.required && phoneNumber?.touched" class="text-danger">
+              phone number is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <select class="form-select form-control" aria-label="Default select example" formControlName="gender">
+              <option selected disabled> -Select your gender- </option>
+              <option value="male">male</option>
+              <option value="female">female</option>
+            </select>
+          </div>
+          <div class="col">
+            <input type="date" class="form-control" formControlName="dob">
+            <small *ngIf="dob?.invalid && dob?.touched" class="text-danger">
+              Date of Birth is required
+            </small>
+          </div>
+        </div>
+      </div>
+      <div>
+        <button [disabled]="detailsForm.invalid || buttonSubmit" type="submit" class="btn btn-submit"
+          (click)="onSubmit(detailsForm.value)">Update</button>
+      </div>
+      <div>
+        <small *ngIf="successUpdate" class="text-success">{{successMsg}}</small>
+      </div>
+      <div>
+        <small *ngIf="invalidUpdate" class="text-danger">{{errorMsg}}</small>
+      </div>
+    </form>
+  </div>
+</div>
