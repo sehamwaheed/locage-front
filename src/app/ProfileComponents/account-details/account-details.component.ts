@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/Models/userModel';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -9,8 +9,6 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class AccountDetailsComponent implements OnInit {
   user?: UserModel;
-  @Input() opened: string;
-  @Output() notify = new EventEmitter<string>();
   constructor(private userService: UserService) {
     this.userService.returnUserDetails().subscribe((user) => {
       this.user = user;
@@ -18,14 +16,4 @@ export class AccountDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  onChangePassClick() {
-    this.opened = 'changePassword';
-    this.notify.emit(this.opened);
-  }
-
-  onAccountDetailsClick() {
-    this.opened = 'accountDetails';
-    this.notify.emit(this.opened);
-  }
 }

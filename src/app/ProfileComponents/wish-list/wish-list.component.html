@@ -1,86 +1,8 @@
 <div class="card">
-  <div class="card-header  card-header-text">
-    Wish List
-  </div>
+  <div class="card-header card-header-text">Wish List</div>
   <div class="card-body">
-    <div class="card card-product">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-xl-3">
-        <img class="img-style" src="../../../assets/images/pexels-daria-shevtsova-1030946.jpg">
-      </div>
-      <div class="col-xl-7">
-        <p class="product-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-
-        <div class="rate">
-          <input type="radio" id="star5" name="rate" value="5" />
-          <label for="star5" title="text">5 stars</label>
-          <input type="radio" id="star4" name="rate" value="4" />
-          <label for="star4" title="text">4 stars</label>
-          <input type="radio" id="star3" name="rate" value="3" />
-          <label for="star3" title="text">3 stars</label>
-          <input type="radio" id="star2" name="rate" value="2" />
-          <label for="star2" title="text">2 stars</label>
-          <input type="radio" id="star1" name="rate" value="1" />
-          <label for="star1" title="text">1 star</label>
-        </div><br><br>
-        <p class="product-price">
-          US $53.99
-        </p>
-      </div>
-      <div class="col-xl-2">
-        <div class="buttons">
-          <button class="btn btn-add">Add To Cart</button>
-        <button class="btn btn-remove">Remove</button>
-        </div>
-
-      </div>
+    <div *ngFor="let item of wishlistItems">
+      <app-wishlist-item [item]='item'></app-wishlist-item>
     </div>
   </div>
 </div>
-<hr>
-<div class="card card-product">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-xl-3">
-        <img class="img-style" src="../../../assets/images/pexels-daria-shevtsova-1030946.jpg">
-      </div>
-      <div class="col-xl-7">
-        <p class="product-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-
-        <div class="rate">
-          <input type="radio" id="star5" name="rate" value="5" />
-          <label for="star5" title="text">5 stars</label>
-          <input type="radio" id="star4" name="rate" value="4" />
-          <label for="star4" title="text">4 stars</label>
-          <input type="radio" id="star3" name="rate" value="3" />
-          <label for="star3" title="text">3 stars</label>
-          <input type="radio" id="star2" name="rate" value="2" />
-          <label for="star2" title="text">2 stars</label>
-          <input type="radio" id="star1" name="rate" value="1" />
-          <label for="star1" title="text">1 star</label>
-        </div><br><br>
-        <p class="product-price">
-          US $53.99
-        </p>
-      </div>
-      <div class="col-xl-2">
-        <div class="buttons">
-          <button class="btn btn-add">Add To Cart</button>
-        <button class="btn btn-remove">Remove</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
-  </div>
-</div>
-

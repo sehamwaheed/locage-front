@@ -1,3 +1,4 @@
+import { WishlistService } from './Services/wishlist.service';
 import { ProductService } from './Services/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -79,6 +80,7 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { LocageTodayComponent } from './AboutUsComponents/locage-today/locage-today.component';
 import { CartComponent } from './cart/cart/cart.component';
 import { CartPageComponent } from './cart/CartPage/CartPage.component';
+import { WishlistItemComponent } from './ProfileComponents/wishlist-item/wishlist-item.component';
 
 @NgModule({
   declarations:[
@@ -133,6 +135,7 @@ import { CartPageComponent } from './cart/CartPage/CartPage.component';
     LocageTodayComponent,
     CartComponent,
     CartPageComponent,
+    WishlistItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -176,8 +179,8 @@ import { CartPageComponent } from './cart/CartPage/CartPage.component';
     VendorService,
     ProductService,
     CategoryService,
-
     ShipmentService,
+    WishlistService
   ],
   bootstrap: [AppComponent],
   exports: [TruncatePipe],

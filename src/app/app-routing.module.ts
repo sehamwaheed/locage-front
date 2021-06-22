@@ -1,3 +1,5 @@
+import { AddNewAddressComponent } from './ProfileComponents/add-new-address/add-new-address.component';
+import { AccountOverviewComponent } from './ProfileComponents/account-overview/account-overview.component';
 import { NotFoundComponent } from './SharedComponent/not-found/not-found.component';
 import { HomeComponent } from './HomePage/Home/Home.component';
 import { NgModule } from '@angular/core';
@@ -17,20 +19,27 @@ import { ChangePasswordComponent } from './ProfileComponents/change-password/cha
 import { ProfileComponent } from './ProfileComponents/profile/profile.component';
 import { DetailsComponent } from './ProfileComponents/details/details.component';
 import { CartPageComponent } from './cart/CartPage/CartPage.component';
+import { AddressBookComponent } from './ProfileComponents/address-book/address-book.component';
+import { AddressBookDetailsComponent } from './ProfileComponents/address-book-details/address-book-details.component';
+import { WishListComponent } from './ProfileComponents/wish-list/wish-list.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {path:'home',component:LocageComponent ,children:[
-    //nested router-outlet
-    { path: '', component: HomeComponent },
-    //search
-    {path:'subcategory',component : SubcategoryPageComponent},
-    {path:'subcategory/:id',component : SubcategoryPageComponent},
-    {path:'view/:id',component:ProductViewComponent},
-    {path:'sub/:id',component:SubCategoryInCtegoryComponent},
-     {path:'cart',component:CartPageComponent}
-  ]},
+  {
+    path: 'home',
+    component: LocageComponent,
+    children: [
+      //nested router-outlet
+      { path: '', component: HomeComponent },
+      //search
+      { path: 'subcategory', component: SubcategoryPageComponent },
+      { path: 'subcategory/:id', component: SubcategoryPageComponent },
+      { path: 'view/:id', component: ProductViewComponent },
+      { path: 'sub/:id', component: SubCategoryInCtegoryComponent },
+      { path: 'cart', component: CartPageComponent },
+    ],
+  },
 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -44,21 +53,51 @@ const routes: Routes = [
     component: CreateStoreComponent,
     canActivate: [AuthGuardService],
   },
+
   {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuardService],
+    children: [
+      {
+        path: '',
+        component: AccountOverviewComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'account',
+        component: AccountOverviewComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'wishlist',
+        component: WishListComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'address',
+        component: AddressBookDetailsComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'update-address',
+        component: AddNewAddressComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'update-account',
+        component: DetailsComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'update-password',
+        component: ChangePasswordComponent,
+        canActivate: [AuthGuardService],
+      },
+    ],
   },
-  {
-    path: 'profile/update-account',
-    component: DetailsComponent,
-    canActivate: [AuthGuardService],
-  },
-  {
-    path: 'profile/update-password',
-    component: ChangePasswordComponent,
-    canActivate: [AuthGuardService],
-  },
+
+
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
