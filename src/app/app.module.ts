@@ -1,5 +1,4 @@
-import { WishlistService } from './Services/wishlist.service';
-import { ProductService } from './Services/product.service';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
@@ -81,7 +80,8 @@ import { LocageTodayComponent } from './AboutUsComponents/locage-today/locage-to
 import { CartComponent } from './cart/cart/cart.component';
 import { CartPageComponent } from './cart/CartPage/CartPage.component';
 import { WishlistItemComponent } from './ProfileComponents/wishlist-item/wishlist-item.component';
-
+import { WishlistService } from './Services/wishlist.service';
+import { ProductService } from './Services/product.service';
 @NgModule({
   declarations:[
 
