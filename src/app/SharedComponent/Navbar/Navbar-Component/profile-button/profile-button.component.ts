@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/Models/userModel';
+import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserService } from 'src/app/Services/user.service';
 })
 export class ProfileButtonComponent implements OnInit {
   currentUser?: UserModel;
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private cartService: CartService) {
     this.userService.returnUserDetails().subscribe((user) => {
       this.currentUser = user;
     });
@@ -17,6 +18,7 @@ export class ProfileButtonComponent implements OnInit {
 
   ngOnInit(): void {}
   logout() {
+    this.cartService.whenLogOut();
     this.userService.logout();
   }
 }

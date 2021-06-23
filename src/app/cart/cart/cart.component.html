@@ -10,7 +10,7 @@
       "
     >
       <img
-        src="{{img}}"
+        src="{{product.photos[0]}}"
         alt="product-img"
         class="product-img"
         onerror="this.src='../../../../assets/images/images.png'"
@@ -18,24 +18,23 @@
     </div>
     <div class="p-1 pl-4 col-6 col-lg-3">
       <div class="details">
-        <div class="product-name">{{titel}}</div>
+        <div class="product-name">{{product.title}}</div>
         <div class="product-detailes">
-           {{info}}
+           {{product.description}}
         </div>
-        <div class="rating d-flex">
-          <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>
-        </div>
+       
         <div class="price">
-          <p>{{price}}<span>$</span></p>
+          <p>{{product.price}}<span>$</span></p>
         </div>
         <!--* icon --->
         <div class="d-flex flex-row justify-content-start">
-          <button type="button" class="icon-btn btn">
+          <button (click)="addToFav()" [disabled]="!logged" [title]="logged?'':'You must log in'" type="button" class="icon-btn btn">
             <i class="fas fa-heart"></i>
           </button>
-          <button type="button" class="icon-btn btn">
+          <button [disabled]="!logged" [title]="logged?'':'You must log in'" (click)="deleteItem()" type="button" class="icon-btn btn">
             <i class="fas fa-trash-alt"></i>
           </button>
+          
         </div>
       </div>
     </div>
@@ -43,12 +42,12 @@
       <div class="quantity">
         <div class="d-flex flex-row">
           <div>
-            <button type="button" class="quant-add btn" (click)="increase() ">
+            <button  type="button" class="quant-add btn" (click)="increase() ">
               <i class="fas fa-plus"></i>
             </button>
           </div>
           <div class="quant d-flex justify-content-center align-items-center">
-            <p class="quant-num-txt">{{count}}</p>
+            <p class="quant-num-txt">{{product.quantity}}</p>
           </div>
           <div>
             <button type="button" class="quant-sub btn" (click)="decreac()">
@@ -58,10 +57,6 @@
         </div>
       </div>
     </div>
-    <div class=" d-none d-md-flex  flex-column align-items-center">
-      <p class="total-price">Total Price</p>
-
-      <p class="price-num">{{total_price}}<span>$</span></p>
-    </div>
+   
   </div>
 </div>

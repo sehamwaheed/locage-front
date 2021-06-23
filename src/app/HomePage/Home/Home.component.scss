@@ -5,10 +5,10 @@
 
 .spinner-border{
   display: inline-block;
-  width: 10rem;
-  height: 10rem;
+  width: 50px;
+  height: 50px;
   vertical-align: text-bottom;
-  border: 1.25em solid currentColor;
+  border: 4px solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
   animation: spinner-border .75s linear infinite;
