@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { ProductModel } from '../Models/ProductModel';
+import { CartService } from '../Services/cart.service';
 import { ProductService } from '../Services/product.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class ProductViewComponent implements OnInit {
 id:any;
 isLoding:boolean=true;
  product:ProductModel=null;
-  constructor(private activatedRoute: ActivatedRoute, private productServices:ProductService) { }
+  constructor(private activatedRoute: ActivatedRoute, private productServices:ProductService, public cartService: CartService) { }
 
   ngOnInit(): void {
     this.id= this.activatedRoute.snapshot.params.id;
@@ -32,5 +34,11 @@ isLoding:boolean=true;
     if(this.count > 1){
      return this.count--;
     }
+  }
+
+
+  addToCart(){
+    this.cartService.addProduct(this.product, this.count);
+    Swal.fire('Added', '', 'success');
   }
 }

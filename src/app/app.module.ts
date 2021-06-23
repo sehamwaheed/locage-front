@@ -81,6 +81,7 @@ import { CartComponent } from './cart/cart/cart.component';
 import { CartPageComponent } from './cart/CartPage/CartPage.component';
 import { WishlistItemComponent } from './ProfileComponents/wishlist-item/wishlist-item.component';
 import { WishlistService } from './Services/wishlist.service';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ProductService } from './Services/product.service';
 @NgModule({
   declarations:[
@@ -143,7 +144,7 @@ import { ProductService } from './Services/product.service';
     AppRoutingModule,
     HttpClientModule,
     MatDividerModule,
-
+    SweetAlert2Module.forRoot(),
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,
