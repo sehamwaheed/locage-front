@@ -1,4 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProductModel } from 'src/app/Models/ProductModel';
+import { CartService } from 'src/app/Services/cart.service';
+import { UserService } from 'src/app/Services/user.service';
+import { WishlistService } from 'src/app/Services/wishlist.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -7,41 +12,52 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  @Input('discount') discount:number=0;
-  @Input('img') img:string='';
-  @Input('proudct-name') titel:string='proudact title';
-  @Input ('proudct-details') info:string='details of proudct';
-  @Input ('rate') rate:number=0;
-  @Input('price') price:number=10;
-  @Input('id') id:any=null;
-  @Input('count') count:number=1;
-  @Input('total_price') total_price:number=0;
-  quantity:number=40;
-  constructor() { }
+  @Input('product') product:ProductModel= null;
+  logged = false;
+  constructor(private cartServ: CartService, private userServ: UserService, private wishList: WishlistService) { }
 
   ngOnInit(): void {
+    this.userServ.loggedIn().subscribe(res => {
+      this.logged = res;
+    })
   }
 
 increase(){
-  if(this.count < this.quantity){
+  
 
-     this.count++;
-    this.totalPrice();
-  }
+     this.product.quantity++;
+  
+
+  this.cartServ.updateProduct(this.product);
 
 }
 
+addToFav(){
+  this.wishList.addToWishList(this.product._id).subscribe(res => {
+   Swal.fire("Item Is Added To Wish List", "","success");
+
+   this.cartServ.deleteProduct(this.product._id)
+  }, (err) => {
+   Swal.fire(err.error.message, "","success");
+
+  })
+}
 
 decreac(){
-  if(this.count > 1){
-    this.count--;
-   this.totalPrice();
+  if(this.product.quantity > 1){
+    this.product.quantity--;
   }
+  this.cartServ.updateProduct(this.product);
+
 
 }
 
-totalPrice(){
-  return  this.total_price=this.price*this.count;
+deleteItem(){
+this.cartServ.deleteProductFromReq(this.product._id).subscribe(res => {
+  location.reload();
+});
 }
+
+
 
 }

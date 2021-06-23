@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/Services/user.service';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
     ]),
   });
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private Carteservice: CartService) {}
 
   ngOnInit(): void {
     this.userService.loggedIn().subscribe((result: boolean) => {
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', result.token);
         this.userService.getToken()?.toString();
         this.router.navigate(['/']);
+        this.Carteservice.uploadProductsToServer();
       },
       (e) => {
         this.eMsg = e.error.message;
