@@ -64,6 +64,10 @@ private readonly api ="https://locage.herokuapp.com/api/v1/products";
 
   }
 
+  getTopSales(){
+    return this.http.get<{products:ProductModel[]}>(this.api+'/top-sales')
+  }
+
 }
 
 

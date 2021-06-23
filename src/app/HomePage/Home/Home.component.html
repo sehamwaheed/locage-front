@@ -9,7 +9,8 @@
 </div>
 <div class="home" *ngIf="!isLoding" >
     <app-Adv></app-Adv>
-    <app-productContainer [title]='"Top Deals"' [products]="topDeals"></app-productContainer>
-    <app-productContainer [title]="'Today Deals'" [products]="todayDeals"></app-productContainer>
-    <app-top-categories></app-top-categories>
+    <app-productContainer [title]='"Top Deals"' [products]="topDeals" [type]="1"></app-productContainer>
+    <app-productContainer [title]="'Today Deals'" [products]="todayDeals" [type]="2"></app-productContainer>
+    <app-productContainer [title] ='"Top Sales"' [products]="topSales" [type]="3"></app-productContainer>
+    <app-top-categories [category]="topCategory" ></app-top-categories>
 </div>

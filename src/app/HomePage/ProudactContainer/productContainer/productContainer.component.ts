@@ -2,6 +2,16 @@ import { ProductService } from './../../../Services/product.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ProductModel } from 'src/app/Models/ProductModel';
+import { Router } from '@angular/router';
+
+
+enum type{
+  topdeals = 1,
+  todaydeals = 2,
+  topsales = 3
+}
+
+
 @Component({
   selector: 'app-productContainer',
   templateUrl: './productContainer.component.html',
@@ -10,8 +20,9 @@ import { ProductModel } from 'src/app/Models/ProductModel';
 export class ProductContainerComponent implements OnInit {
  @Input() products : ProductModel[] ;
  @Input() title :string ;
+@Input('type') typeNumber: number;
 
-  constructor(private product:ProductService) { }
+  constructor(private product:ProductService, private router: Router) { }
 
   ngOnInit() {
 
@@ -54,5 +65,9 @@ export class ProductContainerComponent implements OnInit {
     nav: false
   }
 
+
+  showMorehandler(){
+    this.router.navigate(['/home/subcategory'], { queryParams: { type: type[this.typeNumber] } });
+  }
 }
 

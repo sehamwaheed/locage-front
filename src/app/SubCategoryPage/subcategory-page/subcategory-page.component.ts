@@ -28,20 +28,21 @@ export class SubcategoryPageComponent implements OnInit {
       // console.log(e);
       if (e.key) {
         this.sarchWord = e.key;
-        this.productservices.searchByKey(this.sarchWord).subscribe((k:any) => {
-          // console.log(k);
-
-          this.products = k?.result?.docs;
-          this.productservices.updateProducts(this.products);
-          this.isLoding = false;
-          this.isempty = false;
-        },
-        () => {
-          this.isempty = true;
-          this.isLoding = false;
-        }
-        );
+        this.search();
       }
+
+      if(e.type && e.type == "topdeals"){
+        this.loadTopDeals();
+      }
+
+      if (e.type && e.type == "topsales") {
+        this.loadTopSales();
+      }
+
+      if(e.type && e.type =="todaydeals"){
+        this.loadTodayDeals();
+      }
+
     });
     this.activRout.params.subscribe((url) => {
       // console.log(url);
@@ -72,5 +73,71 @@ export class SubcategoryPageComponent implements OnInit {
     this.products = data;
     // console.log(this.products);
     // console.log('data', data);
+  }
+
+  search(){
+    this.productservices.searchByKey(this.sarchWord).subscribe((k:any) => {
+      // console.log(k);
+
+      this.products = k?.result?.docs;
+      this.productservices.updateProducts(this.products);
+      this.isLoding = false;
+      this.isempty = false;
+    },
+    () => {
+      this.isempty = true;
+      this.isLoding = false;
+    }
+    );
+  }
+
+  loadTopDeals(){
+    this.productservices.getTopDeals().subscribe((k:any) => {
+      // console.log(k);
+
+      this.products = k?.result?.docs;
+      this.productservices.updateProducts(this.products);
+      this.isLoding = false;
+      this.isempty = false;
+    },
+    () => {
+      this.isempty = true;
+      this.isLoding = false;
+    }
+    );
+  }
+
+  loadTopSales(){
+    this.productservices.getTopSales().subscribe((k:any) => {
+       console.log(k);
+
+    k?.result.forEach((p:any) => {
+      this.products.push(p?.product)
+    });
+      this.productservices.updateProducts(this.products);
+      this.isLoding = false;
+      this.isempty = false;
+    },
+    () => {
+      this.isempty = true;
+      this.isLoding = false;
+    }
+    );
+  }
+
+  loadTodayDeals(){
+    this.productservices.getTodayDeals().subscribe((k:any) => {
+      // console.log(k);
+
+      this.products = k?.result?.docs;
+      this.productservices.updateProducts(this.products);
+      this.isLoding = false;
+      this.isempty = false;
+    },
+    () => {
+      this.isempty = true;
+      this.isLoding = false;
+    }
+    );
   }
 }

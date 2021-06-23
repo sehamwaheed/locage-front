@@ -135,7 +135,7 @@ export class FilterationSidebarComponent implements OnInit {
     this.products.forEach((s) => {
 
 
-      if (s.size !== null && s.size.trim() != '' && s.size !== undefined) {
+      if (s.size !== null  && s.size !== undefined) {
         let sizeArr = s.size.split(',');
         sizeArr.forEach((siz) => {
           if (siz.trim() != "") {

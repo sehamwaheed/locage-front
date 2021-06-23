@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from 'src/app/Services/category.service';
 import { ProductService } from 'src/app/Services/product.service';
 
 @Component({
@@ -9,9 +10,12 @@ import { ProductService } from 'src/app/Services/product.service';
 export class HomeComponent implements OnInit {
   topDeals =[];
   todayDeals =[];
+  topSales=[];
+  topCategory=[]
   isLoding:boolean=true;
   constructor(
-    private product:ProductService
+    private product:ProductService,
+    private category:CategoryService
   ) { }
 
   ngOnInit() {
@@ -45,6 +49,21 @@ export class HomeComponent implements OnInit {
 
     // })
 
+   this.product.getTopSales().subscribe((data:any)=>{
+     console.log("top-sales",data);
+     data?.result.forEach((_products: any) => {
+       this.topSales.push(_products.product)
+     });
+     this.isLoding=false;
+
+   })
+
+   this.category.getTopCategory().subscribe((data:any)=>{
+      data.result.forEach((categ:any) => {
+          this.topCategory.push(categ.subcategory)
+      });
+      this.isLoding=false;
+   })
 
   }
 

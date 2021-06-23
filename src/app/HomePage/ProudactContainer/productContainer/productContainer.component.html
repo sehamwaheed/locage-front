@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <p class="card-title">{{ title }}</p>
-      <button class="seemore btn .btn-ghost">See More ...</button>
+      <button class="seemore btn .btn-ghost" (click)="showMorehandler()">See More ...</button>
     </div>
 
     <owl-carousel-o [options]="customOptions">
