@@ -83,6 +83,8 @@ import { WishlistItemComponent } from './ProfileComponents/wishlist-item/wishlis
 import { WishlistService } from './Services/wishlist.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ProductService } from './Services/product.service';
+import { PaymentComponent } from './payment/payment.component';
+
 @NgModule({
   declarations:[
 
@@ -137,7 +139,9 @@ import { ProductService } from './Services/product.service';
     CartComponent,
     CartPageComponent,
     WishlistItemComponent,
-  ],
+    PaymentComponent,
+
+   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -170,7 +174,8 @@ import { ProductService } from './Services/product.service';
     ReactiveFormsModule,
     MatSliderModule,
     NgImageSliderModule,
-     NgxImageZoomModule
+     NgxImageZoomModule,
+
 
   ],
   providers: [

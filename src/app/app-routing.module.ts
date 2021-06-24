@@ -38,6 +38,48 @@ const routes: Routes = [
       { path: 'view/:id', component: ProductViewComponent },
       { path: 'sub/:id', component: SubCategoryInCtegoryComponent },
       { path: 'cart', component: CartPageComponent },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        canActivate: [AuthGuardService],
+        children: [
+          {
+            path: '',
+            component: AccountOverviewComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'account',
+            component: AccountOverviewComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'wishlist',
+            component: WishListComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'address',
+            component: AddressBookDetailsComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'update-address',
+            component: AddNewAddressComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'update-account',
+            component: DetailsComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'update-password',
+            component: ChangePasswordComponent,
+            canActivate: [AuthGuardService],
+          },
+        ],
+      },
     ],
   },
 
@@ -54,48 +96,7 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
 
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuardService],
-    children: [
-      {
-        path: '',
-        component: AccountOverviewComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'account',
-        component: AccountOverviewComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'wishlist',
-        component: WishListComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'address',
-        component: AddressBookDetailsComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'update-address',
-        component: AddNewAddressComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'update-account',
-        component: DetailsComponent,
-        canActivate: [AuthGuardService],
-      },
-      {
-        path: 'update-password',
-        component: ChangePasswordComponent,
-        canActivate: [AuthGuardService],
-      },
-    ],
-  },
+
 
 
 
