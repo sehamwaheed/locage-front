@@ -22,6 +22,7 @@ import { CartPageComponent } from './cart/CartPage/CartPage.component';
 import { AddressBookComponent } from './ProfileComponents/address-book/address-book.component';
 import { AddressBookDetailsComponent } from './ProfileComponents/address-book-details/address-book-details.component';
 import { WishListComponent } from './ProfileComponents/wish-list/wish-list.component';
+import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
@@ -78,6 +79,11 @@ const routes: Routes = [
             component: ChangePasswordComponent,
             canActivate: [AuthGuardService],
           },
+          {
+            path:'pending-review',
+            component:PendingReviewsComponent,
+            canActivate: [AuthGuardService],
+          }
         ],
       },
     ],

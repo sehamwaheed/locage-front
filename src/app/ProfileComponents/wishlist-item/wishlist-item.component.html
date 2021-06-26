@@ -1,37 +1,46 @@
 <div *ngIf="item" class="card card-product">
   <div class="card-body">
-    <div class="row">
-      <div class="col-xl-3">
-        <img class="img-style" src="{{ item.photos[0] }}" />
-      </div>
-      <div class="col-xl-7">
-        <p class="product-description">
-          {{ item.title }}
-        </p>
-
-        <div class="rate">
-          <input type="radio" id="star5" name="rate" value="5" />
-          <label for="star5" title="text">5 stars</label>
-          <input type="radio" id="star4" name="rate" value="4" />
-          <label for="star4" title="text">4 stars</label>
-          <input type="radio" id="star3" name="rate" value="3" />
-          <label for="star3" title="text">3 stars</label>
-          <input type="radio" id="star2" name="rate" value="2" />
-          <label for="star2" title="text">2 stars</label>
-          <input type="radio" id="star1" name="rate" value="1" />
-          <label for="star1" title="text">1 star</label>
+    <div class="row no-gutters">
+      <div
+      class="
+        img-container
+        d-flex
+        justify-content-center
+        align-content-center
+        col-4
+      "
+    >
+      <img
+        src="{{item.photos[0]}}"
+        alt="product-img"
+        class="product-img"
+        onerror="this.src='../../../../assets/images/images.png'"
+      />
+    </div>
+  <div class="p-1 pl-4 col-4">
+      <div class="details">
+        <div class="product-name">{{item.title}}</div>
+        <div class="product-detailes">
+           {{item.description}}
         </div>
-        <br /><br />
-        <p class="product-price">USD ${{ item.price }}</p>
+        <div class="product-rating ">
+          <bar-rating [(rate)]="item.rating" [max]="5" [readOnly]="true"></bar-rating>
       </div>
-      <div class="col-xl-2">
-        <div class="buttons">
-          <button class="btn btn-add">Add To Cart</button>
-          <button class="btn btn-remove" (click)="removeItem(item._id)">
-            Remove
+
+        <div class="price">
+          <p>{{item.price}}<span>$</span></p>
+        </div>
+
+      </div>
+    </div>
+      <div class="col-4 d-flex flex-column align-items-center">
+
+          <button class=" btn btn-add mb-3 mt-2 p-2 pl-3 pr-3" id="add">Add To Cart</button>
+          <button class="btn btn-remove" id="remove" (click)="removeItem(item._id)">
+            <i class="fas fa-trash-alt mr-2"></i>  <span> Remove</span>
           </button>
         </div>
       </div>
     </div>
   </div>
-</div>
+

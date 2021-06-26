@@ -1,132 +1,205 @@
-.img-style {
-    position: absolute;
-    width: 180px;
-    height: 165px;
-    border-radius: 10px;
-    margin: 10px;
-  }
-  
+// .img-style {
+//     position: absolute;
+//     width: 180px;
+//     height: 165px;
+//     border-radius: 10px;
+//     margin: 10px;
+//   }
+
+.product-img {
+  padding: 0.5ex 0ex;
+  height: 11rem;
+}
   .card-product {
     height: 185px;
     border: none;
     background-color: #ffffff;
     border-radius: 10px;
   }
-  
-  .product-description {
-    margin-top: 10px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
-  
-    color: #000000;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .rate {
-    float: left;
-    height: 46px;
-    //padding: 0 10px;
-  }
-  
-  .rate:not(:checked)>input {
-    position: absolute;
-    top: -9999px;
-  }
-  
-  .rate:not(:checked)>label {
-    float: right;
-    width: 1em;
+
+  .product-name {
+    margin-top: 1ex;
+    font-size: x-large;
+    font-weight: 500;
     overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 30px;
-    color: #ccc;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+    text-transform: capitalize;
+    text-align: start;
   }
-  
-  .rate:not(:checked)>label:before {
-    content: '★ ';
-  }
-  
-  .rate>input:checked~label {
-    color: #ffc700;
-  }
-  
-  .rate:not(:checked)>label:hover,
-  .rate:not(:checked)>label:hover~label {
-    color: #deb217;
-  }
-  
-  .rate>input:checked+label:hover,
-  .rate>input:checked+label:hover~label,
-  .rate>input:checked~label:hover,
-  .rate>input:checked~label:hover~label,
-  .rate>label:hover~input:checked~label {
-    color: #c59b08;
-  }
-  
-  .product-price {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 32px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #000000;
-  }
-  
-  .buttons {
-    margin-top: 42px;
-  }
-  
-  .btn-add {
-    font-family: Roboto;
-    font-style: normal;
+
+  .product-detailes {
+    color: rgba(0, 0, 0, 0.664);
     font-weight: 500;
-    font-size: 10px;
-    line-height: 16px;
-    color: #FFFFFF;
-    justify-content: space-between;
-    padding: 15px;
-    width: 129.79px;
-    background: #22B687;
-    border-radius: 30px;
-    margin: 10px 0;
-  
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+    text-transform: capitalize;
+    text-align: start;
   }
-  
-  .btn-remove {
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 10px;
-    line-height: 16px;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    display: flex;
-    padding: 14px 46px;
-    width: 129.79px;
-    background: #E94C3C;
-    margin: 10px 0;
-    border-radius: 30px;
+
+  .rating {
+    margin: -0.8em 0ex -1em -0.5ex;
   }
-  
-  .btn-add:hover {
-    background: #30ca99;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+
+  .price p {
+    margin: 1ex 0;
+    font-size: x-large;
+    text-align: start;
+    color: #38BD92;
   }
-  
-  .btn-remove:hover {
-    background: #ff5d4b;
-    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+
+  // .product-description {
+  //   margin-top: 10px;
+  //   font-family: Roboto;
+  //   font-style: normal;
+  //   font-weight: normal;
+  //   font-size: 14px;
+  //   line-height: 16px;
+
+  //   color: #000000;
+  // }
+
+  // * {
+  //   margin: 0;
+  //   padding: 0;
+  // }
+
+  // .rate {
+  //   float: left;
+  //   height: 46px;
+  //   //padding: 0 10px;
+  // }
+
+  // .rate:not(:checked)>input {
+  //   position: absolute;
+  //   top: -9999px;
+  // }
+
+  // .rate:not(:checked)>label {
+  //   float: right;
+  //   width: 1em;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+  //   cursor: pointer;
+  //   font-size: 30px;
+  //   color: #ccc;
+  // }
+
+  // .rate:not(:checked)>label:before {
+  //   content: '★ ';
+  // }
+
+  // .rate>input:checked~label {
+  //   color: #ffc700;
+  // }
+
+  // .rate:not(:checked)>label:hover,
+  // .rate:not(:checked)>label:hover~label {
+  //   color: #deb217;
+  // }
+
+  // .rate>input:checked+label:hover,
+  // .rate>input:checked+label:hover~label,
+  // .rate>input:checked~label:hover,
+  // .rate>input:checked~label:hover~label,
+  // .rate>label:hover~input:checked~label {
+  //   color: #c59b08;
+  // }
+
+  // .product-price {
+  //   font-family: Roboto;
+  //   font-style: normal;
+  //   font-weight: bold;
+  //   font-size: 24px;
+  //   line-height: 32px;
+  //   display: flex;
+  //   align-items: center;
+  //   text-align: center;
+  //   color: #000000;
+  // }
+
+  // .buttons {
+  //   margin-top: 42px;
+  // }
+  .product-rating {
+    margin-top: -1ex;
+}
+
+  // .btn-add {
+  //   font-family: Roboto;
+  //   font-style: normal;
+  //   font-weight: 500;
+  //   font-size: 10px;
+
+  //   color: #FFFFFF;
+  //   justify-content: space-between;
+
+  //   width: 7rem;
+  //   background: #22B687;
+
+  // }
+
+
+  // .btn-remove {
+  //   font-family: Roboto;
+  //   font-style: normal;
+  //   font-weight: 500;
+  //   font-size: 10px;
+  //   line-height: 16px;
+  //   align-items: center;
+  //   text-align: center;
+  //   color: #FFFFFF;
+  //   display: flex;
+  //   padding: 14px 46px;
+  //   width: 129.79px;
+  //   background: #E94C3C;
+
+  //   border-radius: 30px;
+  // }
+
+  // .btn-add:hover {
+  //   background: #30ca99;
+  //   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  // }
+
+  // .btn-remove:hover {
+  //   background: #ff5d4b;
+  //   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+  // }
+
+
+  #add {
+    border:0;
+    border-radius: 5px;
+    background-color: #38BD92;
+    color: #ffffff;
   }
-  
+
+  #add:hover{
+    border:0;
+    border-radius: 5px;
+    background-color: #51daae;
+    color: white;
+  }
+  #remove{
+
+    color:#38BD92;
+  }
+
+  #remove:hover{
+
+    background-color: rgba(243, 239, 239, 0.651);
+  }
+
+
+
+
+

@@ -14,7 +14,6 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { NgImageSliderModule } from 'ng-image-slider';
-
 /*================================ My Components ==============================*/
 
 import { SideCartComponent } from './SharedComponent/Navbar/Navbar-Component/sideCart/sideCart.component';
@@ -84,7 +83,9 @@ import { WishlistService } from './Services/wishlist.service';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { ProductService } from './Services/product.service';
 import { PaymentComponent } from './payment/payment.component';
-
+import { ProductCardReviewComponent } from './ProfileComponents/PendingReviews/product-card-review/product-card-review.component';
+import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
+import { CommentComponent } from './product-view/comment/comment.component';
 @NgModule({
   declarations:[
 
@@ -140,6 +141,9 @@ import { PaymentComponent } from './payment/payment.component';
     CartPageComponent,
     WishlistItemComponent,
     PaymentComponent,
+    ProductCardReviewComponent,
+    PendingReviewsComponent,
+    CommentComponent
 
    ],
   imports: [

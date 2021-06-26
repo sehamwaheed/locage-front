@@ -1,0 +1,36 @@
+
+
+
+<div class="wrapper" >
+  <div class="row no-gutters">
+      <div class="img-container d-flex justify-content-center align-content-center col-4 overflow-hidden">
+          <img src="{{img}}" alt="product-img" class="product-img"
+          onerror="this.src='../../../../assets/images/images.png'">
+      </div>
+      <div class="p-1 pl-4  col-5">
+          <div class="details">
+              <div class="product-name">
+                  {{titel}}
+              </div>
+              <div class="product-detailes">
+                  <!-- 256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor |
+        Gorilla Glass with high quality display -->
+                  {{info}}
+              </div>
+              <div class="rating d-flex">
+                  <bar-rating [(rate)]="rate" [max]="5" [readOnly]="true"></bar-rating>
+
+              </div>
+              <div class="price">
+                  <p>$<span>{{price}}</span></p>
+              </div>
+          </div>
+      </div>
+      <div class="col-3 pr-1">
+        <div class="d-flex justify-content-end">
+
+          <button type="button" class="btn-review  mt-3 " (click)="onReview()">Review</button>
+        </div>
+      </div>
+  </div>
+</div>

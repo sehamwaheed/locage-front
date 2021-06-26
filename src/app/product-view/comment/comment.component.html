@@ -1,0 +1,23 @@
+<div class="media m-3">
+
+  <div class="imgDiv d-flex justify-content-center text-center rounded-circle text-white">
+    <span class="h5 p-3">{{genrateChar(name)}}</span>
+  </div>
+
+  <div class="media-body">
+    <div class="h5 mt-0">
+      {{nameToCaptial(name)}}
+    </div>
+    <div class="content p-3 d-flex flex-column">
+
+      <div #content
+        style="word-break: break-all; word-break: break-word; font-size: large;" >
+        {{comment}}
+      </div>
+      <div class="align-self-end mt-2">
+        <i class="far fa-clock" style="color: #28c886;"></i>
+          {{getTimeFromNow(date)}}
+      </div>
+    </div>
+  </div>
+</div>
