@@ -35,7 +35,7 @@
     </div>
       <div class="col-4 d-flex flex-column align-items-center">
 
-          <button class=" btn btn-add mb-3 mt-2 p-2 pl-3 pr-3" id="add">Add To Cart</button>
+          <button class=" btn btn-add mb-3 mt-2 p-2 pl-3 pr-3" id="add" (click)='addToCart()'>Add To Cart</button>
           <button class="btn btn-remove" id="remove" (click)="removeItem(item._id)">
             <i class="fas fa-trash-alt mr-2"></i>  <span> Remove</span>
           </button>
