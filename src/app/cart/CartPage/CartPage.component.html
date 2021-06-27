@@ -59,87 +59,6 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
-</div>
-<!--=============================== large screen =============================-->
-
-<div
-  class="d-flex justify-content-center align-items-center m-5 p-3"
-  *ngIf="!products || !products.length"
->
-  <p style="font-size: 3rem; margin-top: -23rem; color: #22b687">
-    Cart is empty
-  </p>
-  <img
-    src="../../../assets/images/emptyt_co35.svg"
-    class="
-      img-fluid
-      ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}
-    "
-    alt=""
-  />
-</div>
-<div class="wrapper" *ngIf="products && products.length">
-  <div class="d-flex flex-row">
-    <div class="col-12 col-lg-9 mt-4">
-      <div class="card border-0 shadow">
-        <div class="card-body">
-          <app-cart
-            [product]="product"
-            *ngFor="let product of products"
-          ></app-cart>
-        </div>
-      </div>
-    </div>
-    <div class="d-none d-lg-block col-lg-3 mt-4">
-      <div class="card-summary shadow">
-        <div class="card-body">
-          <div class="d-flex flex-column">
-            <div class="p-2 d-flex justify-content-center">
-              <p class="card-title">Summary</p>
-            </div>
-            <div class="p-2 d-flex flex-column mt-3">
-              <div class="p-2 d-flex justify-content-between">
-                <p class="txt">Subtotal Price</p>
-                <p class="txt">
-                  {{ cartService.subtotalPrice }} <span>$</span>
-                </p>
-              </div>
-              <mat-divider> </mat-divider>
-              <div class="p-2 d-flex justify-content-between">
-                <p class="txt">Discount</p>
-                <p class="txt">
-                  {{ cartService.totalDiscount }} <span>$</span>
-                </p>
-              </div>
-              <mat-divider> </mat-divider>
-              <div class="p-2 d-flex justify-content-between">
-                <p class="txt">Total Price</p>
-                <p class="txt">{{ cartService.totalPrice }} <span>$</span></p>
-              </div>
-            </div>
-            <div class="p-2">
-              <button
-                (click)="navigate()"
-                type="button"
-                name=""
-                id=""
-                class="check-btn btn-lg btn-block"
-              >
-                Check Out
-              </button>
-              <div class="text-center mt-3">
-                <a
-                  *ngIf="logged"
-                  type=""
-                  name=""
-                  id="delete"
-                  class="mx-auto my-2 b"
-                  (click)="deleteAllProducts()"
-                >
-                  Delete All Products
-                </a>
-=======
   <!--=============================== large screen =============================-->
   
   
@@ -207,7 +126,6 @@
             Delete All Products
                 </a>
                 </div>
->>>>>>> 8a9b890 (spinner cart, btns, fix total price)
               </div>
             </div>
           </div>
@@ -215,9 +133,5 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
-</div>
-=======
 </ng-container>
 
->>>>>>> 8a9b890 (spinner cart, btns, fix total price)
