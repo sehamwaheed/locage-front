@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ProductModel } from 'src/app/Models/ProductModel';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -12,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class CartComponent implements OnInit {
 
+  @Output() delete: EventEmitter<any>= new EventEmitter<any>()
   @Input('product') product:ProductModel= null;
   logged = false;
   constructor(private cartServ: CartService, private userServ: UserService, private wishList: WishlistService) { }
@@ -21,6 +23,7 @@ export class CartComponent implements OnInit {
       this.logged = res;
     })
   }
+  
 
 increase(){
   
@@ -36,9 +39,12 @@ addToFav(){
   this.wishList.addToWishList(this.product._id).subscribe(res => {
    Swal.fire("Item Is Added To Wish List", "","success");
 
-   this.cartServ.deleteProduct(this.product._id)
+   this.cartServ.deleteProductFromReq(this.product._id).subscribe(() => {
+   Swal.fire("Deleted", "","success");
+
+   })
   }, (err) => {
-   Swal.fire(err.error.message, "","success");
+   Swal.fire(err.error.message, "","error");
 
   })
 }
@@ -53,9 +59,7 @@ decreac(){
 }
 
 deleteItem(){
-this.cartServ.deleteProductFromReq(this.product._id).subscribe(res => {
-  location.reload();
-});
+    this.delete.emit(this.product._id)
 }
 
 

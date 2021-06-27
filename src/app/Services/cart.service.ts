@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
 import { ProductModel } from '../Models/ProductModel';
-import Swal from 'sweetalert2';
+import {map, filter, tap} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
@@ -56,13 +56,7 @@ export class CartService {
   }
 
   clearCart(){
-    this.locals.store('cart', JSON.stringify([]));
-    this.http.delete(`https://locage.herokuapp.com/api/v1/carts/emptyCart`).subscribe(res => {
-      location.reload();
-    }, () => {
-      location.reload();
-
-    });
+     return this.http.delete(`https://locage.herokuapp.com/api/v1/carts/emptyCart`)
   }
 
  
@@ -93,27 +87,7 @@ export class CartService {
     return this.products.findIndex(e => e._id === product_id) === -1? false : true;
   }
 
-  deleteProduct(_id: string){
-    if( this.locals.retrieve('cart') && !this.isLoggedIn){
-      const arr:Array<any> =  JSON.parse(this.locals.retrieve('cart'));
-      const index = arr.find(e => e._id == _id);
-      if(index != undefined){
-        arr.splice(index,1);
-      }
-      this.locals.store('cart', JSON.stringify(arr));
-  location.reload();
-
-  }else if(this.isLoggedIn){
-    this.http.delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`)
-.subscribe(res => {
-  location.reload();
-}, () => {
-  location.reload();
-})
-
-}
-  this.calcTotals();
-  }
+  
 
 
   deleteProductFromLocal(_id: string){
@@ -129,7 +103,10 @@ export class CartService {
   }
 
   deleteProductFromReq(_id: string){
-   return this.http.delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`)
+   return this.http.delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`).pipe(
+    
+    map(() => this.calcTotals())
+);
   
   }
 
@@ -147,7 +124,6 @@ export class CartService {
 
       this.calcTotals()
   }else if(this.isLoggedIn){
-    console.log('update', product)
     this.http.patch(`https://locage.herokuapp.com/api/v1/carts/product/${product._id}`, {"quantity": product.quantity}).subscribe(() => {
       this.calcTotals()
 
@@ -206,10 +182,10 @@ export class CartService {
 
 
   removeAll(){
-    this.clearCart();
     this.totalDiscount = 0;
     this.subtotalPrice = 0;
     this.totalPrice=0;
+    return this.clearCart();
     
 }
 }
