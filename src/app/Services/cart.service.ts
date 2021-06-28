@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
 import { ProductModel } from '../Models/ProductModel';
-
+import { map, filter, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
@@ -61,17 +61,9 @@ export class CartService {
   }
 
   clearCart() {
-    this.locals.store('cart', JSON.stringify([]));
-    this.http
-      .delete(`https://locage.herokuapp.com/api/v1/carts/emptyCart`)
-      .subscribe(
-        (res) => {
-          location.reload();
-        },
-        () => {
-          location.reload();
-        }
-      );
+    return this.http.delete(
+      `https://locage.herokuapp.com/api/v1/carts/emptyCart`
+    );
   }
 
   addProduct(product: ProductModel, quantity: number) {
@@ -97,30 +89,6 @@ export class CartService {
       : true;
   }
 
-  deleteProduct(_id: string) {
-    if (this.locals.retrieve('cart') && !this.isLoggedIn) {
-      const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
-      const index = arr.find((e) => e._id == _id);
-      if (index != undefined) {
-        arr.splice(index, 1);
-      }
-      this.locals.store('cart', JSON.stringify(arr));
-      location.reload();
-    } else if (this.isLoggedIn) {
-      this.http
-        .delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`)
-        .subscribe(
-          (res) => {
-            location.reload();
-          },
-          () => {
-            location.reload();
-          }
-        );
-    }
-    this.calcTotals();
-  }
-
   deleteProductFromLocal(_id: string) {
     if (this.locals.retrieve('cart')) {
       const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
@@ -134,9 +102,9 @@ export class CartService {
   }
 
   deleteProductFromReq(_id: string) {
-    return this.http.delete(
-      `https://locage.herokuapp.com/api/v1/carts/product/${_id}`
-    );
+    return this.http
+      .delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`)
+      .pipe(map(() => this.calcTotals()));
   }
 
   updateProduct(product: ProductModel) {
@@ -150,7 +118,6 @@ export class CartService {
 
       this.calcTotals();
     } else if (this.isLoggedIn) {
-      console.log('update', product);
       this.http
         .patch(
           `https://locage.herokuapp.com/api/v1/carts/product/${product._id}`,
@@ -207,9 +174,9 @@ export class CartService {
   }
 
   removeAll() {
-    this.clearCart();
-    this.totalDiscount = 0.0;
-    this.subtotalPrice = 0.0;
+    this.totalDiscount = 0;
+    this.subtotalPrice = 0;
     this.totalPrice.next(0.0);
+    return this.clearCart();
   }
 }
