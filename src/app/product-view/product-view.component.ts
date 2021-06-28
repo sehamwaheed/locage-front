@@ -64,9 +64,16 @@ export class ProductViewComponent implements OnInit {
 
   calcWidthPercent(num, allnum) {
 
+  if(num == 0 && allnum==0){
+    return;
+  }else{
     let res = (parseInt(num) / parseInt(allnum)) * 100;
 
-    return res;
+    return Math.floor(res) ;
+
+  }
+
+
   }
 
   decreac() {

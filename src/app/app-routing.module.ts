@@ -23,6 +23,9 @@ import { AddressBookComponent } from './ProfileComponents/address-book/address-b
 import { AddressBookDetailsComponent } from './ProfileComponents/address-book-details/address-book-details.component';
 import { WishListComponent } from './ProfileComponents/wish-list/wish-list.component';
 import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
+import { InboxComponent } from './ProfileComponents/inbox/inbox.component';
+import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-credit.component';
+import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
@@ -55,8 +58,24 @@ const routes: Routes = [
             canActivate: [AuthGuardService],
           },
           {
+            path: 'inbox',
+            component: InboxComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'locageCredit',
+            component: LocageCreditComponent,
+            canActivate: [AuthGuardService],
+          },
+
+          {
             path: 'wishlist',
             component: WishListComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'recently_View',
+            component: RecentlyViewedComponent,
             canActivate: [AuthGuardService],
           },
           {

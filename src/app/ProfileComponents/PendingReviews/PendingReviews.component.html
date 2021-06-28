@@ -56,9 +56,9 @@
         </div>
       </div>
 
-      <div class="modal-footer">
+      <div class="modal-footer d-flex justify-content-center">
         <button type="button" class="btn btn-secondary" #close data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="addReview(commment.value, close)" [disabled]="rate ==0">Save</button>
+        <button type="button" class="btn btn-success" (click)="addReview(commment.value, close)" [disabled]="rate ==0">Send</button>
       </div>
     </div>
   </div>

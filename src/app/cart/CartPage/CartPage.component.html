@@ -41,28 +41,28 @@
               Check Out
             </button>
             <div class="text-center">
-              <button
+              <a
               *ngIf="logged"
         type="button"
         name=""
-        id=""
-        class="btn btn-sm text-light mx-auto my-2 btn-danger"
+        id="delete"
+        class=" text-light mt-3 "
         (click)="deleteAllProducts()"
       >
         Delete All Products
-      </button>
+            </a>
             </div>
-  
+
           </div>
-  
+
         </div>
       </div>
     </div>
   </div>
   <!--=============================== large screen =============================-->
-  
-  
-  
+
+
+
   <div class="d-flex justify-content-center align-items-center m-5 p-3" *ngIf="!products || !products.length">
     <p style="font-size: 3rem; margin-top: -23rem;color: #22b687;">  Cart is empty</p>
     <img src="../../../assets/images/emptyt_co35.svg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
@@ -73,7 +73,7 @@
         <div class="card border-0 shadow">
           <div class="card-body">
             <app-cart (delete)="delete($event)" [product]="product" *ngFor="let product of products"></app-cart>
-  
+
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@
               <div class="p-2">
                 <button
               (click)="navigate()"
-  
+
                   type="button"
                   name=""
                   id=""
@@ -119,8 +119,8 @@
             type=""
             name=""
             id="delete"
-            class="btn btn-sm text-light mx-auto my-2 btn-danger"
-  
+            class=" deleteall  text-light  "
+
             (click)="deleteAllProducts()"
           >
             Delete All Products

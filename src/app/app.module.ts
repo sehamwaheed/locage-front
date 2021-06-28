@@ -86,6 +86,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { ProductCardReviewComponent } from './ProfileComponents/PendingReviews/product-card-review/product-card-review.component';
 import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
 import { CommentComponent } from './product-view/comment/comment.component';
+import { InboxComponent } from './ProfileComponents/inbox/inbox.component';
+import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-credit.component';
+import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
 @NgModule({
   declarations:[
 
@@ -143,7 +146,10 @@ import { CommentComponent } from './product-view/comment/comment.component';
     PaymentComponent,
     ProductCardReviewComponent,
     PendingReviewsComponent,
-    CommentComponent
+    CommentComponent,
+    InboxComponent,
+    LocageCreditComponent,
+    RecentlyViewedComponent
 
    ],
   imports: [

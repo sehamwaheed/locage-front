@@ -225,7 +225,7 @@
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate5, max)+'%'"
+                  [style.width]="calcWidthPercent(rate5, max)+'%' || '%' +0 "
 
                   aria-valuemin="0"
                   aria-valuemax="100"
@@ -246,7 +246,7 @@
                   class="progress-bar "
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate4, max)+'%'"
+                  [style.width]="calcWidthPercent(rate4, max)+'%' || '%' +0 "
 
                   aria-valuemin="0"
                   aria-valuemax="100"
@@ -269,7 +269,7 @@
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate3, max)+'%'"
+                  [style.width]="calcWidthPercent(rate3, max)+'%' ||   '%' +0"
 
                   aria-valuemin="0"
                   aria-valuemax="100"
@@ -290,7 +290,7 @@
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate2, max)+'%'"
+                  [style.width]="calcWidthPercent(rate2, max)+'%' || '%' +0"
 
                   aria-valuemin="0"
                   aria-valuemax="100"
@@ -311,7 +311,7 @@
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate1, max)+'%'"
+                  [style.width]="calcWidthPercent(rate1, max)+'%' || '%' +0 "
 
                   aria-valuemin="0"
                   aria-valuemax="100"
@@ -329,11 +329,11 @@
         <!-- ---------------------------------- . ---------------------------------- -->
       </div>
       <div class="comment col-12 col-md-8" >
-        <div class=" d-flex flex-column justify-content-start "   >
+        <div class=" d-flex flex-column justify-content-start " *ngIf="reviews"  >
           <app-comment *ngFor="let item of reviews; let i = index"
-            [name]="item.userId.firstName + item.userId.lastName || 'loloa'"
-            [comment]="item.comment || 'ylaa ba2'"
-            [date]="item.createAt || '22/Jun'"
+            [name]="item?.userId?.firstName + item?.userId?.lastName || 'loloa'"
+            [comment]="item?.comment || 'ylaa ba2'"
+            [date]="item?.createAt || '22/Jun'"
           ></app-comment>
         </div>
       </div>
