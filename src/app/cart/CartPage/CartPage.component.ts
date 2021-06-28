@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/Services/cart.service';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-CartPage',
@@ -13,6 +14,7 @@ export class CartPageComponent implements OnInit {
 
   logged = false;
 
+  loading = false;
   products = [];
   constructor(public cartService: CartService, private userServ:UserService, private route: Router) { }
 
@@ -37,20 +39,30 @@ export class CartPageComponent implements OnInit {
   }
 
   deleteAllProducts(){
-    this.cartService.removeAll();
+    this.cartService.removeAll().subscribe(() => {
+      this.getProducts();
+    });
   }
 
   getProducts(){
+    this.loading = true;
     this.userServ.loggedIn().subscribe(res => {
-      console.log(res);
       if(res){
          // to add
      this.cartService.getProductFromRequest().subscribe(res => {
+      this.loading = false;
+
       this.products= res['result']
     });
       }else{
         this.products=this.cartService.getProductsFromLocal();
+    this.loading = false;
+
       }
+    }, () => {
+      Swal.fire("Error has been occured", '', "error");
+      this.loading = false;
+
     })
     
 
@@ -65,9 +77,10 @@ export class CartPageComponent implements OnInit {
   }
 
   delete(id){
-    this.cartService.deleteProduct(id);
-    this.getProducts();
-
-    console.log(id)
+    this.cartService.deleteProductFromReq(id).subscribe(res => {
+      this.getProducts();
+      
+    });
+    
   }
 }

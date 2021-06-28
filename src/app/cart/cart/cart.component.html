@@ -28,21 +28,21 @@
         </div>
         <!--* icon --->
         <div class="d-flex flex-row justify-content-start">
-          <button (click)="addToFav()" [disabled]="!logged" [title]="logged?'':'You must log in'" type="button" class="icon-btn btn">
+          <button (click)="addToFav()" *ngIf="logged" [title]="logged?'':'You must log in'" type="button" class="icon-btn btn">
             <i class="fas fa-heart"></i>
           </button>
-          <button [disabled]="!logged" [title]="logged?'':'You must log in'" (click)="deleteItem()" type="button" class="icon-btn btn">
+          <button *ngIf="logged" (click)="deleteItem()" type="button" class="icon-btn btn">
             <i class="fas fa-trash-alt"></i>
           </button>
           
         </div>
       </div>
     </div>
-    <div class="col-6 col-lg-3 d-flex flex-column align-items-center">
+    <div  class="col-6 col-lg-3 d-flex flex-column align-items-center">
       <div class="quantity">
         <div class="d-flex flex-row">
           <div>
-            <button  type="button" class="quant-add btn" (click)="increase() ">
+            <button  type="button" [disabled]="!logged"  [title]="logged?'':'You must log in'" class="quant-add btn" (click)="increase() ">
               <i class="fas fa-plus"></i>
             </button>
           </div>
@@ -50,7 +50,7 @@
             <p class="quant-num-txt">{{product.quantity}}</p>
           </div>
           <div>
-            <button type="button" class="quant-sub btn" (click)="decreac()">
+            <button type="button" [disabled]="!logged"  [title]="logged?'':'You must log in'" class="quant-sub btn" (click)="decreac()">
               <i class="fas fa-minus"></i>
             </button>
           </div>
