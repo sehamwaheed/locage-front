@@ -23,6 +23,7 @@ import { AddressBookComponent } from './ProfileComponents/address-book/address-b
 import { AddressBookDetailsComponent } from './ProfileComponents/address-book-details/address-book-details.component';
 import { WishListComponent } from './ProfileComponents/wish-list/wish-list.component';
 import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
+import { AuthPageComponent } from './AuthPages/auth-page/auth-page.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
@@ -80,32 +81,30 @@ const routes: Routes = [
             canActivate: [AuthGuardService],
           },
           {
-            path:'pending-review',
-            component:PendingReviewsComponent,
+            path: 'pending-review',
+            component: PendingReviewsComponent,
             canActivate: [AuthGuardService],
-          }
+          },
         ],
+      },
+      { path: 'start-selling', component: StartSellingComponent },
+      {
+        path: 'create-store',
+        component: CreateStoreComponent,
+        canActivate: [AuthGuardService],
       },
     ],
   },
-
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'recover/:token', component: RecoverComponent },
-  { path: 'start-selling', component: StartSellingComponent },
-  { path: 'create-store', component: CreateStoreComponent },
-
   {
-    path: 'create-store',
-    component: CreateStoreComponent,
-    canActivate: [AuthGuardService],
+    path: '',
+    component: AuthPageComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'recover/:token', component: RecoverComponent },
+    ],
   },
-
-
-
-
-
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];

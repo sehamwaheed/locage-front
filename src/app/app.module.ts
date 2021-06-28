@@ -86,6 +86,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ProductCardReviewComponent } from './ProfileComponents/PendingReviews/product-card-review/product-card-review.component';
 import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
 import { CommentComponent } from './product-view/comment/comment.component';
+import { AuthPageComponent } from './AuthPages/auth-page/auth-page.component';
 @NgModule({
   declarations:[
 
@@ -143,7 +144,8 @@ import { CommentComponent } from './product-view/comment/comment.component';
     PaymentComponent,
     ProductCardReviewComponent,
     PendingReviewsComponent,
-    CommentComponent
+    CommentComponent,
+    AuthPageComponent
 
    ],
   imports: [
