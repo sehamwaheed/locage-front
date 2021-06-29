@@ -34,7 +34,6 @@ export class CategoryService {
   getSubCategoriesByCategoryId(categoryId:any) {
     //https://locage.herokuapp.com/api/v1/category/:id/subcategory
     return this.http.get(this.uri+categoryId+'/subcategory').subscribe((c:any)=>{
-      console.log("mn servic ",c);
 
       this.subCategory=c.result;
       this.subCategoryLoad.next([...this.subCategory])

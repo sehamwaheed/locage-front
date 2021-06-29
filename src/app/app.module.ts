@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
@@ -8,7 +7,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -86,12 +85,15 @@ import { PaymentComponent } from './payment/payment.component';
 import { ProductCardReviewComponent } from './ProfileComponents/PendingReviews/product-card-review/product-card-review.component';
 import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
 import { CommentComponent } from './product-view/comment/comment.component';
+import { AuthPageComponent } from './AuthPages/auth-page/auth-page.component';
 import { InboxComponent } from './ProfileComponents/inbox/inbox.component';
 import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-credit.component';
 import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
-@NgModule({
-  declarations:[
+import { NgxBraintreeModule } from 'ngx-braintree';
+import { OrderStatusComponent } from './SharedComponent/order-status/order-status.component';
 
+@NgModule({
+  declarations: [
     AppComponent,
     NavbarComponent,
     SearchComponent,
@@ -147,11 +149,13 @@ import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/rec
     ProductCardReviewComponent,
     PendingReviewsComponent,
     CommentComponent,
+    AuthPageComponent,
+    OrderStatusComponent,
     InboxComponent,
     LocageCreditComponent,
     RecentlyViewedComponent
-
    ],
+  
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -184,9 +188,8 @@ import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/rec
     ReactiveFormsModule,
     MatSliderModule,
     NgImageSliderModule,
-     NgxImageZoomModule,
-
-
+    NgxImageZoomModule,
+    NgxBraintreeModule,
   ],
   providers: [
     FormBuilder,
@@ -196,7 +199,7 @@ import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/rec
     ProductService,
     CategoryService,
     ShipmentService,
-    WishlistService
+    WishlistService,
   ],
   bootstrap: [AppComponent],
   exports: [TruncatePipe],

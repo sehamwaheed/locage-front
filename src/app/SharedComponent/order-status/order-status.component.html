@@ -1,0 +1,18 @@
+<div id="formImg">
+    <div *ngIf="isTrue; else firstImage; then secondImage"></div>
+    <ng-template #firstImage>
+      <div>
+        <img id="image" src="../../../assets/images/svg/undraw_cancel_u1it.svg" />
+      </div>
+    </ng-template>
+  
+    <ng-template #secondImage>
+      <div>
+        <img id="image" src="../../../assets/images/svg/undraw_Order_confirmed_re_g0if.svg" />
+      </div>
+    </ng-template>
+    <div>
+      <span>You Will Redirect To Home in 5 Seconds</span>
+    </div>
+  </div>
+  

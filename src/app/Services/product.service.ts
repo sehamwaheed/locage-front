@@ -22,7 +22,6 @@ export class ProductService {
     return this.http
       .get<{ products: ProductModel[] }>(this.api)
       .subscribe((data: any) => {
-        console.log(data);
         this.products = data?.docs;
         this.productsLoad.next([...this.products]);
       });
@@ -103,8 +102,6 @@ export class ProductService {
         'https://locage.herokuapp.com/api/v1/reviews/product/' + id
       )
       .subscribe((r: any) => {
-        console.log("allReview",r);
-
         this.reviews=r;
         this.reviewsLoad.next(this.reviews)
       });
