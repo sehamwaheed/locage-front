@@ -8,79 +8,72 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-CartPage',
   templateUrl: './CartPage.component.html',
-  styleUrls: ['./CartPage.component.scss']
+  styleUrls: ['./CartPage.component.scss'],
 })
 export class CartPageComponent implements OnInit {
-
   logged = false;
+  totalPrice?: number;
 
   loading = false;
   products = [];
-  constructor(public cartService: CartService, private userServ:UserService, private route: Router) { }
+  constructor(
+    public cartService: CartService,
+    private userServ: UserService,
+    private route: Router
+  ) {
+    this.cartService.totalPrice.subscribe((value) => {
+      this.totalPrice = value;
+    });
+  }
 
- 
   ngOnInit(): void {
-  
-    this.userServ.loggedIn().subscribe(res => {
+    this.userServ.loggedIn().subscribe((res) => {
       this.logged = res;
-    })
+    });
     this.getProducts();
-   
   }
 
-  navigate(){
-
-    if(this.logged){
-      this.route.navigate(['/']);
-    }else{
-      this.route.navigate(['/login']);
-
-    }
+  navigate() {
+    this.route.navigate(['home/checkout']);
   }
 
-  deleteAllProducts(){
+  deleteAllProducts() {
     this.cartService.removeAll().subscribe(() => {
       this.getProducts();
     });
   }
 
-  getProducts(){
+  getProducts() {
     this.loading = true;
-    this.userServ.loggedIn().subscribe(res => {
-      if(res){
-         // to add
-     this.cartService.getProductFromRequest().subscribe(res => {
-      this.loading = false;
+    this.userServ.loggedIn().subscribe(
+      (res) => {
+        if (res) {
+          // to add
+          this.cartService.getProductFromRequest().subscribe((res) => {
+            this.loading = false;
 
-      this.products= res['result']
-    });
-      }else{
-        this.products=this.cartService.getProductsFromLocal();
-    this.loading = false;
-
+            this.products = res['result'];
+          });
+        } else {
+          this.products = this.cartService.getProductsFromLocal();
+          this.loading = false;
+        }
+      },
+      () => {
+        Swal.fire('Error has been occured', '', 'error');
+        this.loading = false;
       }
-    }, () => {
-      Swal.fire("Error has been occured", '', "error");
-      this.loading = false;
-
-    })
-    
-
-  
+    );
   }
   update(product, quantity) {
     product.quantity = quantity;
     this.cartService.updateProduct(product);
-   this.getProducts();
-
-    console.log(this.products)
+    this.getProducts();
   }
 
-  delete(id){
-    this.cartService.deleteProductFromReq(id).subscribe(res => {
+  delete(id) {
+    this.cartService.deleteProductFromReq(id).subscribe((res) => {
       this.getProducts();
-      
     });
-    
   }
 }

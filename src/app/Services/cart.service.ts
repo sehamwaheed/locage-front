@@ -65,6 +65,9 @@ export class CartService {
       `https://locage.herokuapp.com/api/v1/carts/emptyCart`
     );
   }
+  getUserCart() {
+    return this.http.get(`https://locage.herokuapp.com/api/v1/carts/items`);
+  }
 
   addProduct(product: ProductModel, quantity: number) {
     product.quantity = quantity || 0;
@@ -140,7 +143,7 @@ export class CartService {
         this.subtotalPrice += e.price * e.quantity;
         this.totalDiscount += e.discount || 0;
         this.totalPrice.next(
-          this.totalPrice.value + this.subtotalPrice + 19 || 0
+          this.totalPrice.value + this.subtotalPrice + 19 || 0.0
         );
         //this.totalPrice += this.subtotalPrice + 19 || 0;
       });
@@ -151,7 +154,7 @@ export class CartService {
           this.subtotalPrice += e.price * e.quantity;
           this.totalDiscount += e.discount || 0;
           this.totalPrice.next(
-            this.totalPrice.value + this.subtotalPrice + 19 || 0
+            this.totalPrice.value + this.subtotalPrice + 19 || 0.0
           );
           //this.totalPrice += this.subtotalPrice + 19 || 0;
         });
