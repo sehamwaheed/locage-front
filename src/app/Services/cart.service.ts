@@ -20,17 +20,9 @@ export class CartService {
     private userService: UserService
   ) {
     this.totalPrice = new BehaviorSubject<number>(0.0);
-
     this.userService.loggedIn().subscribe((res) => {
       this.isLoggedIn = res;
       this.calcTotals();
-    });
-  }
-
-  whenLogOut() {
-    this.getProductFromRequest().subscribe((res) => {
-      const arr = res['result'];
-      this.locals.store('cart', JSON.stringify(arr));
     });
   }
 
@@ -46,7 +38,7 @@ export class CartService {
     }
 
     setTimeout(() => {
-      this.getProductFromRequest().subscribe((res) => {
+      this.getProductFromRequest().subscribe((res) => {        
         this.locals.store('cart', JSON.stringify([]));
         this.products = res['result'];
       });
@@ -133,31 +125,18 @@ export class CartService {
   }
 
   calcTotals() {
-    this.totalDiscount = 0.0;
-    this.subtotalPrice = 0.0;
-    this.totalPrice.next(0.0);
-
     if (this.locals.retrieve('cart') && !this.isLoggedIn) {
+      this.totalPrice.next(0.0);
       this.products = JSON.parse(this.locals.retrieve('cart'));
       this.products.map((e) => {
         this.subtotalPrice += e.price * e.quantity;
         this.totalDiscount += e.discount || 0;
-        this.totalPrice.next(
-          this.totalPrice.value + this.subtotalPrice + 19 || 0.0
-        );
-        //this.totalPrice += this.subtotalPrice + 19 || 0;
+        this.totalPrice.next(this.totalPrice.value + this.subtotalPrice || 0.0);
+        //this.totalPrice += this.subtotalPrice  || 0;
       });
     } else if (this.isLoggedIn) {
-      this.getProductFromRequest().subscribe((res) => {
-        this.products = res['result'];
-        this.products.forEach((e) => {
-          this.subtotalPrice += e.price * e.quantity;
-          this.totalDiscount += e.discount || 0;
-          this.totalPrice.next(
-            this.totalPrice.value + this.subtotalPrice + 19 || 0.0
-          );
-          //this.totalPrice += this.subtotalPrice + 19 || 0;
-        });
+      this.getUserCart().subscribe((res: any) => {
+        this.totalPrice.next(res.cart.totalprice || 0.0);
       });
     }
   }
