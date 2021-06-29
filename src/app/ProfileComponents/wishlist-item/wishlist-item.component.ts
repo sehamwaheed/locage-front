@@ -1,7 +1,7 @@
 import { ProductModel } from './../../Models/ProductModel';
 import { Component, Input, OnInit } from '@angular/core';
 import { WishlistService } from 'src/app/Services/wishlist.service';
-import {CartService} from 'src/app/Services/cart.service';
+import { CartService } from 'src/app/Services/cart.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -12,7 +12,10 @@ import Swal from 'sweetalert2';
 export class WishlistItemComponent implements OnInit {
   @Input() item: ProductModel;
 
-  constructor(private wishlistService: WishlistService , public cartService : CartService) {}
+  constructor(
+    private wishlistService: WishlistService,
+    public cartService: CartService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -22,8 +25,9 @@ export class WishlistItemComponent implements OnInit {
     });
   }
 
-  addToCart(){
-    this.cartService.addProduct(this.item , this.item.quantity);
+  addToCart() {
+    this.cartService.addProduct(this.item, 1);
+    this.removeItem(this.item._id);
     Swal.fire('Added', '', 'success');
   }
 }

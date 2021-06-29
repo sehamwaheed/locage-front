@@ -60,11 +60,21 @@
   </div>
   <!--=============================== large screen =============================-->
 
-
-
-  <div class="d-flex justify-content-center align-items-center m-5 p-3" *ngIf="!products || !products.length">
-    <p style="font-size: 3rem; margin-top: -23rem;color: #22b687;">  Cart is empty</p>
-    <img src="../../../assets/images/emptyt_co35.svg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
+  <div
+    class="d-flex justify-content-center align-items-center m-5 p-3"
+    *ngIf="!products || !products.length"
+  >
+    <p style="font-size: 3rem; margin-top: -23rem; color: #22b687">
+      Cart is empty
+    </p>
+    <img
+      src="../../../assets/images/emptyt_co35.svg"
+      class="
+        img-fluid
+        ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}
+      "
+      alt=""
+    />
   </div>
   <div class="wrapper" *ngIf="products && products.length">
     <div class="d-flex flex-row">
@@ -76,8 +86,6 @@
               [product]="product"
               *ngFor="let product of products"
             ></app-cart>
-            <app-cart (delete)="delete($event)" [product]="product" *ngFor="let product of products"></app-cart>
-
           </div>
         </div>
       </div>
@@ -92,14 +100,14 @@
                 <div class="p-2 d-flex justify-content-between">
                   <p class="txt">Subtotal Price</p>
                   <p class="txt">
-                    {{ cartService.subtotalPrice }} <span>$</span>
+                    {{ cartService.subtotalPrice || 0.0 }} <span>$</span>
                   </p>
                 </div>
                 <mat-divider> </mat-divider>
                 <div class="p-2 d-flex justify-content-between">
                   <p class="txt">Discount</p>
                   <p class="txt">
-                    {{ cartService.totalDiscount }} <span>$</span>
+                    {{ cartService.totalDiscount || 0.0 }} <span>$</span>
                   </p>
                 </div>
                 <mat-divider> </mat-divider>
