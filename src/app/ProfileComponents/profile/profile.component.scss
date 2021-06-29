@@ -21,6 +21,11 @@
   }
 }
 
+.icon{
+  font-size: 2.4ex;
+  margin-right: 1em;
+}
+
 @media screen and (max-width: 1024px) {
   .container {
     display: grid;
@@ -92,4 +97,9 @@
 
 span {
   cursor: pointer;
+}
+
+.activ{
+  color: #22b687;
+  background-color: #f6fcfa;
 }

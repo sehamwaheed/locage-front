@@ -86,7 +86,9 @@ import { ProductCardReviewComponent } from './ProfileComponents/PendingReviews/p
 import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
 import { CommentComponent } from './product-view/comment/comment.component';
 import { AuthPageComponent } from './AuthPages/auth-page/auth-page.component';
-
+import { InboxComponent } from './ProfileComponents/inbox/inbox.component';
+import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-credit.component';
+import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
 import { NgxBraintreeModule } from 'ngx-braintree';
 import { OrderStatusComponent } from './SharedComponent/order-status/order-status.component';
 
@@ -149,7 +151,11 @@ import { OrderStatusComponent } from './SharedComponent/order-status/order-statu
     CommentComponent,
     AuthPageComponent,
     OrderStatusComponent,
-  ],
+    InboxComponent,
+    LocageCreditComponent,
+    RecentlyViewedComponent
+   ],
+  
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

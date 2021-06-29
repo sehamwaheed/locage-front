@@ -28,6 +28,9 @@ import { PaymentComponent } from './payment/payment.component';
 import { AboutUsComponent } from './AboutUsComponents/about-us/about-us.component';
 import { ContactsComponent } from './contactUsComponants/contacts/contacts.component';
 import { OrderStatusComponent } from './SharedComponent/order-status/order-status.component';
+import { InboxComponent } from './ProfileComponents/inbox/inbox.component';
+import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-credit.component';
+import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
@@ -62,8 +65,24 @@ const routes: Routes = [
             canActivate: [AuthGuardService],
           },
           {
+            path: 'inbox',
+            component: InboxComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'locageCredit',
+            component: LocageCreditComponent,
+            canActivate: [AuthGuardService],
+          },
+
+          {
             path: 'wishlist',
             component: WishListComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'recently_View',
+            component: RecentlyViewedComponent,
             canActivate: [AuthGuardService],
           },
           {

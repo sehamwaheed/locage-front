@@ -1,25 +1,39 @@
 <div class="container">
   <div class="d-none d-sm-none d-md-block">
     <div class="list-group">
-      <span
+      <div
         class="list-group-item list-group-item-action"
         [routerLink]="['./account']"
-        >My Account</span
+        routerLinkActive="activ "
+        ><i class="icon far fa-user  " ></i>
+        <span> My Account</span>
+        </div
       >
-      <span class="list-group-item list-group-item-action">Orders</span>
-      <span class="list-group-item list-group-item-action">Inbox</span>
-      <span class="list-group-item list-group-item-action"
+      <div class="list-group-item list-group-item-action"> <i class=" icon fas fa-box-open "  ></i>  <span>Orders</span>   </div>
+      <div class="list-group-item list-group-item-action align-items-center "
+      [routerLink]="['./inbox']"
+      routerLinkActive="activ "
+      > <i class="icon far fa-envelope "></i> <span>Inbox</span>  </div>
+      <div class="list-group-item list-group-item-action"
       [routerLink]="['./pending-review']"
-        >Pending Reviews</span
+       routerLinkActive="activ "
+        > <i class="icon far fa-comment-alt"></i> <span>Pending Reviews</span></div
       >
-      <span class="list-group-item list-group-item-action">Locage Credit</span>
-      <span
+      <div class="list-group-item list-group-item-action"
+      [routerLink]="['./locageCredit']"
+      routerLinkActive="activ "
+      ><i class="icon far fa-credit-card"></i> <span>Locage Credit</span></div>
+      <div
         class="list-group-item list-group-item-action"
         [routerLink]="['./wishlist']"
-        >Wish List</span
+        routerLinkActive="activ "
+        ><i class="icon far fa-heart"></i>
+       <span> Wish List</span></div
       >
-      <span class="list-group-item list-group-item-action"
-        >Recently Viewed</span
+      <div class="list-group-item list-group-item-action"
+      [routerLink]="['./recently_View']"
+      routerLinkActive="activ "
+        ><i class="icon fas fa-history"></i> <span>Recently Viewed</span></div
       >
     </div>
 
@@ -27,16 +41,19 @@
       <span
         class="list-group-item list-group-item-action"
         [routerLink]="['./update-account']"
+        routerLinkActive="activ "
         >Update Account</span
       >
       <span
         class="list-group-item list-group-item-action"
         [routerLink]="['./address']"
+        routerLinkActive="activ "
         >Address</span
       >
       <span
         class="list-group-item list-group-item-action"
         [routerLink]="['./update-password']"
+        routerLinkActive="activ "
         >Change Password</span
       >
       <span class="list-group-item list-group-item-action"
