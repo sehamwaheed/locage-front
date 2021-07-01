@@ -15,7 +15,7 @@ export class ProfileButtonComponent implements OnInit {
     private cartService: CartService
   ) {
     this.userService.returnUserDetails().subscribe((user) => {
-      this.currentUser = user;
+      this.currentUser = user;      
     });
   }
 
