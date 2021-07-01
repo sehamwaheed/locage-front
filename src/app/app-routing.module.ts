@@ -23,6 +23,11 @@ import { AddressBookComponent } from './ProfileComponents/address-book/address-b
 import { AddressBookDetailsComponent } from './ProfileComponents/address-book-details/address-book-details.component';
 import { WishListComponent } from './ProfileComponents/wish-list/wish-list.component';
 import { PendingReviewsComponent } from './ProfileComponents/PendingReviews/PendingReviews.component';
+import { AuthPageComponent } from './AuthPages/auth-page/auth-page.component';
+import { PaymentComponent } from './payment/payment.component';
+import { AboutUsComponent } from './AboutUsComponents/about-us/about-us.component';
+import { ContactsComponent } from './contactUsComponants/contacts/contacts.component';
+import { OrderStatusComponent } from './SharedComponent/order-status/order-status.component';
 import { InboxComponent } from './ProfileComponents/inbox/inbox.component';
 import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-credit.component';
 import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
@@ -42,6 +47,8 @@ const routes: Routes = [
       { path: 'view/:id', component: ProductViewComponent },
       { path: 'sub/:id', component: SubCategoryInCtegoryComponent },
       { path: 'cart', component: CartPageComponent },
+      { path: 'about', component: AboutUsComponent },
+      { path: 'contact', component: ContactsComponent },
       {
         path: 'profile',
         component: ProfileComponent,
@@ -99,32 +106,40 @@ const routes: Routes = [
             canActivate: [AuthGuardService],
           },
           {
-            path:'pending-review',
-            component:PendingReviewsComponent,
+            path: 'pending-review',
+            component: PendingReviewsComponent,
             canActivate: [AuthGuardService],
-          }
+          },
         ],
+      },
+      { path: 'start-selling', component: StartSellingComponent },
+      {
+        path: 'create-store',
+        component: CreateStoreComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'checkout',
+        component: PaymentComponent,
+        canActivate: [AuthGuardService],
+      },
+      {
+        path: 'order-status/:status',
+        component: OrderStatusComponent,
+        canActivate: [AuthGuardService],
       },
     ],
   },
-
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'recover/:token', component: RecoverComponent },
-  { path: 'start-selling', component: StartSellingComponent },
-  { path: 'create-store', component: CreateStoreComponent },
-
   {
-    path: 'create-store',
-    component: CreateStoreComponent,
-    canActivate: [AuthGuardService],
+    path: '',
+    component: AuthPageComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'recover/:token', component: RecoverComponent },
+    ],
   },
-
-
-
-
-
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent },
 ];
