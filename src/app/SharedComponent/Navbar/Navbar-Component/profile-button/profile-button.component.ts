@@ -20,6 +20,9 @@ export class ProfileButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  navToDashboard() {
+    window.open('https://locage-dashboard.vercel.app/', '_blank');
+  }
   logout() {
     this.userService.logout();
     this.cartService.calcTotals();
