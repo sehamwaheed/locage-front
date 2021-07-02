@@ -7,8 +7,8 @@
   </div>
 </div>
 
-<ng-container *ngIf="!loading">
-  <div class="d-block d-lg-none col-12 mt-4">
+<ng-container *ngIf="!loading ">
+  <div *ngIf="!(!products || !products.length)" class="d-block  d-lg-none col-12 mt-4">
     <div class="card-summary shadow">
       <div class="card-body">
         <div class="d-flex flex-column">
@@ -59,22 +59,12 @@
     </div>
   </div>
   <!--=============================== large screen =============================-->
-
-  <div
-    class="d-flex justify-content-center align-items-center m-5 p-3"
-    *ngIf="!products || !products.length"
-  >
-    <p style="font-size: 3rem; margin-top: -23rem; color: #22b687">
-      Cart is empty
-    </p>
-    <img
-      src="../../../assets/images/emptyt_co35.svg"
-      class="
-        img-fluid
-        ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}
-      "
-      alt=""
-    />
+  
+  
+  
+  <div class="d-flex justify-content-center align-items-center m-5 p-3" *ngIf="!products || !products.length">
+    <p style="font-size: 3rem; line-height: 1;padding-left:3px ;color: #22b687;">  Cart is empty</p>
+    <img src="../../../assets/images/emptyt_co35.svg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">
   </div>
   <div class="wrapper" *ngIf="products && products.length">
     <div class="d-flex flex-row">

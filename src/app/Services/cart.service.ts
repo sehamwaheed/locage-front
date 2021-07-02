@@ -96,10 +96,14 @@ export class CartService {
     this.calcTotals();
   }
 
-  deleteProductFromReq(_id: string) {
-    return this.http
-      .delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`)
-      .pipe(map(() => this.calcTotals()));
+  deleteProductFromReq(_id: string){
+   return this.http.delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`).pipe(
+    
+    map(() => this.calcTotals())
+
+   
+);
+  
   }
 
   updateProduct(product: ProductModel) {
