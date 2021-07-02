@@ -111,7 +111,13 @@
                 ></i>
               </div>
             </div>
+            <div *ngIf="product.quantity <= 10">
+              <small class="text-danger"
+                >Only {{ product.quantity }} left in stock</small
+              >
+            </div>
           </div>
+
           <div
             *ngIf="
               product.quantity <= 0;
@@ -119,7 +125,6 @@
               else addToCartComponent
             "
           ></div>
-
           <ng-template #outOfStockComponent>
             <div>Out Of Stock</div>
           </ng-template>
