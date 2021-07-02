@@ -82,7 +82,7 @@
         </div>
 
         <div class="d-flex justify-content-between mt-5 p-3">
-          <div class="quantitySection">
+          <div class="quantitySection" *ngIf="product.quantity > 0">
             <div
               class="quantityText p-1"
               style="font-size: 1.5em; font-weight: 500"
@@ -97,7 +97,7 @@
                 <i
                   class="fas fa-plus-circle"
                   style="font-size: 2em; color: #38bd92"
-                  (click)="count = count + 1"
+                  (click)="increase()"
                 ></i>
               </div>
               <div class="p-2">
@@ -112,10 +112,22 @@
               </div>
             </div>
           </div>
+          <div
+            *ngIf="
+              product.quantity <= 0;
+              then outOfStockComponent;
+              else addToCartComponent
+            "
+          ></div>
 
-          <button (click)="addToCart()" class="btn">
-            Add to Cart <i class="fas fa-shopping-cart"></i>
-          </button>
+          <ng-template #outOfStockComponent>
+            <div>Out Of Stock</div>
+          </ng-template>
+          <ng-template #addToCartComponent>
+            <button (click)="addToCart()" class="btn">
+              Add to Cart <i class="fas fa-shopping-cart"></i>
+            </button>
+          </ng-template>
         </div>
         <hr />
       </div>
@@ -197,13 +209,13 @@
   </div>
 
   <div class="customerReviwe card mt-5">
-    <div class="card-header text-left font-weight-bold h5" style="color: #184052">
+    <div
+      class="card-header text-left font-weight-bold h5"
+      style="color: #184052"
+    >
       Customer Reviewe
     </div>
-    <div
-      class="card-body d-flex flex-column flex-md-row"
-
-    >
+    <div class="card-body d-flex flex-column flex-md-row">
       <div class="col-12 col-md-4">
         <div class="rating d-flex justify-content-center m-3">
           <bar-rating
@@ -225,12 +237,11 @@
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate5, max)+'%' || '%' +0 "
-
+                  [style.width]="calcWidthPercent(rate5, max) + '%' || '%' + 0"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
-                {{calcWidthPercent(rate5, max)}} %
+                  {{ calcWidthPercent(rate5, max) }} %
                 </div>
               </div>
             </div>
@@ -240,22 +251,19 @@
             <div class="col-2 d-flex align-items-center justify-content-start">
               <label> 4 stars</label>
             </div>
-            <div class="col-10 ">
+            <div class="col-10">
               <div class="progress">
                 <div
-                  class="progress-bar "
+                  class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate4, max)+'%' || '%' +0 "
-
+                  [style.width]="calcWidthPercent(rate4, max) + '%' || '%' + 0"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
-                {{calcWidthPercent(rate4, max)}} %
+                  {{ calcWidthPercent(rate4, max) }} %
                 </div>
-
               </div>
-
             </div>
           </div>
           <!--* 3star --->
@@ -269,12 +277,11 @@
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate3, max)+'%' ||   '%' +0"
-
+                  [style.width]="calcWidthPercent(rate3, max) + '%' || '%' + 0"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
-                {{calcWidthPercent(rate3, max)}} %
+                  {{ calcWidthPercent(rate3, max) }} %
                 </div>
               </div>
             </div>
@@ -290,12 +297,11 @@
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate2, max)+'%' || '%' +0"
-
+                  [style.width]="calcWidthPercent(rate2, max) + '%' || '%' + 0"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
-                  {{calcWidthPercent(rate2, max)}} %
+                  {{ calcWidthPercent(rate2, max) }} %
                 </div>
               </div>
             </div>
@@ -305,32 +311,29 @@
             <div class="col-2 d-flex align-items-center justify-content-start">
               <label> 1 stars</label>
             </div>
-            <div class="col-10 ">
+            <div class="col-10">
               <div class="progress">
                 <div
                   class="progress-bar"
                   id="barprogress"
                   role="progressbar"
-                  [style.width]="calcWidthPercent(rate1, max)+'%' || '%' +0 "
-
+                  [style.width]="calcWidthPercent(rate1, max) + '%' || '%' + 0"
                   aria-valuemin="0"
                   aria-valuemax="100"
                 >
-                {{calcWidthPercent(rate1, max)}} %
+                  {{ calcWidthPercent(rate1, max) }} %
                 </div>
-
               </div>
-
             </div>
-
           </div>
         </div>
 
         <!-- ---------------------------------- . ---------------------------------- -->
       </div>
-      <div class="comment col-12 col-md-8" >
-        <div class=" d-flex flex-column justify-content-start " *ngIf="reviews"  >
-          <app-comment *ngFor="let item of reviews; let i = index"
+      <div class="comment col-12 col-md-8">
+        <div class="d-flex flex-column justify-content-start" *ngIf="reviews">
+          <app-comment
+            *ngFor="let item of reviews; let i = index"
             [name]="item?.userId?.firstName + item?.userId?.lastName || 'loloa'"
             [comment]="item?.comment || 'ylaa ba2'"
             [date]="item?.createAt || '22/Jun'"

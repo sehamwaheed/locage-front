@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div *ngIf="productFromService" class="wrapper">
   <div class="row no-gutters">
     <div
       class="
@@ -10,7 +10,7 @@
       "
     >
       <img
-        src="{{product.photos[0]}}"
+        src="{{ product.photos[0] }}"
         alt="product-img"
         class="product-img"
         onerror="this.src='../../../../assets/images/images.png'"
@@ -18,45 +18,79 @@
     </div>
     <div class="p-1 pl-4 col-6 col-lg-3">
       <div class="details">
-        <div class="product-name">{{product.title}}</div>
+        <div class="product-name">{{ product.title }}</div>
         <div class="product-detailes">
-           {{product.description}}
+          {{ product.description }}
         </div>
-       
+
         <div class="price">
-          <p>{{product.price}}<span>$</span></p>
+          <p>{{ productFromService.price }}<span>$</span></p>
         </div>
         <!--* icon --->
         <div class="d-flex flex-row justify-content-start">
-          <button (click)="addToFav()" *ngIf="logged" [title]="logged?'':'You must log in'" type="button" class="icon-btn btn">
+          <button
+            (click)="addToFav()"
+            *ngIf="logged"
+            [title]="logged ? '' : 'You must log in'"
+            type="button"
+            class="icon-btn btn"
+          >
             <i class="fas fa-heart"></i>
           </button>
-          <button *ngIf="logged" (click)="deleteItem()" type="button" class="icon-btn btn">
+          <button
+            *ngIf="logged"
+            (click)="deleteItem()"
+            type="button"
+            class="icon-btn btn"
+          >
             <i class="fas fa-trash-alt"></i>
           </button>
-          
         </div>
       </div>
     </div>
-    <div  class="col-6 col-lg-3 d-flex flex-column align-items-center">
+    <div class="col-6 col-lg-3 d-flex flex-column align-items-center">
       <div class="quantity">
-        <div class="d-flex flex-row">
-          <div>
-            <button  type="button" [disabled]="!logged"  [title]="logged?'':'You must log in'" class="quant-add btn" (click)="increase() ">
-              <i class="fas fa-plus"></i>
-            </button>
+        <div
+          *ngIf="
+            product.quantity <= 0;
+            then outOfStockComponent;
+            else quaComponent
+          "
+        ></div>
+
+        <ng-template #outOfStockComponent>
+          <div>Out Of Stock</div>
+        </ng-template>
+        <ng-template #quaComponent>
+          <div class="d-flex flex-row">
+            <div>
+              <button
+                type="button"
+                [disabled]="!logged"
+                [title]="logged ? '' : 'You must log in'"
+                class="quant-add btn"
+                (click)="increase()"
+              >
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="quant d-flex justify-content-center align-items-center">
+              <p class="quant-num-txt">{{ product.quantity }}</p>
+            </div>
+            <div>
+              <button
+                type="button"
+                [disabled]="!logged"
+                [title]="logged ? '' : 'You must log in'"
+                class="quant-sub btn"
+                (click)="decreac()"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
           </div>
-          <div class="quant d-flex justify-content-center align-items-center">
-            <p class="quant-num-txt">{{product.quantity}}</p>
-          </div>
-          <div>
-            <button type="button" [disabled]="!logged"  [title]="logged?'':'You must log in'" class="quant-sub btn" (click)="decreac()">
-              <i class="fas fa-minus"></i>
-            </button>
-          </div>
-        </div>
+        </ng-template>
       </div>
     </div>
-   
   </div>
 </div>

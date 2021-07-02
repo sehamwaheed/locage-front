@@ -45,6 +45,7 @@ export class PaymentComponent implements OnInit {
     };
     this.orderService.checkOut(body).subscribe((result: any) => {
       if (result.message == 'Order placed successfully.') {
+        this.cartService.calcTotals();
         this.router.navigate(['home/order-status', 'ok']);
       } else {
         this.router.navigate(['home/order-status', 'error']);
