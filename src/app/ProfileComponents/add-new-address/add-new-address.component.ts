@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ShipmentService } from 'src/app/Services/shipment.service';
 
 @Component({
@@ -13,10 +14,11 @@ export class AddNewAddressComponent implements OnInit {
   invalidAddress: boolean = false;
   eMsg: string;
   errorMsg: string;
-  @Input() opened: string;
-  @Output() notify = new EventEmitter<string>();
 
-  constructor(private shipmentService: ShipmentService) {}
+  constructor(
+    private shipmentService: ShipmentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.addAddressForm = new FormGroup({
@@ -37,13 +39,12 @@ export class AddNewAddressComponent implements OnInit {
       fullName: `${body.firstName} ${body.lastName}`,
       address: `${body.address} , ${body.city} , ${body.country}`,
       phoneNumber: body.phoneNumber,
-      primary: body.setDefault,
+      primary: body.setDefault ?? false,
     };
 
     this.shipmentService.createAddress(form).subscribe(
       () => {
-        this.opened = 'addressDetails';
-        this.notify.emit(this.opened);
+        this.router.navigate(['home/profile/address']);
       },
       (error) => {
         this.buttonSubmit = false;

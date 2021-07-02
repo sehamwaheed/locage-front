@@ -1,12 +1,18 @@
 <div class="card">
   <div class="card-header card-header-text">
     Address book
-    <button class="btn btn-submit" [routerLink]="['../update-address']">ADD NEW ADDRESS</button>
+    <button class="btn btn-submit" [routerLink]="['../update-address']">
+      ADD NEW ADDRESS
+    </button>
   </div>
   <div class="card-body">
     <div class="row">
       <div class="col-xl-6" *ngFor="let item of shipments">
-        <app-not-default-address [shipment]='item' ></app-not-default-address>
+        <app-not-default-address
+          [shipment]="item"
+          (notify)="removeIndex($event)"
+          (makeDefaultAddress)="makeDefaultAddress($event)"
+        ></app-not-default-address>
       </div>
     </div>
   </div>

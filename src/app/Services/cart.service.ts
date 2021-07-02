@@ -38,7 +38,7 @@ export class CartService {
     }
 
     setTimeout(() => {
-      this.getProductFromRequest().subscribe((res) => {        
+      this.getProductFromRequest().subscribe((res) => {
         this.locals.store('cart', JSON.stringify([]));
         this.products = res['result'];
       });
@@ -125,7 +125,10 @@ export class CartService {
   }
 
   calcTotals() {
+
     if (this.locals.retrieve('cart') && !this.isLoggedIn) {
+      this.subtotalPrice = 0.0;
+      this.totalDiscount = 0.0;
       this.totalPrice.next(0.0);
       this.products = JSON.parse(this.locals.retrieve('cart'));
       this.products.map((e) => {
@@ -136,6 +139,12 @@ export class CartService {
       });
     } else if (this.isLoggedIn) {
       this.getUserCart().subscribe((res: any) => {
+        this.subtotalPrice = 0.0;
+        this.totalDiscount = 0.0;
+        res.result.map((e) => {
+          this.subtotalPrice += e.price;
+          this.totalDiscount += e.discount || 0;
+        });
         this.totalPrice.next(res.cart.totalprice || 0.0);
       });
     }

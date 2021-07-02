@@ -1,8 +1,8 @@
 <div *ngIf="shipment" class="card card-not-default">
   <div class="card-body">
-    <p class="userName">{{ shipment.fullName }}</p>
-    <p>{{ shipment.address }}</p>
-    <p>{{ shipment.phoneNumber }}</p>
+    <p class="userName">{{ shipment!.fullName }}</p>
+    <p>{{ shipment!.address }}</p>
+    <p>{{ shipment!.phoneNumber }}</p>
   </div>
   <div class="card-footer">
     <button
@@ -12,11 +12,7 @@
     >
       SET AS DEFAULT
     </button>
-    <button
-      class="btn btn-set-Default btn-edit"
-      data-toggle="modal"
-      data-target="#modelId"
-    >
+    <button class="btn btn-set-Default btn-edit" (click)="deleteShipment()">
       <i class="fas fa-trash-alt"></i>
     </button>
     <button *ngIf="!shipment.primary" class="btn btn-set-Default btn-edit">
@@ -24,6 +20,7 @@
     </button>
   </div>
 </div>
+<br class="mb-1" />
 
 <!-- Modal -->
 <div
