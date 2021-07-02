@@ -10,7 +10,8 @@
       <form [formGroup]="registerForm">
         <div class="form-group">
           <label for="FirstName" style="color: #184052"> First Name</label>
-          <input id="FirstName" formControlName="firstName" type="text" class="form-control" [class.is-invalid]="
+          <input id="FirstName" formControlName="firstName" type="text" class="form-control" 
+          [class.is-invalid]="
               firstName?.invalid && (firstName?.dirty || firstName?.touched)
             " [class.is-valid]="firstName?.touched && !firstName?.invalid" />
 
@@ -23,6 +24,7 @@
           <small *ngIf="firstName?.errors?.maxlength && firstName?.touched" class="text-danger">
             "first name must be 30 characters maximum"
           </small>
+          
         </div>
         <div class="form-group">
           <label for="LastName" style="color: #184052"> LastName</label>
@@ -38,6 +40,7 @@
           <small *ngIf="lastName?.errors?.maxlength && lastName?.touched" class="text-danger">
             "last name must be 30 characters maximum"
           </small>
+         
         </div>
         <div class="form-group">
           <label for="email" style="color: #184052">Email</label>
