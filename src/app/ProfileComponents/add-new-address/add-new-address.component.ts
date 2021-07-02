@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ShipmentModel } from 'src/app/Models/shipmentModel';
 import { ShipmentService } from 'src/app/Services/shipment.service';
 
 @Component({
@@ -13,48 +15,81 @@ export class AddNewAddressComponent implements OnInit {
   invalidAddress: boolean = false;
   eMsg: string;
   errorMsg: string;
-  @Input() opened: string;
-  @Output() notify = new EventEmitter<string>();
-
-  constructor(private shipmentService: ShipmentService) {}
+  shipment?: ShipmentModel;
+  constructor(
+    private shipmentService: ShipmentService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
+    this.shipment = history.state.data;
+
     this.addAddressForm = new FormGroup({
-      firstName: new FormControl(null, Validators.required),
-      lastName: new FormControl(null, Validators.required),
-      phoneNumber: new FormControl(null, Validators.required),
-      address: new FormControl(null, Validators.required),
-      city: new FormControl(null, Validators.required),
-      country: new FormControl(null, Validators.required),
-      setDefault: new FormControl(null),
+      firstName: new FormControl(
+        this.shipment?.firstName ?? null,
+        Validators.required
+      ),
+      lastName: new FormControl(
+        this.shipment?.lastName ?? null,
+        Validators.required
+      ),
+      phoneNumber: new FormControl(
+        this.shipment?.phoneNumber ?? null,
+        Validators.required
+      ),
+      address: new FormControl(
+        this.shipment?.address ?? null,
+        Validators.required
+      ),
+      city: new FormControl(this.shipment?.city ?? null, Validators.required),
+      country: new FormControl(
+        this.shipment?.country ?? null,
+        Validators.required
+      ),
+      setDefault: new FormControl(this.shipment?.primary ?? false),
     });
   }
 
   onSubmit(body: any) {
     this.invalidAddress = false;
     this.buttonSubmit = true;
-    var form = {
-      fullName: `${body.firstName} ${body.lastName}`,
-      address: `${body.address} , ${body.city} , ${body.country}`,
-      phoneNumber: body.phoneNumber,
-      primary: body.setDefault,
-    };
+    body.primary = body.setDefault ?? false;
 
-    this.shipmentService.createAddress(form).subscribe(
-      () => {
-        this.opened = 'addressDetails';
-        this.notify.emit(this.opened);
-      },
-      (error) => {
-        this.buttonSubmit = false;
-        this.invalidAddress = true;
-        this.eMsg = error.message;
-        if (this.eMsg == 'BAD_REQUEST') {
-          this.errorMsg = 'Something went wrong';
-        } else if (this.eMsg == 'UNAUTHORIZED') {
-          this.errorMsg = 'Something went wrong , try sign out and login again';
+    if (!this.shipment) {
+      this.shipmentService.createAddress(body).subscribe(
+        () => {
+          this.router.navigate(['home/profile/address']);
+        },
+        (error) => {
+          this.buttonSubmit = false;
+          this.invalidAddress = true;
+          this.eMsg = error.message;
+          if (this.eMsg == 'BAD_REQUEST') {
+            this.errorMsg = 'Something went wrong';
+          } else if (this.eMsg == 'UNAUTHORIZED') {
+            this.errorMsg =
+              'Something went wrong , try sign out and login again';
+          }
         }
-      }
-    );
+      );
+    } else {
+      this.shipmentService.updateAddress(body, this.shipment._id).subscribe(
+        () => {
+          this.router.navigate(['home/profile/address']);
+        },
+        (error) => {
+          this.buttonSubmit = false;
+          this.invalidAddress = true;
+          this.eMsg = error.message;
+          if (this.eMsg == 'BAD_REQUEST') {
+            this.errorMsg = 'Something went wrong';
+          } else if (this.eMsg == 'UNAUTHORIZED') {
+            this.errorMsg =
+              'Something went wrong , try sign out and login again';
+          }
+        }
+      );
+    }
   }
 }

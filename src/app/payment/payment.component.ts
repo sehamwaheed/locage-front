@@ -13,8 +13,9 @@ import { ShipmentService } from '../Services/shipment.service';
 })
 export class PaymentComponent implements OnInit {
   products?: ProductModel[];
-  defaultShipment?: ShipmentModel;
+  shipments?: ShipmentModel[];
   cart?: any;
+  radioSelected?: any;
   clientToken?: any;
   constructor(
     private cartService: CartService,
@@ -28,8 +29,8 @@ export class PaymentComponent implements OnInit {
     this.cartService.getUserCart().subscribe((result: any) => {
       this.cart = result.result[0];
     });
-    this.shipmentService.getPrimary().subscribe((result: any) => {
-      this.defaultShipment = result.result;
+    this.shipmentService.getShipments().subscribe((result: any) => {
+      this.shipments = result.result;
     });
   }
 
@@ -39,7 +40,7 @@ export class PaymentComponent implements OnInit {
     var body = {
       nonce: nonce,
       shipmentAndDiscount: {
-        shipmentId: this.defaultShipment._id,
+        shipmentId: this.radioSelected,
       },
     };
     this.orderService.checkOut(body).subscribe((result: any) => {
