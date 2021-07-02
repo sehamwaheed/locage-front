@@ -2,7 +2,7 @@ export interface ShipmentModel{
     _id: any;
     firstName: string;
     lastName: string;
-    fullAddress: string;ب
+    fullAddress: string;
     address: string;
     city: string;
     country: string;
