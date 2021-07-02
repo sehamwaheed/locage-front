@@ -1,8 +1,10 @@
 import { ProductModel } from './../../Models/ProductModel';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { WishlistService } from 'src/app/Services/wishlist.service';
 import { CartService } from 'src/app/Services/cart.service';
 import Swal from 'sweetalert2';
+import { EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-wishlist-item',
@@ -10,6 +12,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./wishlist-item.component.scss'],
 })
 export class WishlistItemComponent implements OnInit {
+  @Output() delete: EventEmitter<any>= new EventEmitter<any>();
   @Input() item: ProductModel;
 
   constructor(
@@ -17,7 +20,9 @@ export class WishlistItemComponent implements OnInit {
     public cartService: CartService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.item.quantity = 1;
+  }
 
   removeItem(id: any) {
     this.wishlistService.removeToWishList(id).subscribe(() => {
@@ -25,9 +30,9 @@ export class WishlistItemComponent implements OnInit {
     });
   }
 
-  addToCart() {
-    this.cartService.addProduct(this.item, 1);
-    this.removeItem(this.item._id);
+  addToCart(){
+    this.cartService.addProduct(this.item , this.item.quantity)
     Swal.fire('Added', '', 'success');
-  }
-}
+  
+        }
+      }

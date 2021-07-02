@@ -28,4 +28,5 @@ export class WishlistService {
   {
     return this.http.delete(`${this.uri}${this.tokenUser.id}/product/${id}`);
   }
+  
 }
