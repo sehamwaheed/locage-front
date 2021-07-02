@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShipmentModel } from 'src/app/Models/shipmentModel';
 import { ShipmentService } from 'src/app/Services/shipment.service';
 
@@ -11,7 +12,10 @@ export class NotDefaultAddressComponent implements OnInit {
   @Input() shipment: ShipmentModel;
   @Output() notify = new EventEmitter<string>();
   @Output() makeDefaultAddress = new EventEmitter<string>();
-  constructor(private shipmentService: ShipmentService) {}
+  constructor(
+    private shipmentService: ShipmentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
   deleteShipment() {
@@ -32,5 +36,10 @@ export class NotDefaultAddressComponent implements OnInit {
       },
       (error) => {}
     );
+  }
+  editShipment() {
+    this.router.navigate(['home/profile/update-address'], {
+      state: { data: this.shipment },
+    });
   }
 }

@@ -1,7 +1,7 @@
 <div *ngIf="shipment" class="card card-not-default">
   <div class="card-body">
-    <p class="userName">{{ shipment!.fullName }}</p>
-    <p>{{ shipment!.address }}</p>
+    <p class="userName">{{ shipment!.firstName }} {{ shipment!.lastName }}</p>
+    <p>{{ shipment!.fullAddress }}</p>
     <p>{{ shipment!.phoneNumber }}</p>
   </div>
   <div class="card-footer">
@@ -15,7 +15,7 @@
     <button class="btn btn-set-Default btn-edit" (click)="deleteShipment()">
       <i class="fas fa-trash-alt"></i>
     </button>
-    <button *ngIf="!shipment.primary" class="btn btn-set-Default btn-edit">
+    <button class="btn btn-set-Default btn-edit" (click)="editShipment()">
       <i class="fas fa-pencil-alt"></i>
     </button>
   </div>
