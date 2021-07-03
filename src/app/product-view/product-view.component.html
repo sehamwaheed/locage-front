@@ -19,7 +19,7 @@
        <div class="d-flex justify-content-between">
         <div class="product-name">{{ product.title }}</div>
           <div>
-            <button (click)="isLike = !isLike" mat-icon-button aria-label="Example icon button with a heart icon" id="love">
+            <button (click)="addToWishList()" mat-icon-button aria-label="Example icon button with a heart icon" id="love">
               <i class="far fa-heart" [class.fas]="isLike"></i>
             </button>
           </div>

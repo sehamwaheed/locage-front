@@ -7,8 +7,11 @@
   </div>
 </div>
 
-<ng-container *ngIf="!loading ">
-  <div *ngIf="!(!products || !products.length)" class="d-block  d-lg-none col-12 mt-4">
+<ng-container *ngIf="!loading">
+  <div
+    *ngIf="!(!products || !products.length)"
+    class="d-block d-lg-none col-12 mt-4"
+  >
     <div class="card-summary shadow">
       <div class="card-body">
         <div class="d-flex flex-column">
@@ -18,17 +21,25 @@
           <div class="p-2 d-flex flex-column mt-3">
             <div class="p-2 d-flex justify-content-between">
               <p class="txt">Subtotal Price</p>
-              <p class="txt">{{ cartService.subtotalPrice }} <span>$</span></p>
+              <p class="txt">
+                {{ cartService.subtotalPrice.toString() | truncate: [7, ""] }}
+                <span>$</span>
+              </p>
             </div>
             <mat-divider> </mat-divider>
             <div class="p-2 d-flex justify-content-between">
               <p class="txt">Discount</p>
-              <p class="txt">{{ cartService.totalDiscount }} <span>$</span></p>
+              <p class="txt">
+                {{ cartService.totalDiscount.toString() | truncate: [7, ""] }}
+                <span>$</span>
+              </p>
             </div>
             <mat-divider> </mat-divider>
             <div class="p-2 d-flex justify-content-between">
               <p class="txt">Total Price</p>
-              <p class="txt">{{ totalPrice || 0.0 }} <span>$</span></p>
+              <p class="txt">
+                {{ totalPrice.toString() | truncate: [7, ""] }} <span>$</span>
+              </p>
             </div>
           </div>
           <div class="p-2">
@@ -43,11 +54,9 @@
             </button>
             <div class="text-center">
               <button
-                *ngIf="logged"
                 type="button"
                 name=""
                 id="delete"
-
                 (click)="deleteAllProducts()"
               >
                 Delete All Products
@@ -64,7 +73,10 @@
     class="d-flex justify-content-center align-items-center m-5 p-3"
     *ngIf="!products || !products.length"
   >
-    <p class="d-none d-md-block " style="font-size: 2rem; margin-top: -23rem; color: #22b687">
+    <p
+      class="d-none d-md-block"
+      style="font-size: 2rem; margin-top: -23rem; color: #22b687"
+    >
       Cart is empty
     </p>
     <img
@@ -80,7 +92,7 @@
     <div class="d-flex flex-row">
       <div class="col-12 col-lg-9 mt-4">
         <div class="card border-0 shadow">
-          <div class="card-body">
+          <div *ngIf="products" class="card-body">
             <app-cart
               (delete)="delete($event)"
               [product]="product"
@@ -100,20 +112,29 @@
                 <div class="p-2 d-flex justify-content-between">
                   <p class="txt">Subtotal Price</p>
                   <p class="txt">
-                    {{ cartService.subtotalPrice || 0.0 }} <span>$</span>
+                    {{
+                      cartService.subtotalPrice.toString() | truncate: [7, ""]
+                    }}
+                    <span>$</span>
                   </p>
                 </div>
                 <mat-divider> </mat-divider>
                 <div class="p-2 d-flex justify-content-between">
                   <p class="txt">Discount</p>
                   <p class="txt">
-                    {{ cartService.totalDiscount || 0.0 }} <span>$</span>
+                    {{
+                      cartService.totalDiscount.toString() | truncate: [7, ""]
+                    }}
+                    <span>$</span>
                   </p>
                 </div>
                 <mat-divider> </mat-divider>
                 <div class="p-2 d-flex justify-content-between">
                   <p class="txt">Total Price</p>
-                  <p class="txt">{{ totalPrice || 0.0 }} <span>$</span></p>
+                  <p class="txt">
+                    {{ totalPrice.toString() | truncate: [7, ""] }}
+                    <span>$</span>
+                  </p>
                 </div>
               </div>
               <div class="p-2">
@@ -127,14 +148,7 @@
                   Check Out
                 </button>
                 <div class="text-center mt-3">
-                  <a
-                    *ngIf="logged"
-                    type=""
-                    name=""
-                    id="delete"
-
-                    (click)="deleteAllProducts()"
-                  >
+                  <a type="" name="" id="delete" (click)="deleteAllProducts()">
                     Delete All Products
                   </a>
                 </div>

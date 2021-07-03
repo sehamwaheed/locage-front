@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-account-overview',
@@ -6,14 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./account-overview.component.scss'],
 })
 export class AccountOverviewComponent implements OnInit {
-  @Input() opened: string;
-  @Output() notify = new EventEmitter<string>();
   constructor() {}
 
   ngOnInit(): void {}
-
-  getOpenedValue(opened: string) {
-    this.opened = opened;
-    this.notify.emit(this.opened);
-  }
 }

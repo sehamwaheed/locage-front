@@ -5,14 +5,13 @@ import { CartService } from 'src/app/Services/cart.service';
 import Swal from 'sweetalert2';
 import { EventEmitter } from '@angular/core';
 
-
 @Component({
   selector: 'app-wishlist-item',
   templateUrl: './wishlist-item.component.html',
   styleUrls: ['./wishlist-item.component.scss'],
 })
 export class WishlistItemComponent implements OnInit {
-  @Output() delete: EventEmitter<any>= new EventEmitter<any>();
+  @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Input() item: ProductModel;
 
   constructor(
@@ -30,9 +29,9 @@ export class WishlistItemComponent implements OnInit {
     });
   }
 
-  addToCart(){
-    this.cartService.addProduct(this.item , this.item.quantity)
+  addToCart() {
+    this.cartService.addProduct(this.item, this.item.quantity);
+    this.removeItem(this.item._id);
     Swal.fire('Added', '', 'success');
-  
-        }
-      }
+  }
+}

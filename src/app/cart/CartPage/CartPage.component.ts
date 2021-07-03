@@ -34,36 +34,33 @@ export class CartPageComponent implements OnInit {
   }
 
   navigate() {
-    this.route.navigate(['home/checkout']);
+    this.route.navigate(['/home/checkout']);
   }
 
   deleteAllProducts() {
-    this.cartService.removeAll().subscribe(() => {
+    if (this.logged) {
+      this.cartService.removeAll().subscribe(() => {
+        this.getProducts();
+      });
+    } else {
+      this.cartService.removeAllLocal();
       this.getProducts();
-    });
+    }
   }
 
   getProducts() {
     this.loading = true;
-    this.userServ.loggedIn().subscribe(
-      (res) => {
-        if (res) {
-          // to add
-          this.cartService.getProductFromRequest().subscribe((res) => {
-            this.loading = false;
-
-            this.products = res['result'];
-          });
-        } else {
-          this.products = this.cartService.getProductsFromLocal();
-          this.loading = false;
-        }
-      },
-      () => {
-        Swal.fire('Error has been occured', '', 'error');
+    if (this.logged) {
+      // to add
+      this.cartService.getProductFromRequest().subscribe((res) => {
         this.loading = false;
-      }
-    );
+
+        this.products = res['result'];
+      });
+    } else {
+      this.products = this.cartService.getProductsFromLocal();
+      this.loading = false;
+    }
   }
   update(product, quantity) {
     product.quantity = quantity;

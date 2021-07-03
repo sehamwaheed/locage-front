@@ -74,7 +74,7 @@ export class CartService {
       arr.push(product);
       this.locals.store('cart', JSON.stringify(arr));
     }
-
+    this.calcTotals();
     this.uploadProductsToServer();
   }
 
@@ -128,13 +128,11 @@ export class CartService {
     if (this.locals.retrieve('cart') && !this.isLoggedIn) {
       this.subtotalPrice = 0.0;
       this.totalDiscount = 0.0;
-      this.totalPrice.next(0.0);
       this.products = JSON.parse(this.locals.retrieve('cart'));
-      this.products.map((e) => {
+      this.products.map((e) => {        
         this.subtotalPrice += e.price * e.quantity;
-        this.totalDiscount += e.discount || 0;
-        this.totalPrice.next(this.totalPrice.value + this.subtotalPrice || 0.0);
-        //this.totalPrice += this.subtotalPrice  || 0;
+        this.totalDiscount += e.discountAmount * e.quantity || 0;
+        this.totalPrice.next(this.subtotalPrice - this.totalDiscount || 0.0);
       });
     } else if (this.isLoggedIn) {
       this.getProductFromRequest().subscribe((res: any) => {
@@ -168,5 +166,11 @@ export class CartService {
     this.subtotalPrice = 0;
     this.totalPrice.next(0.0);
     return this.clearCart();
+  }
+  removeAllLocal() {
+    this.totalDiscount = 0;
+    this.subtotalPrice = 0;
+    this.totalPrice.next(0.0);
+    this.locals.clear('cart');
   }
 }
