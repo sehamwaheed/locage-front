@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ProductModel } from '../Models/ProductModel';
 import { Review } from '../Models/Review';
 import { CartService } from '../Services/cart.service';
 import { ProductService } from '../Services/product.service';
-import { map } from 'rxjs/operators';
+import { WishlistService } from '../Services/wishlist.service';
+import { UserService } from '../Services/user.service';
 
 @Component({
   selector: 'app-product-view',
@@ -18,9 +19,11 @@ export class ProductViewComponent implements OnInit {
   @Input('count') count: number = 1;
   colorText: string = 'red';
   id: any;
+  isLogin: boolean = false;
   isLike: boolean = false;
   isLoding: boolean = true;
   product: ProductModel = null;
+  wishListItems: any[];
   reviews: Review[] = [];
   totalRate: number = 0;
   rate1: number = 0;
@@ -33,8 +36,15 @@ export class ProductViewComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private productServices: ProductService,
-    public cartService: CartService
-  ) {}
+    private userService: UserService,
+    private wishlistService: WishlistService,
+    public cartService: CartService,
+    private router: Router
+  ) {
+    this.userService.loggedIn().subscribe((res) => {
+      this.isLogin = res;
+    });
+  }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
@@ -44,7 +54,17 @@ export class ProductViewComponent implements OnInit {
 
       this.isLoding = false;
     });
-
+    if (this.isLogin) {
+      this.wishlistService.getUserWishList().subscribe((res: any) => {
+        this.wishListItems = res.result;
+        let isInWishList = this.wishListItems.find(
+          (p) => p.productId == this.product._id
+        );
+        if (isInWishList) {
+          this.isLike = true;
+        }
+      });
+    }
     this.productServices.getAllReview(this.id);
     this.productServices.getReviewsWithoutLoad().subscribe((r: any) => {
       this.reviews = r?.result?.docs;
@@ -82,6 +102,29 @@ export class ProductViewComponent implements OnInit {
     }
   }
 
+  addToWishList() {
+    if (this.isLogin) {
+      if (this.isLike) {
+        this.wishlistService
+          .removeToWishList(this.product._id)
+          .subscribe((res: any) => {
+            if (res.message == 'REMOVED_SUCCESSFULLY') {
+              this.isLike = false;
+            }
+          });
+      } else {
+        this.wishlistService
+          .addToWishList(this.product._id)
+          .subscribe((res: any) => {
+            if (res.message == 'ADDED_SUCCESSFULLY') {
+              this.isLike = true;
+            }
+          });
+      }
+    } else {
+      this.router.navigate(['/login']);
+    }
+  }
   addToCart() {
     console.log('before', this.product);
 
