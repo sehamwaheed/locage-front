@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
 
     this.product.getTodayDeals().subscribe((data:any)=>{
       console.log("today deals servece",data);
+
       this.todayDeals=data?.result?.docs;
       this.isLoding=false;
 
@@ -66,5 +67,10 @@ export class HomeComponent implements OnInit {
    })
 
   }
+
+
+
+
+
 
 }

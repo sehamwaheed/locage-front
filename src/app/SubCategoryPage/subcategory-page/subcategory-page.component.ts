@@ -12,6 +12,7 @@ import { SubCategoryService } from 'src/app/Services/sub-category.service';
   styleUrls: ['./subcategory-page.component.scss'],
 })
 export class SubcategoryPageComponent implements OnInit {
+  showFiller = false;
   products: ProductModel[] = [];
   subcategoryId: SubCategoryModel = null;
   isLoding: boolean = true;

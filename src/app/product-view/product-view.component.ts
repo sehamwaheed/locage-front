@@ -18,6 +18,7 @@ export class ProductViewComponent implements OnInit {
   @Input('count') count: number = 1;
   colorText: string = 'red';
   id: any;
+  isLike: boolean = false;
   isLoding: boolean = true;
   product: ProductModel = null;
   reviews: Review[] = [];

@@ -19,6 +19,7 @@ export class FilterationSidebarComponent implements OnInit {
   initAllProducts:ProductModel[]=[]
   @Output('myfilteration') filter = new EventEmitter<ProductModel[]>();
   @Input('products') products : ProductModel[] = [];
+  @Input('shadow') shadow:boolean=false;
   brands: string[] = [];
   formbrand: FormGroup;
   formSize: FormGroup;
