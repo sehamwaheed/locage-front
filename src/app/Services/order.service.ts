@@ -16,6 +16,9 @@ export class OrderService {
   getToken() {
     return this.http.get(`${this.uri}client-token`);
   }
+  getUserOrders() {
+    return this.http.get(`${this.uri}user`);
+  }
   checkOut(data: any) {
     return this.http.post(`${this.uri}checkout`, data);
   }

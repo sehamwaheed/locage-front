@@ -11,19 +11,18 @@ export class OrdersComponent implements OnInit {
   isLoading: boolean = true;
   isEmpty: boolean = true;
   constructor(private orderService: OrderService) {
-    // this.orderService.getUserOrders().subscribe(
-    //   (result: any) => {
-    //     console.log(result);
-
-    //     this.isLoading = false;
-    //     if (this.orders) {
-    //       this.isEmpty = false;
-    //     } else {
-    //       this.isEmpty = true;
-    //     }
-    //   },
-    //   (error) => {}
-    // );
+    this.orderService.getUserOrders().subscribe(
+      (result: any) => {
+        this.orders = result.result;
+        this.isLoading = false;
+        if (this.orders) {
+          this.isEmpty = false;
+        } else {
+          this.isEmpty = true;
+        }
+      },
+      (error) => {}
+    );
   }
   ngOnInit(): void {}
 }
