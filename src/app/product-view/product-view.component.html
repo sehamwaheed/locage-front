@@ -126,7 +126,7 @@
             "
           ></div>
           <ng-template #outOfStockComponent>
-            <div>Out Of Stock</div>
+            <div><h2 class="text-danger">Out Of Stock</h2></div>
           </ng-template>
           <ng-template #addToCartComponent>
             <button (click)="addToCart()" class="btn">
@@ -205,7 +205,7 @@
           aria-labelledby="nav-contact-tab"
         >
           <div
-            class="p-5 mt-2 d-flex justify-content-start"
+            class="p-5 mt-2 justify-content-start"
             [innerHtml]="product.productSpecifications"
           ></div>
         </div>
