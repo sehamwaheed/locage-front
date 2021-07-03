@@ -30,8 +30,14 @@
         </div>
 
         <div class="price p-1 mt-1">
-          <p>
+          <p *ngIf="product.discount == 0">
             $<span>{{ product.price }}</span>
+          </p>
+          <p *ngIf="product.discount > 0">
+           <small class="h6" style="text-decoration: line-through;"> $<span>{{ product.price }}</span></small>
+          </p>
+          <p *ngIf="product.discount > 0">
+            $<span>{{ product.price - (product.price * product.discount / 100) }}</span>
           </p>
         </div>
         <hr />
