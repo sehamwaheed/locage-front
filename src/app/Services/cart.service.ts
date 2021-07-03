@@ -62,7 +62,7 @@ export class CartService {
   }
 
   addProduct(product: ProductModel, quantity: number) {
-    product.quantity = quantity || 0;
+    product.quantity = quantity || 1;
 
     if (this.locals.retrieve('cart')) {
       const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
@@ -96,14 +96,10 @@ export class CartService {
     this.calcTotals();
   }
 
-  deleteProductFromReq(_id: string){
-   return this.http.delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`).pipe(
-    
-    map(() => this.calcTotals())
-
-   
-);
-  
+  deleteProductFromReq(_id: string) {
+    return this.http
+      .delete(`https://locage.herokuapp.com/api/v1/carts/product/${_id}`)
+      .pipe(map(() => this.calcTotals()));
   }
 
   updateProduct(product: ProductModel) {
@@ -129,7 +125,6 @@ export class CartService {
   }
 
   calcTotals() {
-
     if (this.locals.retrieve('cart') && !this.isLoggedIn) {
       this.subtotalPrice = 0.0;
       this.totalDiscount = 0.0;
@@ -142,12 +137,12 @@ export class CartService {
         //this.totalPrice += this.subtotalPrice  || 0;
       });
     } else if (this.isLoggedIn) {
-      this.getUserCart().subscribe((res: any) => {
+      this.getProductFromRequest().subscribe((res: any) => {
         this.subtotalPrice = 0.0;
         this.totalDiscount = 0.0;
         res.result.map((e) => {
-          this.subtotalPrice += e.price;
-          this.totalDiscount += e.discount || 0;
+          this.subtotalPrice += e.realPrice * e.quantity;
+          this.totalDiscount += e.discountAmount * e.quantity;
         });
         this.totalPrice.next(res.cart.totalprice || 0.0);
       });

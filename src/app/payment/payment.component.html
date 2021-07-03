@@ -22,13 +22,14 @@
                 {{ item!.description | truncate: [30, "..."] }}
               </small>
             </div>
-            <span class="text-muted">${{ item!.price }}</span>
+            <span class="text-muted">${{ item!.discountPrice }} </span>
+            <span class="text-muted"> X{{ item!.quantity }} </span>
           </li>
         </div>
 
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
-          <strong>${{ cart!.price }}</strong>
+          <strong>${{ cart!.totalprice }}</strong>
         </li>
       </ul>
     </div>
@@ -162,8 +163,7 @@
           </button>
         </div>
 
-        <hr class="mb-4" />
-        <div class="custom-control custom-checkbox">
+        <!-- <div class="custom-control custom-checkbox">
           <input
             type="checkbox"
             class="custom-control-input"
@@ -172,7 +172,8 @@
           <label class="custom-control-label" for="same-address"
             >Shipping address is the same as my billing address</label
           >
-        </div>
+        </div> -->
+        
         <!-- <div class="custom-control custom-checkbox">
           <input
             type="checkbox"
@@ -230,7 +231,6 @@
           (paymentStatus)="onPaymentStatus($event)"
           [buttonText]="'Check Out'"
           [allowChoose]="true"
-          [enablePaypalCheckout]="true"
           [currency]="'USD'"
         >
         </ngx-braintree>

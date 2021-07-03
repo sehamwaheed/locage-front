@@ -26,7 +26,6 @@ export class SubcategoryPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activRout.queryParams.subscribe((e) => {
-      // console.log(e);
       if (e.key) {
         this.sarchWord = e.key;
         this.search();
@@ -46,14 +45,12 @@ export class SubcategoryPageComponent implements OnInit {
 
     });
     this.activRout.params.subscribe((url) => {
-      // console.log(url);
 
       if (url.id) {
         this.subcategoryId = url.id;
 
         this.subcategory.getProductByCategory(this.subcategoryId).subscribe(
           (data: any) => {
-            // console.log('yarab', data);
 
             this.products = data?.result?.docs;
             this.productservices.updateProducts(this.products);
@@ -72,13 +69,10 @@ export class SubcategoryPageComponent implements OnInit {
 
   listenFilterColor(data) {
     this.products = data;
-    // console.log(this.products);
-    // console.log('data', data);
   }
 
   search(){
     this.productservices.searchByKey(this.sarchWord).subscribe((k:any) => {
-      // console.log(k);
 
       this.products = k?.result?.docs;
       this.productservices.updateProducts(this.products);
@@ -94,7 +88,6 @@ export class SubcategoryPageComponent implements OnInit {
 
   loadTopDeals(){
     this.productservices.getTopDeals().subscribe((k:any) => {
-      // console.log(k);
 
       this.products = k?.result?.docs;
       this.productservices.updateProducts(this.products);
@@ -110,7 +103,6 @@ export class SubcategoryPageComponent implements OnInit {
 
   loadTopSales(){
     this.productservices.getTopSales().subscribe((k:any) => {
-       console.log(k);
 
     k?.result.forEach((p:any) => {
       this.products.push(p?.product)
@@ -128,7 +120,6 @@ export class SubcategoryPageComponent implements OnInit {
 
   loadTodayDeals(){
     this.productservices.getTodayDeals().subscribe((k:any) => {
-      // console.log(k);
 
       this.products = k?.result?.docs;
       this.productservices.updateProducts(this.products);

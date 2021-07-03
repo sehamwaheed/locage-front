@@ -98,12 +98,6 @@
             </small>
 
             <small
-              *ngIf="phoneNumber?.errors?.minlength && phoneNumber?.touched"
-              class="text-danger"
-            >
-              "phone Number must be 11 digits at least "
-            </small>
-            <small
               *ngIf="phoneNumber?.errors?.pattern && phoneNumber?.touched"
               class="text-danger"
             >

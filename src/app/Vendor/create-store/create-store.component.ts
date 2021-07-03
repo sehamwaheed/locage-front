@@ -25,8 +25,6 @@ export class CreateStoreComponent implements OnInit {
 
     phoneNumber: new FormControl(null, [
       Validators.required,
-
-      Validators.minLength(11),
       Validators.pattern('^01[0125][0-9]{8}$'),
     ]),
     zipCode: new FormControl(null, [
@@ -114,7 +112,6 @@ export class CreateStoreComponent implements OnInit {
     formData.append('name', body.name);
     formData.append('email', body.email);
     formData.append('photo', this.photo);
-    formData.append('phoneNumber', body.phoneNumber);
     formData.append('address.city', body.city);
     formData.append('phoneNumber', body.phoneNumber);
 
