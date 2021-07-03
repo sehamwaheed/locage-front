@@ -91,7 +91,7 @@ import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-
 import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
 import { NgxBraintreeModule } from 'ngx-braintree';
 import { OrderStatusComponent } from './SharedComponent/order-status/order-status.component';
-
+import {MatSidenavModule} from '@angular/material/sidenav';
 @NgModule({
   declarations: [
     AppComponent,
@@ -155,7 +155,7 @@ import { OrderStatusComponent } from './SharedComponent/order-status/order-statu
     LocageCreditComponent,
     RecentlyViewedComponent
    ],
-  
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -190,6 +190,7 @@ import { OrderStatusComponent } from './SharedComponent/order-status/order-statu
     NgImageSliderModule,
     NgxImageZoomModule,
     NgxBraintreeModule,
+    MatSidenavModule
   ],
   providers: [
     FormBuilder,

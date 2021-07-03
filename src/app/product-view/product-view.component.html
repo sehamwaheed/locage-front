@@ -16,7 +16,14 @@
       style="border: 1px soled gold"
     >
       <div class="details">
+       <div class="d-flex justify-content-between">
         <div class="product-name">{{ product.title }}</div>
+          <div>
+            <button (click)="isLike = !isLike" mat-icon-button aria-label="Example icon button with a heart icon" id="love">
+              <i class="far fa-heart" [class.fas]="isLike"></i>
+            </button>
+          </div>
+       </div>
         <div class="product-detailes">
           <p>Discount : {{ product?.discount }} %</p>
           {{ product.description }}
@@ -160,9 +167,11 @@
           ></div>
           <ng-template #outOfStockComponent>
             <div><h2 class="text-danger">Out Of Stock</h2></div>
+
           </ng-template>
+
           <ng-template #addToCartComponent>
-            <button (click)="addToCart()" class="btn">
+            <button (click)="addToCart()" class="btn" id="add">
               Add to Cart <i class="fas fa-shopping-cart"></i>
             </button>
           </ng-template>

@@ -25,4 +25,7 @@ export class ProductCardComponent implements OnInit {
     this.router.navigate(['home/view',this.id]);
   }
 
+
+
+
 }
