@@ -24,7 +24,20 @@
         </div>
 
         <div class="price">
-          <p>{{ productFromService.price }}<span>$</span></p>
+          <p *ngIf="productFromService.discount == 0">
+            $<span>{{ productFromService.price }}</span>
+          </p>
+          <p *ngIf="productFromService.discount > 0">
+            <small class="h6" style="text-decoration: line-through">
+              $<span>{{ productFromService.price }}</span></small
+            >
+          </p>
+          <p *ngIf="productFromService.discount > 0">
+            $<span>{{
+              productFromService.price -
+                (productFromService.price * productFromService.discount) / 100
+            }}</span>
+          </p>
         </div>
         <!--* icon --->
         <div class="d-flex flex-row justify-content-start">
