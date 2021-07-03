@@ -29,7 +29,7 @@
 
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
-          <strong>${{ cart!.price }}</strong>
+          <strong>${{ cart!.totalprice }}</strong>
         </li>
       </ul>
     </div>
@@ -231,7 +231,6 @@
           (paymentStatus)="onPaymentStatus($event)"
           [buttonText]="'Check Out'"
           [allowChoose]="true"
-          [enablePaypalCheckout]="true"
           [currency]="'USD'"
         >
         </ngx-braintree>
