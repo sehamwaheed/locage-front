@@ -17,42 +17,38 @@ export class PendingReviewsComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getAllProductNeededToReview().subscribe((data: any) => {
-      this.product = data?.result?.docs;
-      this.isLoding = false;
-        if(this.product.length!=0 ){
+    this.productService.getAllProductNeededToReview().subscribe(
+      (data: any) => {
+        this.product = data?.result?.docs;
+        this.isLoding = false;
+        if (this.product) {
           this.isempty = false;
-        }
-        else{
+        } else {
           this.isempty = true;
         }
-    },
-    ()=>{
-      this.isLoding = false;
-      this.isempty = true;
-    }
-    );
-
-    this.productService.getProductsWithoutLoad().subscribe((data)=>{
-      this.product = [...data];
-      this.isLoding = false;
-      if(this.product.length!=0 ){
-        this.isempty = false;
-      }
-      else{
+      },
+      () => {
+        this.isLoding = false;
         this.isempty = true;
       }
-    })
+    );
+
+    this.productService.getProductsWithoutLoad().subscribe((data) => {
+      this.product = [...data];
+      this.isLoding = false;
+      if (this.product) {
+        this.isempty = false;
+      } else {
+        this.isempty = true;
+      }
+    });
   }
 
   onSelected(event, btn: HTMLButtonElement) {
     this.selectedProduct = this.product.find((p) => {
       return p._id == event;
-
-
     });
     btn.click();
-
   }
 
   addReview(comment, close: HTMLButtonElement) {

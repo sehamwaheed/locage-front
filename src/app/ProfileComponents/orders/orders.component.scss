@@ -1,0 +1,22 @@
+.card-header-text {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    color: #184052;
+    padding: .75rem 1.25rem;
+  }
+  
+  .spinner-border{
+    display: inline-block;
+    width: 10rem;
+    height: 10rem;
+    vertical-align: text-bottom;
+    border: 1.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+    margin: 88px auto;
+    color: #22b687;
+  }
+  

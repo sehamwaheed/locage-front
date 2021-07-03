@@ -31,6 +31,7 @@ import { OrderStatusComponent } from './SharedComponent/order-status/order-statu
 import { InboxComponent } from './ProfileComponents/inbox/inbox.component';
 import { LocageCreditComponent } from './ProfileComponents/locage-credit/locage-credit.component';
 import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/recently-viewed.component';
+import { OrdersComponent } from './ProfileComponents/orders/orders.component';
 
 const routes: Routes = [
   //primar router-outlet all pages
@@ -78,6 +79,11 @@ const routes: Routes = [
           {
             path: 'wishlist',
             component: WishListComponent,
+            canActivate: [AuthGuardService],
+          },
+          {
+            path: 'orders',
+            component: OrdersComponent,
             canActivate: [AuthGuardService],
           },
           {
