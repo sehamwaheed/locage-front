@@ -30,8 +30,14 @@
         </div>
 
         <div class="price p-1 mt-1">
-          <p>
+          <p *ngIf="product.discount == 0">
             $<span>{{ product.price }}</span>
+          </p>
+          <p *ngIf="product.discount > 0">
+           <small class="h6" style="text-decoration: line-through;"> $<span>{{ product.price }}</span></small>
+          </p>
+          <p *ngIf="product.discount > 0">
+            $<span>{{ product.price - (product.price * product.discount / 100) }}</span>
           </p>
         </div>
         <hr />
@@ -135,7 +141,7 @@
             "
           ></div>
           <ng-template #outOfStockComponent>
-            <div>Out Of Stock</div>
+            <div><h2 class="text-danger">Out Of Stock</h2></div>
           </ng-template>
           <ng-template #addToCartComponent>
             <button (click)="addToCart()" class="btn">
@@ -192,7 +198,7 @@
           aria-labelledby="nav-home-tab"
         >
           <div
-            class="p-5 mt-2 d-flex justify-content-start"
+            class="p-5 mt-2 justify-content-start"
             [innerHtml]="product.productSpecifications"
           ></div>
         </div>
@@ -203,7 +209,7 @@
           aria-labelledby="nav-profile-tab"
         >
           <div
-            class="p-5 mt-2 d-flex justify-content-start"
+            class="p-5 mt-2 justify-content-start"
             [innerHtml]="product.productSpecifications"
           ></div>
         </div>
@@ -214,7 +220,7 @@
           aria-labelledby="nav-contact-tab"
         >
           <div
-            class="p-5 mt-2 d-flex justify-content-start"
+            class="p-5 mt-2 justify-content-start"
             [innerHtml]="product.productSpecifications"
           ></div>
         </div>

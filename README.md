@@ -1,27 +1,43 @@
 # Locage
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.9.
+ [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-tasty-spaghetti-code.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/open-source.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-## Development server
+## Multi Vendor E-Commerce Website
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![Mongo DB Logo](https://img.shields.io/badge/-MongoDB-green) ![Express.js Logo](https://img.shields.io/badge/-Express.js-lightgrey) ![Angular Logo](https://img.shields.io/badge/-Angular-red) ![Node.js Logo](https://img.shields.io/badge/-Node.js-brightgreen)
 
-## Code scaffolding
+**Build With MEAN Stack Technology (MongoDB, Express.js, Angular, Node.js) As a part of ( [ITI](http://iti.gov.eg/iti/home) ) information technology institute internship**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+**You Can Access Back-End Repo From Here (...) [GitHub](https://github.com/mahmoudghonem/Locage-BackEnd)**
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+**You Can Access Front-End Repo From Here (...) [GitHub](https://github.com/mahmoudghonem/locage-front)**
+**Front-End Deployment (...) [Live](https://locage.vercel.app)**
 
-## Running unit tests
+**You Can Access Dashboard Repo From Here (...) [GitHub](https://github.com/mahmoudghonem/locage-dashboard)**
+**Dashboard Deployment (...) [Live](https://locage-dashboard.vercel.app)**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+**Description ..... (Not Written Yet) ... (Stay Alert) :satisfied:**
+##### Table of Contents  
+* [Introduction](#introduction)
+* [Team](#team)  
 
-## Running end-to-end tests
+### Introduction
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+### Team
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+**Mahmoud Ghonem** | **Salma Rakha** | **Abrar Yehia** 
+------------ | ------------ | ------------  
+![GitHub followers](https://img.shields.io/github/followers/mahmoudghonem?style=social) | ![GitHub followers](https://img.shields.io/github/followers/salmarakha?style=social)  | ![GitHub followers](https://img.shields.io/github/followers/abraryahia?style=social) 
+![Twitter Follow](https://img.shields.io/twitter/follow/mahmoudghonem28?style=social) | ![Twitter Follow](https://img.shields.io/twitter/follow/salmarakha75?style=social) | ![Twitter Follow](https://img.shields.io/twitter/follow/Abrar55208375?style=social)
+
+**Mohamed Serag** | **Dina Wahied** | **Nada Tayel**
+------------ | ------------ | ------------  
+![GitHub followers](https://img.shields.io/github/followers/mohamedosamaserag?style=social) | ![GitHub followers](https://img.shields.io/github/followers/sehamwaheed?style=social) | ![GitHub followers](https://img.shields.io/github/followers/nadatayel?style=social) 
+![Twitter Follow](https://img.shields.io/twitter/follow/dev_serag?style=social) |  | ![Twitter Follow](https://img.shields.io/twitter/follow/nada_tayel?style=social)
+
+
+
+
