@@ -28,9 +28,7 @@ export class ProductContainerComponent implements OnInit {
 
 //  this.product.getTopDeals();
 //    this.product.getProductsWithoutLoad().subscribe((p)=>{
-//      console.log(p);
 //      this.products=p;
-//      console.log(this.products);
 
 //    })
   }

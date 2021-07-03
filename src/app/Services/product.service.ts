@@ -37,7 +37,6 @@ export class ProductService {
   getTopDeals() {
     return this.http.get<{ products: ProductModel[] }>(this.api + '/top-deals');
     // .subscribe((data:any)=>{
-    //   console.log("top-Deals serveces",data);
     //   this.products=data?.result?.docs;
     //   this.productsLoad.next( [...this.products]);
     // })
@@ -52,7 +51,6 @@ export class ProductService {
       this.api + '/today-deals'
     );
     // .subscribe((data:any)=>{
-    //   console.log("today deals servece",data);
     //   this.products=data?.result?.docs;
     //   this.productsLoad.next( [...this.products]);
 

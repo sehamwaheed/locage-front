@@ -33,10 +33,7 @@
             >
           </p>
           <p *ngIf="productFromService.discount > 0">
-            $<span>{{
-              productFromService.price -
-                (productFromService.price * productFromService.discount) / 100
-            }}</span>
+            $<span>{{ productFromService.discountPrice }}</span>
           </p>
         </div>
         <!--* icon --->

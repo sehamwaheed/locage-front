@@ -22,7 +22,8 @@
                 {{ item!.description | truncate: [30, "..."] }}
               </small>
             </div>
-            <span class="text-muted">${{ item!.price }}</span>
+            <span class="text-muted">${{ item!.discountPrice }} </span>
+            <span class="text-muted"> X{{ item!.quantity }} </span>
           </li>
         </div>
 
