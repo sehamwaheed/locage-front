@@ -5,7 +5,7 @@
         aria-expanded="false" [routerLink]="['sub', item._id]"
         (click)="navigatToSub(item._id)"   >
         <!-- <i class="{{item.icon}}"></i> -->
-         {{item.name}}
+         {{item.name  | truncate: [20, "..."]}}
       </a>
       <div class="dropdown-menu shadow border-0">
         <a class="dropdown-item" [routerLink]="['subcategory', sub._id]" *ngFor="let sub of item.subcategories" (click)="changeSub(sub)">{{sub.name}}</a>
@@ -17,7 +17,7 @@
 
 <div class="scrollSubNave d-flex  d-sm-none ">
   <div class="items" *ngFor="let item of categories"  [routerLink]="['sub', item._id]">
-    {{item.name}}
+    {{item.name  | truncate: [20, "..."]}}
   </div>
 </div>
 <!-- <div id="mobileSubnav" class="d-sm-none">

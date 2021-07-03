@@ -16,4 +16,14 @@ export class AddressBookDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  removeIndex(id) {
+    this.shipments = this.shipments.filter((s) => s._id != id);
+  }
+  makeDefaultAddress(id) {
+    this.shipments.forEach((s) => {
+      s.primary = false;
+    });
+    let index = this.shipments.findIndex((s) => s._id == id);
+    this.shipments[index].primary = true;
+  }
 }

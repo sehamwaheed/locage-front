@@ -1,15 +1,14 @@
-<div class="img-gallery">
-  <div class="img-view align-items-center justify-content-center">
-    <!-- <img
+<!-- <div class="img-gallery"> -->
+  <div class="img-view d-flex align-items-center justify-content-center overflow-hidden ">
+    <img
       [src]="scrImg"
       class="
-        imgProduct
-        ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}
+        imgProduct  img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}
       "
       alt=""
-    /> -->
+    />
 
-    <lib-ngx-image-zoom
+    <!-- <lib-ngx-image-zoom
       [thumbImage]="scrImg"
       [fullImage]="scrImg"
       [magnification]="2"
@@ -17,12 +16,12 @@
       [enableLens]="true"
       [lensWidth]="400"
       [lensHeight]="400"
-    ></lib-ngx-image-zoom>
+    ></lib-ngx-image-zoom> -->
   </div>
 
 
-</div>
-<div class="m-1">
+
+<div class="m-3">
   <ng-image-slider
   [images]="formatedImages"
   [imagePopup]="false"

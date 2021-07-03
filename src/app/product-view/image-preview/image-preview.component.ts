@@ -63,7 +63,7 @@ export class ImagePreviewComponent implements OnInit {
         items: 5
       },
       400: {
-        items: 6
+        items: 7
       },
       576:{
         items:7

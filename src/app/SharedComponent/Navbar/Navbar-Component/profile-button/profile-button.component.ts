@@ -15,11 +15,14 @@ export class ProfileButtonComponent implements OnInit {
     private cartService: CartService
   ) {
     this.userService.returnUserDetails().subscribe((user) => {
-      this.currentUser = user;
+      this.currentUser = user;      
     });
   }
 
   ngOnInit(): void {}
+  navToDashboard() {
+    window.open('https://locage-dashboard.vercel.app/', '_blank');
+  }
   logout() {
     this.userService.logout();
     this.cartService.calcTotals();

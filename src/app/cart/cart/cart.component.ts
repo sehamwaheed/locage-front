@@ -2,6 +2,7 @@ import { EventEmitter } from '@angular/core';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ProductModel } from 'src/app/Models/ProductModel';
 import { CartService } from 'src/app/Services/cart.service';
+import { ProductService } from 'src/app/Services/product.service';
 import { UserService } from 'src/app/Services/user.service';
 import { WishlistService } from 'src/app/Services/wishlist.service';
 import Swal from 'sweetalert2';
@@ -14,22 +15,31 @@ import Swal from 'sweetalert2';
 export class CartComponent implements OnInit {
   @Output() delete: EventEmitter<any> = new EventEmitter<any>();
   @Input('product') product: ProductModel = null;
+  productFromService?: ProductModel;
   logged = false;
   constructor(
     private cartServ: CartService,
     private userServ: UserService,
-    private wishList: WishlistService
+    private wishList: WishlistService,
+    private productService: ProductService
   ) {}
 
   ngOnInit(): void {
     this.userServ.loggedIn().subscribe((res) => {
       this.logged = res;
     });
+    this.productService
+      .getProductById(this.product._id)
+      .subscribe((res: any) => {
+        this.productFromService = res;
+      });
   }
 
   increase() {
-    this.product.quantity++;
-    this.cartServ.updateProduct(this.product);
+    if (this.product.quantity < this.productFromService.quantity) {
+      this.product.quantity++;
+      this.cartServ.updateProduct(this.product);
+    }
   }
 
   addToFav() {

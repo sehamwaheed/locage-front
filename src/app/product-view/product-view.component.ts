@@ -7,7 +7,6 @@ import { CartService } from '../Services/cart.service';
 import { ProductService } from '../Services/product.service';
 import { map } from 'rxjs/operators';
 
-
 @Component({
   selector: 'app-product-view',
   templateUrl: './product-view.component.html',
@@ -39,7 +38,6 @@ export class ProductViewComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
     this.productServices.getProductById(this.id).subscribe((pro: any) => {
-
       this.product = pro;
       this.isLoding = false;
     });
@@ -47,7 +45,7 @@ export class ProductViewComponent implements OnInit {
     this.productServices.getAllReview(this.id);
     this.productServices.getReviewsWithoutLoad().subscribe((r: any) => {
       this.reviews = r?.result?.docs;
-      console.log("helo",this.reviews);
+      console.log('helo', this.reviews);
 
       this.rate1 = r.Rate1;
       this.rate2 = r.Rate2;
@@ -58,28 +56,27 @@ export class ProductViewComponent implements OnInit {
       this.totalRate = r.totalRating;
       this.max = this.reviews.length;
     });
-  }//end oninit
-
-
-
+  } //end oninit
 
   calcWidthPercent(num, allnum) {
+    if (num == 0 && allnum == 0) {
+      return;
+    } else {
+      let res = (parseInt(num) / parseInt(allnum)) * 100;
 
-  if(num == 0 && allnum==0){
-    return;
-  }else{
-    let res = (parseInt(num) / parseInt(allnum)) * 100;
-
-    return Math.floor(res) ;
-
-  }
-
-
+      return Math.floor(res);
+    }
   }
 
   decreac() {
     if (this.count > 1) {
       return this.count--;
+    }
+  }
+
+  increase() {
+    if (this.count < this.product.quantity) {
+      return this.count++;
     }
   }
 
