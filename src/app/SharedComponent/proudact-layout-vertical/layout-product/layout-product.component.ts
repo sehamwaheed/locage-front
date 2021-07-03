@@ -16,7 +16,6 @@ export class LayoutProductComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.products);
 
   }
   islist:boolean=false;

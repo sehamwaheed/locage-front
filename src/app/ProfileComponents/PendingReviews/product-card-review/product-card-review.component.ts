@@ -21,7 +21,6 @@ export class ProductCardReviewComponent implements OnInit {
   }
 
   onReview(){
-    console.log(this.id);
 
     this.review.emit(this.id);
   }

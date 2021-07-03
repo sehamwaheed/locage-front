@@ -45,7 +45,6 @@ export class FilterationSidebarComponent implements OnInit {
 
   ngOnInit(): void {
       this.initAllProducts=[...this.products]
-      console.log("ylaa",this.initAllProducts);
       if (typeof this.products[0].subcategoryId == "object") {
         this.flag = true;
       }
@@ -58,12 +57,10 @@ export class FilterationSidebarComponent implements OnInit {
     this.CollectAllCollors();
     this.getMinPrice();
     this.getMaxPrice();
-    console.log('from Filter');
 
     this.productServices.getProductsWithoutLoad().subscribe((p)=>{
 
 
-      console.log("prodctar",p);
 
       this.products=p;
       this.restFilteration();
@@ -87,7 +84,6 @@ export class FilterationSidebarComponent implements OnInit {
   //  if(this.subCategoryId !== null){
   //   this.subcategory.getProductByCategory(this.subCategoryId).subscribe((data:any)=>{
 
-  //     console.log("yarab",data);
 
   //     this.products=data?.result?.docs;
   //     this.collectAllBrands();
@@ -126,7 +122,6 @@ export class FilterationSidebarComponent implements OnInit {
       }
     });
     this.brands = [...new Set(this.brands)];
-    console.log(this.brands);
   }
 
 
@@ -145,7 +140,6 @@ export class FilterationSidebarComponent implements OnInit {
       }
     });
     this.sizes = [...new Set(this.sizes)];
-    console.log(this.sizes);
   }
 
   private CollectAllCollors() {
@@ -158,7 +152,6 @@ export class FilterationSidebarComponent implements OnInit {
         });
       }
     });
-    console.log(this.colors);
   }
 
   toCaptial(text: string): string {
@@ -166,7 +159,6 @@ export class FilterationSidebarComponent implements OnInit {
   }
 
   private creatCheckBoxsHandrlar(form: FormArray, arr: any) {
-    console.log(form);
 
     arr.forEach(() => {
       form.push(new FormControl(false));
@@ -184,13 +176,9 @@ export class FilterationSidebarComponent implements OnInit {
   filterByColors(colorSelected) {
     let filterResult: ProductModel[] = [];
     this.initAllProducts.forEach((product) => {
-      console.log(product);
 
       product.color.forEach((clor) => {
         if (this.toCaptial(clor.trim()) == colorSelected) {
-          // console.log('if', clor == colorSelected);
-          // console.log('color choose', colorSelected);
-          // console.log('color', clor);
           filterResult.push(product);
         }
       });
@@ -261,18 +249,15 @@ export class FilterationSidebarComponent implements OnInit {
   }
 
   filterByRating(rate:number){
-    console.log(rate);
     let filterResult=this.initAllProducts.filter((r)=>{
       return r.rating >= rate;
 
     })
     if(filterResult.length != 0){
       this.filter.emit([...filterResult]);
-      console.log("sucess",[...filterResult]);
 
     }else{
       this.filter.emit([...this.initAllProducts])
-      console.log("faild",[...this.initAllProducts]);
     }
 
   }

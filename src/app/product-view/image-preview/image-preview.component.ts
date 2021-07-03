@@ -35,7 +35,6 @@ export class ImagePreviewComponent implements OnInit {
       }
 
     })
-    console.log(this.formatedImages);
   }
 
 

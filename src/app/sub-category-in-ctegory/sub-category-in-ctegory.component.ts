@@ -20,17 +20,14 @@ export class SubCategoryInCtegoryComponent implements OnInit {
       this.categoryServices.getSubCategoriesByCategoryId(url.id);
       this.categoryServices.getSubcategorywithoutLoad().subscribe((c:any)=>{
           this.sub=c;
-          console.log("ssssssssss",c);
 
       })
 
     });
-    console.log(this.id);
 
 
   }
   navigatToSubcategory(subId){
-    console.log(subId);
 
     this.router.navigate(['/home/subcategory',subId])
   }

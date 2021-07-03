@@ -45,7 +45,6 @@ export class ProductViewComponent implements OnInit {
     this.productServices.getAllReview(this.id);
     this.productServices.getReviewsWithoutLoad().subscribe((r: any) => {
       this.reviews = r?.result?.docs;
-      console.log('helo', this.reviews);
 
       this.rate1 = r.Rate1;
       this.rate2 = r.Rate2;

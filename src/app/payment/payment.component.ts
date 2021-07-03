@@ -24,7 +24,7 @@ export class PaymentComponent implements OnInit {
     private router: Router
   ) {
     this.cartService.getProductFromRequest().subscribe((result: any) => {
-      this.products = result.result;
+      this.products = result.result;      
     });
     this.cartService.getUserCart().subscribe((result: any) => {
       this.cart = result.result[0];
