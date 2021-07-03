@@ -21,7 +21,7 @@
   color: rgba(0, 0, 0, 0.664);
   font-weight: 500;
   margin-top: 2ex;
-  overflow: hidden;
+  // overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -33,7 +33,7 @@
 
 .rating {
   text-align: start;
-  margin: .1em 0ex -1em -0.4ex;
+  margin: 1.1em 0ex -1em -0.4ex;
 }
 
 .price p {
@@ -133,6 +133,18 @@ nav > div a.nav-item.nav-link:focus
     color:#fff;
     border-radius:0;
     transition:background 0.20s linear;
+}
+.see{
+  text-decoration: none;
+  color: #184052;
+}
+.see:hover{
+   color: #38BD92;
+   text-decoration: underline;
+}
+.see:focus{
+  color: #38BD92;
+  text-decoration: underline;
 }
 
 .progress {

@@ -29,6 +29,7 @@ export class ProductViewComponent implements OnInit {
   rate4: number = 0;
   rate5: number = 0;
   max = 0;
+  readMore = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private productServices: ProductService,

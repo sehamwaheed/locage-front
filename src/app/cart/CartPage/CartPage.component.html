@@ -46,8 +46,8 @@
                 *ngIf="logged"
                 type="button"
                 name=""
-                id=""
-                class="btn btn-sm text-light mx-auto my-2 btn-danger"
+                id="delete"
+
                 (click)="deleteAllProducts()"
               >
                 Delete All Products
@@ -64,7 +64,7 @@
     class="d-flex justify-content-center align-items-center m-5 p-3"
     *ngIf="!products || !products.length"
   >
-    <p style="font-size: 3rem; margin-top: -23rem; color: #22b687">
+    <p class="d-none d-md-block " style="font-size: 2rem; margin-top: -23rem; color: #22b687">
       Cart is empty
     </p>
     <img
@@ -132,7 +132,7 @@
                     type=""
                     name=""
                     id="delete"
-                    class="btn btn-sm text-light mx-auto my-2 btn-danger"
+
                     (click)="deleteAllProducts()"
                   >
                     Delete All Products

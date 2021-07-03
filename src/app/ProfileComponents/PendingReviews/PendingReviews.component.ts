@@ -26,7 +26,12 @@ export class PendingReviewsComponent implements OnInit {
         else{
           this.isempty = true;
         }
-    });
+    },
+    ()=>{
+      this.isLoding = false;
+      this.isempty = true;
+    }
+    );
 
     this.productService.getProductsWithoutLoad().subscribe((data)=>{
       this.product = [...data];

@@ -3,7 +3,7 @@
   <div class="card-body">
       <p class="card-title">All Categories in {{sub[0]?.categoryId?.name}} </p>
       <div class="d-flex flex-wrap justify-content-center align-content-center pt-4 pb-4">
-          <app-category *ngFor="let item of sub" class="m-3"  [title]='item.name' (click)="navigatToSubcategory(item._id)"></app-category>
+          <app-category *ngFor="let item of sub" class="m-3"  [title]='item.name' [img]='item?.photo' (click)="navigatToSubcategory(item._id)"></app-category>
 
       </div>
   </div>
