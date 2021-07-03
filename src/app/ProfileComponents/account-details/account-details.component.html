@@ -1,9 +1,19 @@
 <div class="card" *ngIf="user">
-  <div class="card-header card-header-account">ACCOUNT DETAILS<button class="btn btn-changePass btn-edit"
-    [routerLink]="['../update-account']"><i class="fas fa-pencil-alt"></i></button></div>
+  <div class="card-header card-header-account">
+    ACCOUNT DETAILS<button
+      class="btn btn-changePass btn-edit"
+      [routerLink]="['/home/profile/update-account']"
+    >
+      <i class="fas fa-pencil-alt"></i>
+    </button>
+  </div>
   <div class="card-body">
-    <p class="user-Name">{{user.firstName + ' ' + user.lastName}}</p>
-    <p>{{user.email}}</p>
-    <span class="btn btn-changePass btn-pass" [routerLink]="['../update-password']">CHANGE PASSWORD</span>
+    <p class="user-Name">{{ user.firstName + " " + user.lastName }}</p>
+    <p>{{ user.email }}</p>
+    <span
+      class="btn btn-changePass btn-pass"
+      [routerLink]="['/home/profile/update-password']"
+      >CHANGE PASSWORD</span
+    >
   </div>
 </div>
