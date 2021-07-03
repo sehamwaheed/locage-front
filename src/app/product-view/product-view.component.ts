@@ -79,8 +79,8 @@ export class ProductViewComponent implements OnInit {
     }
   }
 
-  addToCart() {
-    this.cartService.addProduct(this.product, this.count);
+  addToCart() {    
+    this.cartService.addProduct(this.product, this.count);    
     Swal.fire('Added', '', 'success');
   }
 }

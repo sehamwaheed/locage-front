@@ -62,7 +62,7 @@ export class CartService {
   }
 
   addProduct(product: ProductModel, quantity: number) {
-    product.quantity = quantity || 0;
+    product.quantity = quantity || 1;
 
     if (this.locals.retrieve('cart')) {
       const arr: Array<any> = JSON.parse(this.locals.retrieve('cart'));
