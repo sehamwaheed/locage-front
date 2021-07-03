@@ -5,159 +5,280 @@
 
   <div id="formImg">
     <div>
-      <img id="image" src="../../../../assets/images/vendor/undraw_working_remotely_jh40.svg" />
+      <img
+        id="image"
+        src="../../../../assets/images/vendor/undraw_working_remotely_jh40.svg"
+      />
     </div>
 
-    <div *ngIf="userCreatedApplication;then alreadyApplied else createStoreComponent"></div>
+    <div
+      *ngIf="
+        userCreatedApplication;
+        then alreadyApplied;
+        else createStoreComponent
+      "
+    ></div>
 
     <ng-template #createStoreComponent>
       <div>
         <form [formGroup]="createStoreForm">
           <div class="form-group">
             <label for="Name" style="color: #184052">Store Name</label>
-            <input id="name" formControlName="name" type="text" class="form-control" [class.is-invalid]="
-                      name?.invalid && (name?.dirty || name?.touched)
-                    " [class.is-valid]="name?.touched && !name?.invalid" />
+            <input
+              id="name"
+              formControlName="name"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                name?.invalid && (name?.dirty || name?.touched)
+              "
+              [class.is-valid]="name?.touched && !name?.invalid"
+            />
 
-            <small *ngIf="name?.errors?.required && name?.touched" class="text-danger">
+            <small
+              *ngIf="name?.errors?.required && name?.touched"
+              class="text-danger"
+            >
               "Name is required"
             </small>
-            <small *ngIf="name?.errors?.minlength && name?.touched " class="text-danger">
+            <small
+              *ngIf="name?.errors?.minlength && name?.touched"
+              class="text-danger"
+            >
               "Name must be 2 characters minimum"
             </small>
-           
           </div>
           <div class="form-group">
             <label for="email" style="color: #184052">Store Email</label>
-            <input id="email" formControlName="email" type="email" class="form-control" [class.is-invalid]="
-                      email?.invalid && (email?.dirty || email?.touched)
-                      " [class.is-valid]="email?.touched && !email?.invalid" />
+            <input
+              id="email"
+              formControlName="email"
+              type="email"
+              class="form-control"
+              [class.is-invalid]="
+                email?.invalid && (email?.dirty || email?.touched)
+              "
+              [class.is-valid]="email?.touched && !email?.invalid"
+            />
 
-            <small *ngIf="email?.errors?.required && email?.touched" class="text-danger">
+            <small
+              *ngIf="email?.errors?.required && email?.touched"
+              class="text-danger"
+            >
               "Email is required"
             </small>
-            <small *ngIf="email?.errors?.email && email?.touched" class="text-danger">
+            <small
+              *ngIf="email?.errors?.email && email?.touched"
+              class="text-danger"
+            >
               "wrong email format"
             </small>
-
           </div>
           <div class="form-group">
-            <label for="phoneNumber" style="color: #184052">Store Phone Number</label>
-            <input id="phoneNumber" formControlName="phoneNumber" type="text" class="form-control" [class.is-invalid]="
-            phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)
-                      " [class.is-valid]="phoneNumber?.touched && !phoneNumber?.invalid" />
+            <label for="phoneNumber" style="color: #184052"
+              >Store Phone Number</label
+            >
+            <input
+              id="phoneNumber"
+              formControlName="phoneNumber"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                phoneNumber?.invalid &&
+                (phoneNumber?.dirty || phoneNumber?.touched)
+              "
+              [class.is-valid]="phoneNumber?.touched && !phoneNumber?.invalid"
+            />
 
-            <small *ngIf="phoneNumber?.errors?.required && phoneNumber?.touched" class="text-danger">
+            <small
+              *ngIf="phoneNumber?.errors?.required && phoneNumber?.touched"
+              class="text-danger"
+            >
               "Phone Number is required"
             </small>
 
-            <small *ngIf="phoneNumber?.errors?.minlength && phoneNumber?.touched " class="text-danger">
+            <small
+              *ngIf="phoneNumber?.errors?.minlength && phoneNumber?.touched"
+              class="text-danger"
+            >
               "phone Number must be 11 digits at least "
-
             </small>
-            <small *ngIf="phoneNumber?.errors?.pattern && phoneNumber?.touched " class="text-danger">
-              "phoneNumber must be digits"
+            <small
+              *ngIf="phoneNumber?.errors?.pattern && phoneNumber?.touched"
+              class="text-danger"
+            >
+              "phoneNumber is not valid"
             </small>
           </div>
           <div class="form-group">
-            <label for="city" style="color: #184052 ;">City</label>
-            <input id="city" formControlName="city" type="text" class="form-control" [class.is-invalid]="
-                    city?.invalid && (city?.dirty || city?.touched)
-                    " [class.is-valid]="city?.touched && !city?.invalid" />
+            <label for="city" style="color: #184052">City</label>
+            <input
+              id="city"
+              formControlName="city"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                city?.invalid && (city?.dirty || city?.touched)
+              "
+              [class.is-valid]="city?.touched && !city?.invalid"
+            />
 
-            <small *ngIf="city?.errors?.required && city?.touched" class="text-danger">
+            <small
+              *ngIf="city?.errors?.required && city?.touched"
+              class="text-danger"
+            >
               "City is required"
             </small>
-            
-            <small *ngIf="city?.errors?.minlength && city?.touched " class="text-danger">
+
+            <small
+              *ngIf="city?.errors?.minlength && city?.touched"
+              class="text-danger"
+            >
               "City must be 3 characters minimum"
             </small>
-            <small *ngIf="city?.errors?.pattern && city?.touched " class="text-danger">
-              "City must be  characters"
+            <small
+              *ngIf="city?.errors?.pattern && city?.touched"
+              class="text-danger"
+            >
+              "City must be characters"
             </small>
           </div>
-
 
           <div class="form-group">
             <label for="state" style="color: #184052">State</label>
-            <input id="state" formControlName="state" type="text" class="form-control" [class.is-invalid]="
-                            state?.invalid && (state?.dirty || state?.touched)
-                            " [class.is-valid]="state?.touched && !state?.invalid" />
+            <input
+              id="state"
+              formControlName="state"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                state?.invalid && (state?.dirty || state?.touched)
+              "
+              [class.is-valid]="state?.touched && !state?.invalid"
+            />
 
-            <small *ngIf="state?.errors?.required && state?.touched" class="text-danger">
+            <small
+              *ngIf="state?.errors?.required && state?.touched"
+              class="text-danger"
+            >
               "State is required"
             </small>
-            <small *ngIf="state?.errors?.minlength && state?.touched" class="text-danger">
+            <small
+              *ngIf="state?.errors?.minlength && state?.touched"
+              class="text-danger"
+            >
               "State must be 3 characters minimum"
             </small>
-            <small *ngIf="state?.errors?.pattern && state?.touched " class="text-danger">
-              "State must be  characters"
+            <small
+              *ngIf="state?.errors?.pattern && state?.touched"
+              class="text-danger"
+            >
+              "State must be characters"
             </small>
-
           </div>
 
           <div class="form-group">
             <label for="country" style="color: #184052">Country</label>
-            <input id="country" formControlName="country" type="text" class="form-control" [class.is-invalid]="
-            country?.invalid && (country?.dirty || country?.touched)
-                            " [class.is-valid]="country?.touched && !country?.invalid" />
+            <input
+              id="country"
+              formControlName="country"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                country?.invalid && (country?.dirty || country?.touched)
+              "
+              [class.is-valid]="country?.touched && !country?.invalid"
+            />
 
-            <small *ngIf="country?.errors?.required && country?.touched" class="text-danger">
+            <small
+              *ngIf="country?.errors?.required && country?.touched"
+              class="text-danger"
+            >
               "Country is required"
             </small>
-            <small *ngIf="country?.errors?.minlength && country?.touched" class="text-danger">
+            <small
+              *ngIf="country?.errors?.minlength && country?.touched"
+              class="text-danger"
+            >
               "Country must be 3 characters minimum"
             </small>
-            <small *ngIf="country?.errors?.pattern && country?.touched " class="text-danger">
-              "Country must be  characters"
+            <small
+              *ngIf="country?.errors?.pattern && country?.touched"
+              class="text-danger"
+            >
+              "Country must be characters"
             </small>
-            
-
           </div>
 
           <div class="form-group">
             <label for="zipcode" style="color: #184052">ZipCode</label>
-            <input id="zipCode" formControlName="zipCode" type="text" class="form-control" [class.is-invalid]="
-                                    zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)
-                                    " [class.is-valid]="zipCode?.touched && !zipCode?.invalid" />
+            <input
+              id="zipCode"
+              formControlName="zipCode"
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)
+              "
+              [class.is-valid]="zipCode?.touched && !zipCode?.invalid"
+            />
 
-            <small *ngIf="zipCode?.errors?.required && zipCode?.touched" class="text-danger">
+            <small
+              *ngIf="zipCode?.errors?.required && zipCode?.touched"
+              class="text-danger"
+            >
               "ZipCode is required"
             </small>
-            <small *ngIf="zipCode?.errors?.minlength && zipCode?.touched " class="text-danger">
+            <small
+              *ngIf="zipCode?.errors?.minlength && zipCode?.touched"
+              class="text-danger"
+            >
               "ZipCode must be 3 characters minimum"
             </small>
-            <small *ngIf="zipCode?.errors?.pattern && zipCode?.touched " class="text-danger">
+            <small
+              *ngIf="zipCode?.errors?.pattern && zipCode?.touched"
+              class="text-danger"
+            >
               "ZipCode must be digits"
             </small>
-
           </div>
           <label for="storeImage" style="color: #184052">Store Photo</label>
           <div class="form-group custom-file">
-            <input id="storeImage" type="file" class="custom-file-input" id="customFile" (change)="onSelect($event)">
-            <label class="custom-file-label" for="customFile">{{photo?.name || "Choose file"}}</label>
+            <input
+              id="storeImage"
+              type="file"
+              class="custom-file-input"
+              id="customFile"
+              (change)="onSelect($event)"
+            />
+            <label class="custom-file-label" for="customFile">{{
+              photo?.name || "Choose file"
+            }}</label>
           </div>
           <div class="form-group" id="btnDiv">
-            <button [disabled]="createStoreForm.invalid || buttonSubmit" class="btn btn-success" type="submit"
-              (click)="onSubmit(createStoreForm.value)">
+            <button
+              [disabled]="createStoreForm.invalid || buttonSubmit"
+              class="btn btn-success"
+              type="submit"
+              (click)="onSubmit(createStoreForm.value)"
+            >
               Create Store
             </button>
           </div>
           <div>
-            <small *ngIf="invalidSubmit" class="text-danger">{{errorMsg}}</small>
+            <small *ngIf="invalidSubmit" class="text-danger">{{
+              errorMsg
+            }}</small>
           </div>
         </form>
       </div>
     </ng-template>
 
     <ng-template #alreadyApplied>
-
-      <div *ngIf="isVendor;then haveStore else underReview"></div>
+      <div *ngIf="isVendor; then haveStore; else underReview"></div>
 
       <ng-template #haveStore>
-        <span>
-          Your cannot apply for more than one store
-        </span>
+        <span> Your cannot apply for more than one store </span>
       </ng-template>
 
       <ng-template #underReview>
@@ -166,6 +287,5 @@
         </span>
       </ng-template>
     </ng-template>
-
   </div>
 </div>

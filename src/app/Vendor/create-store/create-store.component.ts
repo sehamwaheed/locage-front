@@ -21,26 +21,30 @@ export class CreateStoreComponent implements OnInit {
   photo!: File;
   createStoreForm = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
-    name: new FormControl(null, [
-      Validators.required, 
-      Validators.minLength(2) ,
-     ]),
+    name: new FormControl(null, [Validators.required, Validators.minLength(2)]),
 
     phoneNumber: new FormControl(null, [
       Validators.required,
 
       Validators.minLength(11),
-      Validators.pattern("^[\+]?[(]?[0-9]{10}"),
+      Validators.pattern('^01[0125][0-9]{8}$'),
     ]),
-    zipCode: new FormControl(null, 
-      [Validators.required ,
-        Validators.minLength(5),
+    zipCode: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(5),
 
-         Validators.pattern("^[0-9]*$"),]),
+      Validators.pattern('^[0-9]*$'),
+    ]),
 
-    city: new FormControl(null, [Validators.required, Validators.minLength(3) ]),
-    state: new FormControl(null, [Validators.required , Validators.minLength(3)]),
-    country: new FormControl(null, [Validators.required , Validators.minLength(3)]),
+    city: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    state: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    country: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
   });
 
   constructor(
@@ -113,7 +117,7 @@ export class CreateStoreComponent implements OnInit {
     formData.append('phoneNumber', body.phoneNumber);
     formData.append('address.city', body.city);
     formData.append('phoneNumber', body.phoneNumber);
-    
+
     formData.append('address.state', body.state);
     formData.append('address.country', body.country);
     formData.append('address.zipCode', body.zipCode);
