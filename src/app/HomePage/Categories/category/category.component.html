@@ -1,9 +1,13 @@
 <div class="category">
-
-    <div class="img-hover-zoom">
-        <img src="{{img}}" class="img-fluid" alt="This zooms-in really well and smooth"   onerror="this.src='../../../../assets/images/images.png'">
-    </div>
-    <div class="titel d-flex justify-content-center ">
-        <p> {{title}} </p>
-    </div>
+  <div class="img-hover-zoom">
+    <img
+      src="{{ img }}"
+      class="img-fluid"
+      alt="This zooms-in really well and smooth"
+      onerror="this.src='../../../../assets/images/images.png'"
+    />
+  </div>
+  <div class="titel d-flex justify-content-center">
+    <p>{{ title | truncate: [15, "..."] }}</p>
+  </div>
 </div>
