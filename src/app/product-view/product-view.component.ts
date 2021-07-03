@@ -39,6 +39,8 @@ export class ProductViewComponent implements OnInit {
     this.id = this.activatedRoute.snapshot.params.id;
     this.productServices.getProductById(this.id).subscribe((pro: any) => {
       this.product = pro;
+      console.log('afterinit', this.product);
+
       this.isLoding = false;
     });
 
@@ -79,8 +81,12 @@ export class ProductViewComponent implements OnInit {
     }
   }
 
-  addToCart() {    
-    this.cartService.addProduct(this.product, this.count);    
+  addToCart() {
+    console.log('before', this.product);
+
+    this.cartService.addProduct(this.product, this.count);
+    console.log('after', this.product);
+
     Swal.fire('Added', '', 'success');
   }
 }

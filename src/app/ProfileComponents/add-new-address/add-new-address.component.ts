@@ -78,10 +78,10 @@ export class AddNewAddressComponent implements OnInit {
         () => {
           this.router.navigate(['home/profile/address']);
         },
-        (error) => {
+        (e: any) => {
           this.buttonSubmit = false;
           this.invalidAddress = true;
-          this.eMsg = error.message;
+          this.eMsg = e.error.message;
           if (this.eMsg == 'BAD_REQUEST') {
             this.errorMsg = 'Something went wrong';
           } else if (this.eMsg == 'UNAUTHORIZED') {

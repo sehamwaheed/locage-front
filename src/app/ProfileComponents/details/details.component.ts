@@ -83,9 +83,9 @@ export class DetailsComponent implements OnInit {
         }
         this.buttonSubmit = false;
       },
-      (error: any) => {
+      (e: any) => {
         this.invalidUpdate = true;
-        this.eMsg = error.message;
+        this.eMsg = e.error.message;
         if (this.eMsg == 'BAD_REQUEST') {
           this.errorMsg = 'Something went wrong';
         } else if (this.eMsg == 'UNAUTHORIZED') {
