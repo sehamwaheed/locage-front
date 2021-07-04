@@ -92,6 +92,8 @@ import { RecentlyViewedComponent } from './ProfileComponents/recently-viewed/rec
 import { NgxBraintreeModule } from 'ngx-braintree';
 import { OrderStatusComponent } from './SharedComponent/order-status/order-status.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { OrdersComponent } from './ProfileComponents/orders/orders.component';
+import { OrderItemComponent } from './ProfileComponents/order-item/order-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -153,7 +155,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     OrderStatusComponent,
     InboxComponent,
     LocageCreditComponent,
-    RecentlyViewedComponent
+    RecentlyViewedComponent,
+    OrdersComponent,
+    OrderItemComponent
    ],
 
   imports: [

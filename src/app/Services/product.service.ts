@@ -73,7 +73,7 @@ export class ProductService {
 
   //https://locage.herokuapp.com/api/v1/reviews/products
   getAllProductNeededToReview() {
-    return this.http.get<{ products: ProductModel[] }>(
+    return this.http.get(
       'https://locage.herokuapp.com/api/v1/reviews/products'
     );
   }
@@ -100,8 +100,8 @@ export class ProductService {
         'https://locage.herokuapp.com/api/v1/reviews/product/' + id
       )
       .subscribe((r: any) => {
-        this.reviews=r;
-        this.reviewsLoad.next(this.reviews)
+        this.reviews = r;
+        this.reviewsLoad.next(this.reviews);
       });
   }
 }

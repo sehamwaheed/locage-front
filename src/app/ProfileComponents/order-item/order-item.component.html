@@ -1,0 +1,41 @@
+<div *ngIf="product" class="card card-product">
+  <div class="card-body">
+    <div class="row no-gutters">
+      <div
+        class="
+          img-container
+          d-flex
+          justify-content-center
+          align-content-center
+          col-5
+        "
+      >
+        <img
+          src="{{ product.photos[0] }}"
+          alt="product-img"
+          class="product-img"
+          onerror="this.src='../../../../assets/images/images.png'"
+        />
+      </div>
+      <div class="p-1 pl-4 col-5">
+        <div class="details">
+          <div class="product-name">{{ product.title }}</div>
+          <div class="product-detailes">
+            {{ product.description }}
+          </div>
+          <div class="product-rating">
+            <bar-rating
+              [(rate)]="item.rating"
+              [max]="5"
+              [readOnly]="true"
+            ></bar-rating>
+          </div>
+
+          <div class="price">
+            <p>{{ product.price }}<span>$</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
