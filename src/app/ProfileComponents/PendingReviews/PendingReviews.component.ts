@@ -18,8 +18,8 @@ export class PendingReviewsComponent implements OnInit {
 
   ngOnInit() {
     this.productService.getAllProductNeededToReview().subscribe(
-      (data: any) => {
-        this.product = data[0]?.docs;        
+      (data: any) => {        
+        this.product = data.result;        
         this.isLoding = false;
         if (this.product) {
           this.isempty = false;
